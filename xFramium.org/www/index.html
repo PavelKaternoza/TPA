@@ -12,6 +12,22 @@ body {
 	padding-top: 50px;
 	padding-bottom: 20px;
 }
+.code {
+         background-color: #1e1e1e;
+         color: #7b7b7b;
+      }
+      .comment {
+        color: green;
+      }
+      .attribute {
+        color: #96d6fa;
+      }
+      .value {
+        color: #c58a70;
+      }
+      .tag {
+        color: #4e91ca;
+      }
 </style>
 <link rel="icon" href="./favicon.ico">
 <title>xFramium - Rapid Test Case Development</title>
@@ -42,15 +58,13 @@ body {
                             <li><a href="/configuration.html">Configuration</a></li>
                             <li><a href="/keyword.html">Writing tests using keywords</a></li>
                             <li><a href="/java.html">Writing tests in Java</a></li>
-                        </ul>
-                    </li>
+                        </ul></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Architectural Overview </a></li>
                             <li><a href="#">API Reference</a></li>
                             <li><a href="#">Extending the Framework</a></li>
-                        </ul>
-                    </li>
+                        </ul></li>
                     <li><a href="/sponsors.html">Sponsors</a></li>
                 </ul>
             </div>
@@ -60,17 +74,47 @@ body {
     <div class="jumbotron">
         <div class="container">
             <img src="images/xframium.png" />
-            <p>xFramium, a unified testing framework for desktop and mobile web, native, and hybrid apps. Write tests using a simple and elegant XML keyword-driven alternative to coding. Use the same test cases on desktop and mobile web browsers. Take advantage of high-performance parallel execution, advanced caching and intelligent device selection algorithms. Easily connect test data from Excel, XML, JSON, CSV, JDBC and more. And coders, before you write off xFramium, there’s something for you to like - an option for page object model scripts written in Java.</p>
+            <p>xFramium, a unified testing framework for desktop and mobile web, native, and hybrid apps. Write tests using a simple and elegant XML keyword-driven alternative to coding. Use the same test cases on desktop and mobile web browsers. Take
+                advantage of high-performance parallel execution, advanced caching and intelligent device selection algorithms. Easily connect test data from Excel, XML, JSON, CSV, JDBC and more. And coders, before you write off xFramium, there’s something
+                for you to like - an option for page object model scripts written in Java.</p>
             <p>
                 <a class="btn btn-primary btn-lg" href="https://github.com/xframium/xframium-java" role="button">Git xFramium &raquo;</a>
             </p>
         </div>
     </div>
     <div class="container">
-        <!-- Example row of columns -->
         <div class="row">
-              
-            <img src="./images/usage.png" />
+            <div class="col-md-7">
+                <pre class="code">
+&lt;?<span class="tag">xml</span> <span class="attribute">version</span>=<span class="value">&quot;1.0&quot;</span> <span class="attribute">encoding</span>=<span class="value">&quot;UTF-8&quot;</span>?&gt;
+&lt;<span class="tag">suite</span> <span class="attribute">xmlns</span>=<span class="value">&quot;http://www.xframium.org/testRegistry&quot;</span> <span class="attribute">xmlns:xsi</span>=<span class="value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span
+                        class="attribute">xsi:schemaLocation</span>=<span class="value">&quot;http://www.xframium.org /testRegistry http://www.xframium.org /xsd/pageManagement/testRegistry.xsd&quot;</span>&gt;
+  <span class="comment">&lt;!-- PAGE OBJECTS --&gt;</span>
+  &lt;<span class="tag">model</span>&gt;
+    &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">&quot;Login&quot;</span> /&gt;
+    &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">&quot;Version&quot;</span> /&gt;
+  &lt;/<span class="tag">model</span>&gt;
+  <span class="comment">&lt;!-- TEST CASES --&gt;</span>
+  &lt;<span class="tag">test</span> <span class="attribute">name</span>=<span class="value">&quot;VersionTest&quot;</span> <span class="attribute">dataProvider</span>=<span class="value">&quot;versionData&quot;</span> <span class="attribute">tagNames</span>=<span class="value">&quot;smoke&quot;</span>&gt;
+    &lt;<span class="tag">step</span> <span class="attribute">timed</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;CONTEXT&quot;</span> <span class="attribute">type</span>=<span
+                        class="value">&quot;DEVICE&quot;</span>&gt;
+      &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">&quot;STATIC&quot;</span> <span class="attribute">value</span>=<span class="value">&quot;NATIVE_APP&quot;</span> /&gt;
+    &lt;/<span class="tag">step</span>&gt;
+    &lt;<span class="tag">step</span> <span class="attribute">timed</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;androidWidget&quot;</span> <span class="attribute">page</span>=<span
+                        class="value">&quot;Login&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;CALL&quot;</span> /&gt;                 
+    &lt;<span class="tag">step</span> <span class="attribute">timed</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;USER_NAME&quot;</span> <span class="attribute">page</span>=<span
+                        class="value">&quot;Login&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;EXISTS&quot;</span> /&gt;
+    &lt;<span class="tag">step</span> <span class="attribute">timed</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;PASSWORD&quot;</span> <span class="attribute">page</span>=<span
+                        class="value">&quot;Login&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;EXISTS&quot;</span> /&gt;
+    &lt;<span class="tag">step</span> <span class="attribute">timed</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;LOGIN_BUTTON&quot;</span> <span class="attribute">page</span>=<span
+                        class="value">&quot;Login&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;EXISTS&quot;</span> /&gt;
+    &lt;<span class="tag">step</span> <span class="attribute">timed</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;LOGIN_BUTTON&quot;</span> <span class="attribute">page</span>=<span
+                        class="value">&quot;Login&quot;</span> <span class="attribute">type</span>=<span class="value">&quot;CLICK&quot;</span> /&gt;                  
+  &lt;/<span class="tag">test</span>&gt;
+&lt;/<span class="tag">suite</span>&gt;
+          </pre>
+            </div>
+            <div class="col-md-5"><img src="./images/usage.png" /></div>
         </div>
     </div>
     <div class="container">
@@ -78,15 +122,15 @@ body {
         <div class="row">
             <div class="col-md-4">
                 <h2>Keyword-Driven</h2>
-                <p>Not a seasoned developer? No problem! xFramium offers an XML based extension that allows for tests to be created without writing any code.  Most frameworks require automation experts to continuously write code behind the keywords. xFramium’s configuration-based approach is different.</p>
+                <p>Not a seasoned developer? No problem! xFramium offers an XML based extension that allows for tests to be created without writing any code. Most frameworks require automation experts to continuously write code behind the keywords.
+                    xFramium’s configuration-based approach is different.</p>
                 <p>
                     <a class="btn btn-default" href="./keyword.html" role="button">View details &raquo;</a>
                 </p>
-                
             </div>
             <div class="col-md-4">
                 <h2>Run Anywhere</h2>
-                <p>Don't have your development environment configured?  Try out the xFramium Test Launcher and get testing today!</p>
+                <p>Don't have your development environment configured? Try out the xFramium Test Launcher and get testing today!</p>
                 <p>
                     <a class="btn btn-default" href="https://www.xframium.org/jnlp/xframium-launcher.jnlp" role="button">Test Drive &raquo;</a>
                 </p>
@@ -117,7 +161,6 @@ body {
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
     <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>
