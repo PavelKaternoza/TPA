@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<style>
+body {
+	padding-top: 100px;
+	padding-bottom: 20px;
+}
+</style>
+<link rel="icon" href="../favicon.ico">
+<title>xFramium - Rapid Test Case Development</title>
+<!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="data:text/css;charset=utf-8," data-href="./css/bootstrap-theme.min.css" rel=stylesheet id=bs-theme-stylesheet>
+<link href="./css/docs.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./index.html">xFramium</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Getting Started <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/installation.html">Installation</a></li>
+                            <li><a href="/configuration.html">Configuration</a></li>
+                            <li><a href="/keyword.html">Writing tests using keywords</a></li>
+                            <li><a href="/java.html">Writing tests in Java</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Architectural Overview </a></li>
+                            <li><a href="#">API Reference</a></li>
+                            <li><a href="#">Extending the Framework</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/sponsors.html">Sponsors</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class=bs-docs-header id=content tabindex=-1>
+        <div class="container">
+            <h1>Keyword-Driver</h1>
+            <p>xFramium XML Keyword-Driver allows for rapid test case development using using a simple and elegant XML alternative to coding.</p>
+        </div>
+    </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-3" role="complementary">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                    <ul class="nav bs-docs-sidenav">
+                        <li><a href=#overview>Overview</a></li>
+                        <li><a href=#td>xFramium Test Driver</a>
+                            <ul class=nav>
+                                <li><a href=#td-driver>Driver</a></li>
+                                <li><a href=#td-cloud>Cloud</a></li>
+                                <li><a href=#td-application>Application</a></li>
+                                <li><a href=#td-device>Device</a></li>
+                                <li><a href=#td-pom>Object Repository</a></li>
+                                <li><a href=#td-pagedata>Page Data</a></li>
+                                <li><a href=#td-content>Content Management</a></li>
+                                <li><a href=#td-artifact>Artifacts and Reporting</a></li>
+                            </ul></li>
+                        <li><a href=#tc>Creating a Test Case</a>
+                            <ul class=nav>
+                                <li><a href=#tc-attr>Attributes</a></li>
+                                <li><a href=#tc-step>Steps</a>
+                                    <ul class=nav>
+                                        <li><a href=#step-attr>Attributes</a></li>
+                                        <li><a href=#step-param>Parameters</a></li>
+                                        <li><a href=#step-token>Tokens</a></li>
+                                        <li><a href=#step-ex>Examples</a></li>
+                                    </ul></li>
+                            </ul></li>
+                        <li><a href=#kw>Keywords</a>
+                            <ul class=nav>
+                                <li><a href=#kw-adddevice>ADD_DEVICE</a></li>
+                                <li><a href=#kw-attribute>ATTRIBUTE</a></li>
+                                <li><a href=#kw-compare>COMPARE</a></li>
+                                <li><a href=#kw-loop>LOOP</a></li>
+                            </ul></li>
+                    </ul>
+                    <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
+                </nav>
+            </div>
+            <div class=col-md-9 role=main>
+                <div class=bs-docs-section>
+                    <h1 id=overview class=page-header>Overview</h1>
+                    <p>Keyword-driven testing is a type of functional automation testing framework which is also known as table-driven testing or action word based testing. We provide a simple language defined using XML that allows functional testers
+                        and buiness analysts the means of directly created test cases. This eliminates the need for the time consuming two steps process in which testers create manual test cases and then converting them to automated scripts using
+                        programming constructs on top frameworks such as UFT or Selenium. Built on top of the power of Java and Selenium, the Keyword Framework is simple to implement with a low adoption time while being very customizable and extensible. In
+                        addition is ease of adoption the framework also added test case unification allowing for the same test case to be used for multiple testing strategies such as Regression, Smoke, User Acceptance and Performance testing using simple
+                        tag names.</p>
+                    <h1 id="td" class=page-header>xFramium Test Driver</h1>
+                    <h2 id="td-driver">Driver</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>driver.frameworkType</td>
+                                    <td width="100%">Specifies which driver specification to use. Valid values are
+                                        <ul>
+                                            <li>XML: A provider based off of XML</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>driver.configName</td>
+                                    <td>Specifies the name of the file used for the provider XML</td>
+                                </tr>
+                                <tr>
+                                    <td>driver.propertyAdapters</td>
+                                    <td>Specifies a comma separated list of fully qualified class names implementing the <a hRef="http://www.xframium/javadoc/perfectoMobile/deviceFramework/index.html">PropertyAdapter</a> interface. Property Adapters
+                                        allow for customer set of properties to be configurable via the test driver configuration file
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>driver.personas</td>
+                                    <td>A comma separated list of persona names. If supplied this will enabled the Wind Tunnel subsystem and execute the test cases against each named persona</td>
+                                </tr>
+                                <tr>
+                                    <td>driver.enableCaching</td>
+                                    <td>Enables the client side smart caching sub-system. in application with may static check this can help to increase performance by caching page objects during successive calls</td>
+                                </tr>
+                                <tr>
+                                    <td>driver.deviceInterrupts</td>
+                                    <td>A set of interrupts that are randomly executed during a test. That valid values are
+                                        <ul>
+                                            <li>CALL: Initiates a device phone call being received during a test</li>
+                                            <li>SMS: Simulates a text being received during a test case
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>driver.validateConfiguration</td>
+                                    <td>Validates all configuration and reports which test and devices it would run against, but does not execute any tests</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-cloud">Cloud</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cloudRegistry.provider:</td>
+                                    <td>Specifies which cloud configuration provider to use. Valid values are
+                                        <ul>
+                                            <li>XML: A provider based off of XML</li>
+                                            <li>CSV: A provider based off of a comma separated list of values</li>
+                                            <li>EXCEL: A provider using Excel</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>cloudRegistry.fileName:</td>
+                                    <td>Specifies the name of the file used for the providers XML, EXCEL and CSV</td>
+                                </tr>
+                                <tr>
+                                    <td>cloudRegistry.tabName:</td>
+                                    <td>Specifies the name of the tab used for the EXCEL provider</td>
+                                </tr>
+                                <tr>
+                                    <td>cloudRegistry.cloudUnderTest:</td>
+                                    <td>The name of the cloud being used for this test</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-application">Application</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>applicationRegistry.provider:</td>
+                                    <td width="100%">Specifies which application configuration provider to use. Valid values are
+                                        <ul>
+                                            <li>XML: A provider based off of XML</li>
+                                            <li>CSV: A provider based off of a comma separated list of values</li>
+                                            <li>EXCEL: A provider using Excel</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>applicationRegistry.fileName:</td>
+                                    <td>Specifies the name of the file used for the providers XML, EXCEL and CSV</td>
+                                </tr>
+                                <tr>
+                                    <td>applicationRegistry.tabName:</td>
+                                    <td>Specifies the name of the tab used for the EXCEL provider</td>
+                                </tr>
+                                <tr>
+                                    <td>applicationRegistry.applicationUnderTest:</td>
+                                    <td>The name of the cloud being used for this test</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-device">Device</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>deviceManagement.provider:</td>
+                                    <td width="100%">Specifies which device configuration provider to use. Valid values are
+                                        <ul>
+                                            <li>RESERVED: This will use the specified cloud and search for any devices that are reserved to the user specified in your cloud configuration</li>
+                                            <li>AVAILABLE: This will use the specified cloud and search for any devices currently available</li>
+                                            <li>NAMED: Allows you to select specific named devices</li>
+                                            <li>XML: A provider based off of a devices defined via XML</li>
+                                            <li>CSV: A provider based off of a comma separated list of values</li>
+                                            <li>EXCEL: A provider using Excel</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>deviceManagement.driverType:</td>
+                                    <td>Specifies the underlying driver type to be used for this test. Value values are:
+                                        <ul>
+                                            <li>PERFECTO: This will use the Perfecto Mobile Driver</li>
+                                            <li>APPIUM: Uses the Appium drivers (IOS/ANDROID) for testing Native application on Mobile devices</li>
+                                            <li>WEB: Use the RemoteWebDriver for test web based application on Mobile Devices and Desktop Browsers</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>deviceManagement.fileName:</td>
+                                    <td>Specifies the name of the file used for the providers XML, EXCEL and CSV</td>
+                                </tr>
+                                <tr>
+                                    <td>deviceManagement.tabName:</td>
+                                    <td>Specifies the name of the tab used for the EXCEL provider</td>
+                                </tr>
+                                <tr>
+                                    <td>deviceManagement.deviceList:</td>
+                                    <td>A comma separated list of device identifies used to define mobile device for use in the NAMED provider</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-pom">Object Repository</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pageManagement.provider:</td>
+                                    <td width="100%">Specifies which object repository configuration provider to use. Valid values are
+                                        <ul>
+                                            <li>XML: A provider based off of XML</li>
+                                            <li>CSV: A provider based off of a comma separated list of values</li>
+                                            <li>EXCEL: A provider using Excel</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.fileName:</td>
+                                    <td>Specifies the name of the file used for the providers XML, EXCEL and CSV</td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.siteName:</td>
+                                    <td>Specifies the name of the site under test. When using the EXCEL provider this name is also corresponds to the tab name contains the page element data for this site</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-pagedata">Page Data</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pageManagement.pageData.provider:</td>
+                                    <td width="100%">Specifies which page data configuration provider to use. Valid values are
+                                        <ul>
+                                            <li>XML: A provider based off of XML</li>
+                                            <li>EXCEL: A provider using Excel</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.pageData.fileName:</td>
+                                    <td>Specifies the name of the file used for the providers XML and CSV</td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.pageData.tabNames:</td>
+                                    <td>Specifies a comma separated list of tab names defining each of the record types for the EXCEL provider. Each tab represents a single named record type.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-content">Content Management</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pageManagement.content.provider:</td>
+                                    <td width="100%">Specifies which content management configuration provider to use. Valid values are
+                                        <ul>
+                                            <li>XML: A provider based off of XML</li>
+                                            <li>EXCEL: A provider using Excel</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.content.fileName:</td>
+                                    <td>Specifies the name of the file used for the providers XML and CSV</td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.content.tabName:</td>
+                                    <td>Specifies the tab name containing the page content for the EXCEL provider.</td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.content.keyColumn:</td>
+                                    <td>A zero based index of the column containing the lookup key in the EXCEL provider.</td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.content.lookupColumns:</td>
+                                    <td>A comma separated list of zero based indexes of all lookup columns in the EXCEL provider.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-artifact">Artifacts and Reporting</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>artifactProducer.parentFolder:</td>
+                                    <td width="100%">Specifies the parent folder in which all test artifacts are stored. This will will contain a folder for each test run using the run time. Contained will be a folder for ever test case run and then a
+                                        folder for each device that it was run on</td>
+                                </tr>
+                                <tr>
+                                    <td>artifactProducer.storeImages:</td>
+                                    <td>One working with client side imaging this flag specifies if the images are stored locally. This is used for the WCAG report</td>
+                                </tr>
+                                <tr>
+                                    <td>artifactProducer.imageLocation:</td>
+                                    <td>Specifies which folder to store images in of the storeImages flag is set to true</td>
+                                </tr>
+                                <tr>
+                                    <td>artifactProducer.logLevel:</td>
+                                    <td>Specifies the detail that is written to the Console log when using the CONSOLE_LOG artifact. Validvalues are
+                                        <ul>
+                                            <li>FATAL: Severe errors that cause premature termination. Expect these to be immediately visible on a status console</li>
+                                            <li>ERROR: Other runtime errors or unexpected conditions. Expect these to be immediately visible on a status console</li>
+                                            <li>WARN: Use of deprecated APIs, poor use of API, 'almost' errors, other runtime situations that are undesirable or unexpected, but not necessarily "wrong". Expect these to be immediately visible on a
+                                                status console</li>
+                                            <li>INFO: Interesting runtime events (startup/shutdown). Expect these to be immediately visible on a console, so be conservative and keep to a minimum</li>
+                                            <li>DEBUG: detailed information on the flow through the system</li>
+                                            <li>TRACE: More detailed information on the flow through the system</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>artifactProducer.automated:</td>
+                                    <td>A list or artifacts that are automatically created at the appropriate times. These will be stored in the specified out folder for test artifacts. Valid artifact types are:
+                                        <ul>
+                                            <li>EXECUTION_REPORT_PDF: Gets a copy of the Perfecto Execution report in PDF format</li>
+                                            <li>EXECUTION_REPORT_HTML: Gets a copy of the Perfecto Execution report in HTML format</li>
+                                            <li>EXECUTION_REPORT_CSV: Gets a copy of the Perfecto Execution report in CSV format</li>
+                                            <li>EXECUTION_REPROT_XML: Gets a copy of the Perfecto Execution report in XML format</li>
+                                            <li>FAILURE_SOURCE: Extracts the state of the device and application. That states is extracted and saved as failureDom.xml to allow for quick debugging of object identification issues</li>
+                                            <li>WCAG_REPORT: If WCAG operations were used (Branding, contrast, etc) then this will contain the extracted images and their operational statistics.</li>
+                                            <li>DEVICE_LOG: Extracts the previous 1000 lines of the device's log file</li>
+                                            <li>CONSOLE_LOG: Writes the console output for the specified test on the specified device. Only information pertaining to that test/device is stored here</li>
+                                            <li>EXECUTION_RECORD_HTML: Contains a clean execution report of the test steps that were executed. In addition, a master index file will be created showing the status of all tests executed in this run</li>
+                                            <li>EXECUTION_RECORD_CSV: Contains an CSV based reports of all test steps that were executed</li>
+                                            <li>EXECUTION_TIMING: Contains a small timing report of elements marked as timed</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h1 id=tc class=page-header>Creating a Test Case</h1>
+                    <p>A test defines a collection of steps to run. Tests and Functions are almost identical. The only differences as that Tests that are marked active will execute where functions must be called the same as inactive tests.</p>
+                    <h2 id=tc-attr>Attributes</h2>
+                    <p>There are several attributes than can be specified when defining a test case. These attributes can be used to modify the test case</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name:</td>
+                                    <td width="100%">Specifies the name of the test case
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>active:</td>
+                                    <td>A flag (true/false) indicating if this test is active. If the value is unspecified or equal to true then the test will be available for execution. If a test is marked inactive bus is directly called from another
+                                        test or function then it will still execute.
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>dataprovider:</td>
+                                    <td>Data providers are used to provide named data sets for use in the test case. Once a data provider has been supplied to a test it will be available during the execution of the test and all functions or tests that
+                                        are called from it. You can specify multiple named data providers for a test case. One record will be selected from each data provided and made available for the test. To use a specific record from a data store you
+                                        can use the following format which will select a specific record. <span class="pValues">recordType.recordName. Note that specifying a specific record will bypass any locking algorithm associated with this
+                                            record type 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>datadriver:</td>
+                                    <td>The Data Driver uses the same underlying logic as the data provider however the test case will iterate and execute over all o the records in the specified data set as apposed to a single record. Only a single
+                                        data driver may be specified here. You may use data providers and a data driver in the same test case but specifying both attributes.</td>
+                                </tr>
+                                <tr>
+                                    <td>timed:</td>
+                                    <td>A flag (true/false) indicating if this test case step should be timed.</td>
+                                </tr>
+                                <tr>
+                                    <td>threshold:</td>
+                                    <td>A value indicating a maximum amount of milliseconds allowed for the test case step. If the timed attribute is set to true and the threshold value is great than 0 then the test case would fail if the timed value
+                                        was greater than the threshold value</td>
+                                </tr>
+                                <tr>
+                                    <td>os:</td>
+                                    <td>An optional value that when specified indicated that this test should only be executed if the OS value of the device matches the OS specified here. This test will be marked as skipped if an OS was specified and
+                                        it did not match</td>
+                                </tr>
+                                <tr>
+                                    <td>linkId:</td>
+                                    <td>A Link ID is purely for documentation or external integration. The value is not used by any test. This attribute can be used for external integration or information purposes</td>
+                                </tr>
+                                <tr>
+                                    <td>testtags:</td>
+                                    <td>Test Tags are used to allow for test grouping. By providing a comma separated list of test tags the test executor can then specify a test tag and only test who contain that tag will run.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id=tc-step>Steps</h2>
+                    <p>A step defines a single test action. A step can one of many different types ranging from testing element values to color verification. A step can also contains steps as sub elements. Sub steps along with the failureMode attribute
+                        defined below can be combined for conditional logic as the sub steps are only executed if the parent element is successful.</p>
+                    <h3 id=step-attr>Attributes</h3>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Name:</td>
+                                    <td width="100%">Specifies the name of the element from the object repository
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Active:</td>
+                                    <td>A flag (true/false) indicating if this step is active. If the value is unspecified or equal to true then the step will execute otherwise it will be skipped without being logged or throwing an error
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>context:</td>
+                                    <td>Context is used to store the result of the step call into a context variable (attribute value) for later use. Once set, the context value can be reference later using the same name
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>inverse:</td>
+                                    <td>A flag (true/false) indicating if the resulting success of this step should be inverted. An inverted step will return true on failure and false on success. The is the same concept as a NOT condition</td>
+                                </tr>
+                                <tr>
+                                    <td>linkId:</td>
+                                    <td>A Link ID is purely for documentation or external integration. The value is not used by any test. This attribute can be used for external integration or information purposes</td>
+                                </tr>
+                                <tr>
+                                    <td>os:</td>
+                                    <td>An optional value that when specified indicated that this step should only be executed if the OS value of the device matches the OS specified here.</td>
+                                </tr>
+                                <tr>
+                                    <td>page:</td>
+                                    <td>The name of the page object from the object repository in which the named element is a member of.</td>
+                                </tr>
+                                <tr>
+                                    <td>poi:</td>
+                                    <td>If Wind Tunnel is enabled for this test case, then a point of interest is registered. For a more detailed description of Wind Tunnel, please refer to Perfecto's Wind Tunnel documentation</td>
+                                </tr>
+                                <tr>
+                                    <td>timed:</td>
+                                    <td>A flag (true/false) indicating if this test case step should be timed.</td>
+                                </tr>
+                                <tr>
+                                    <td>threshold:</td>
+                                    <td>A value indicating a maximum amount of milliseconds allowed for the test case step. If the timed attribute is set to true and the threshold value is great than 0 then the test case would fail if the timed value
+                                        was greater than the threshold value</td>
+                                </tr>
+                                <tr>
+                                    <td>wait:</td>
+                                    <td>Wait is a shorthand implementation of the WAIT step. This allows you to specify a value in milliseconds that will wait after this step is complete</td>
+                                </tr>
+                                <tr>
+                                    <td>failureMode:</td>
+                                    <td>Failure Mode allows you to specify what action the step should take following a failure caused by criteria or a error in the step. By default, any failure will fail the entire test case and stop the execution
+                                        immediately. In addition, you can specify
+                                        <ul>
+                                            <li>ignore: Ignores the failure and continues on with your test</li>
+                                            <li>logignore: Logs the failure in the log and continues on with your test</li>
+                                            <li>error: The default action - this will stop the test and fail</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>type:</td>
+                                    <td>Specifies the step type. A step type defines the action or implementation</td>
+                                </tr>
+                                <tr>
+                                    <td>validationType:</td>
+                                    <td>This optional parameter allows you to specify a validation method to use on the return value of this step. There are multiple types of validation implementations used. That are defined as:
+                                        <ul>
+                                            <li>REGEX: This will read the value in the validation attribute as a regular expression and attempt to match the value to this regular expression</li>
+                                            <li>EMPTY: This ensumes that the value is empty</li>
+                                            <li>NON_EMPTY: The ensures that the value is not empty</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>validation:</td>
+                                    <td>Used in conjunction with the validationType attribute to perform validation on a field. When the validationType attribute is REGEX this will be the regular expression that is used</td>
+                                </tr>
+                                <tr>
+                                    <td>device:</td>
+                                    <td>When working with multiple devices in the same test case this parameter is used to specify the device that you want the step to run against. This device is named using the ADD_DEVICE keyword in a previous step</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 id=step-param>Parameters</h3>
+                    <p>Parameters are passed to step to further define their action (please refer to the documentation of an individual step to determine its need for parameters). When you are specifying a parameter you specify both a type and a value.
+                        The contents of the value are dictated by the type specified</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="pName">static:</td>
+                                    <td width="100%">The value is to be use as is with no change</td>
+                                </tr>
+                                <tr>
+                                    <td class="pName">data:</td>
+                                    <td>The value is a definition for a field from the Page Data engine that was specified in your test case as a data provider or a data driver. The value is specified user the following notation providerName.fieldName
+                                        where the providerName is the name of the data provider and fieldName is then name of the field in that table. If a tiered data structure is used, you will follow the path using the dot notation and the field names.
+                                        If your root provider contains a reference to a table using the field carType and you wanted to reference that table it would be rootProvider.carType.</td>
+                                </tr>
+                                <tr>
+                                    <td class="pName">context:</td>
+                                    <td>The value specified in this type is the the name of the context variable that was previously set using the context attribute on a previous test. You must match the spelling and case of the context variable name.</td>
+                                </tr>
+                                <tr>
+                                    <td class="pName">property:</td>
+                                    <td>The value specified in this type is the name of a System Property passed into the execution of the test</td>
+                                </tr>
+                                <tr>
+                                    <td class="pName">content:</td>
+                                    <td>The value specified in this type refers to a record from the content engine. That value can be formatted in multiple ways. If you just specify the key name from the content management defined key column then the
+                                        first value is returned that matches that name. If multiple lookup columns were specified then you can specify an individual column using one of two methods. First, you can specify the column index by using the
+                                        following format keyName{#columnNumber}. The will find the lookup value array and return the specified column value represented by the index. Otherwise, you can use the column name as specified by the first row in
+                                        the content data using the following format: keyName{columnName}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 id=step-token>Tokens</h3>
+                    <p>The token engines allows for on the fly token replacement of values. Any value specified in the Object Repository is subject to token replacement. Token replacement allows for data driven page element identification reducing the
+                        amount of element definition required while enhancing the test case. When defining a page element you would specify a named token specified as {tokenName}. One defined, you would then specify the token in your test case with that
+                        value that it will be replacing. The token engine will then use the name attribute in the token element to find the named token then use a combination of the type and value attributes to find the value. You can specify multiple
+                        tokens per element and named tokens that are not found will not be replaced.</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="tName">static:</td>
+                                    <td width="100%">The value is to be use as is with no change</td>
+                                </tr>
+                                <tr>
+                                    <td class="pName">data:</td>
+                                    <td>The value is a definition for a field from the Page Data engine that was specified in your test case as a data provider or a data driver. The value is specified user the following notation providerName.fieldName
+                                        where the providerName is the name of the data provider and fieldName is then name of the field in that table. If a tiered data structure is used, you will follow the path using the dot notation and the field names.
+                                        If your root provider contains a reference to a table using the field carType and you wanted to reference that table it would be rootProvider.carType.</td>
+                                </tr>
+                                <tr>
+                                    <td class="tName">context:</td>
+                                    <td>The value specified in this type is the the name of the context variable that was previously set using the context attribute on a previous test. You must match the spelling and case of the context variable name.</td>
+                                </tr>
+                                <tr>
+                                    <td class="tName">property:</td>
+                                    <td>The value specified in this type is the name of a System Property passed into the execution of the test</td>
+                                </tr>
+                                <tr>
+                                    <td class="tName">content:</td>
+                                    <td>The value specified in this type refers to a record from the content engine. That value can be formatted in multiple ways. If you just specify the key name from the content management defined key column then the
+                                        first value is returned that matches that name. If multiple lookup columns were specified then you can specify an individual column using one of two methods. First, you can specify the column index by using the
+                                        following format keyName{#columnNumber}. The will find the lookup value array and return the specified column value represented by the index. Otherwise, you can use the column name as specified by the first row in
+                                        the content data using the following format: keyName{columnName}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 id=step-ex>Examples</h3>
+                    <figure class=highlight>
+                        <textarea cols="80">
+<test name="allen">
+    <step xxxx />
+</test>         
+            </textarea>
+                    </figure>
+                    <h1 id=kw class=page-header>Keywords</h1>
+                    <p>There are many useful Keywords that are built into the system</p>
+                    <h2 id="kw-adddevice">ADD_DEVICE</h2>
+                    <p>
+                        Allows you to add multiple devices to a single test case for test chaining across multiple devices. The named device will be added to the running test and available by name using the <span class="pValues">device</span> attribute on
+                        a step. All sub devices will have a separate set of artifacts created. Upon complete of the root device's test case, all devices will be properly shutdown
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>There are 2 required parameters</p>
+                        <ol>
+                            <li>The name of the device. This is the name used to refer to this device throughout the rest of the test case</li>
+                            <li>The device id. This is the ID of the device that you want to acquire from your cloud instance</li>
+                        </ol>
+                    </div>
+                    <p>This will open a device named secondDevice from the cloud with an ID of 12345</p>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="4" readonly="readonly">
+<step timed="true" name="OPEN_PHONE" type="ADD_DEVICE" page="HOME">
+    <parameter type="STATIC" value="secondDevice" />
+    <parameter type="STATIC" value="12345" />
+</step> 
+                        </textarea>
+                    </figure>
+                    <p>The following test opens 2 devices and validates that a text message was sent from one device to the other using the Verizon Messages+ application.</p>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="32" readonly="readonly">
+<test name="SMS" timed="true" active="true" dataProvider="phoneData,messages">
+    <step timed="true" name="SEARCH" type="WAIT_FOR" page="HOME" />
+
+    <step timed="true" name="COMPOSE" type="CLICK" page="HOME" />
+    
+    <step timed="true" name="OPEN_PHONE" type="ADD_DEVICE" page="HOME">
+        <parameter type="STATIC" value="secondPhone" />
+        <parameter type="DATA" value="phoneData.phoneID" />
+    </step>
+    
+    <step timed="true" name="OPEN_APP" type="DEVICE" page="HOME" device="secondPhone">
+        <parameter type="STATIC" value="Messages+" />
+    </step>
+    
+    <step timed="true" name="SEARCH" type="WAIT_FOR" page="HOME" device="secondPhone" />
+    
+    <step timed="true" name="TO" type="SET" page="HOME">
+        <parameter type="DATA" value="phoneData.phoneNumber" />
+    </step>
+    
+    <step timed="true" name="MESSAGE" type="SET" page="HOME">
+        <parameter type="DATA" value="messages.message" />
+    </step>
+    
+    <step timed="true" name="SEND" type="CLICK" page="HOME" />
+    <step timed="true" name="BACK" type="CLICK" page="MESSAGE" />
+    
+    <step timed="true" name="SENT_MESSAGE" type="WAIT_FOR" page="HOME" device="secondPhone">
+        <token type="DATA" name="messageText" value="messages.message" />
+    </step>
+</test>
+                        </textarea>
+                    </figure>
+                    <h2 id="kw-attribute">ATTRIBUTE</h2>
+                    <p>
+                        The attribute step allows the script engineer to extract and/or compare the value of any named XML/HTML attribute from the named page element. When a single parameter is specified, the attribute is extracted only and can optionally
+                        be stored as a context variable. When supplying 2 parameters the first parameter represents the value to compare to and the second is the name of the attribute. <br />
+                        <br />When defining the attribute name you may optionally precede the name with <i>STYLE.</i> which instructs the engine to extract the named style from this element in place of the attribute value
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>When passing a single parameter</p>
+                        <ol>
+                            <li>The name of the style or attribute that you wish to extract.  To extract a style the name must be preceded with STYLE.</li>
+                        </ol>
+                    </div>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>When passing 2 parameters indicating that you want to compare this value with another</p>
+                        <ol>
+                            <li>The value to compare to</li>
+                            <li>The name of the style or attribute that you wish to extract.  To extract a style the name must be preceded with STYLE.</li>
+                        </ol>
+                    </div>
+                    <p>Extract the WIDTH value from the MY_ELEMENT element on the MENU page and store it as ATTR_WIDTH for later use</p>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="4" readonly="readonly">
+<step type="ATTRIBUTE" name="MY_ELEMENT" page="MENU" context="ATTR_WIDTH" >
+	<parameter type="STATIC" value="WIDTH" />
+</step> 
+                        </textarea>
+                    </figure>
+                    <p>Extract the WIDTH value from the MY_ELEMENT element on the MENU page and compare it to the static value 100</p>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="5" readonly="readonly">
+<step type="ATTRIBUTE" name="MY_ELEMENT" page="MENU" >
+	<parameter type="STATIC" value="100" />
+	<parameter type="STATIC" value="WIDTH" />
+</step>
+                        </textarea>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src=./js/docs.min.js></script>
+    <footer class=bs-docs-footer role=contentinfo>
+        <p>xFramium - Rapid Test Case Development</p>
+    </footer>
+</body>
+</html>

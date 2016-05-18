@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<style>
+body {
+	padding-top: 100px;
+	padding-bottom: 20px;
+}
+</style>
+<link rel="icon" href="../favicon.ico">
+<title>xFramium - Rapid Test Case Development</title>
+<!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="data:text/css;charset=utf-8," data-href="./css/bootstrap-theme.min.css" rel=stylesheet id=bs-theme-stylesheet>
+<link href="./css/docs.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./index.html">xFramium</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Getting Started <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/installation.html">Installation</a></li>
+                            <li><a href="/configuration.html">Configuration</a></li>
+                            <li><a href="/keyword.html">Writing tests using keywords</a></li>
+                            <li><a href="/java.html">Writing tests in Java</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Architectural Overview </a></li>
+                            <li><a href="#">API Reference</a></li>
+                            <li><a href="#">Extending the Framework</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/sponsors.html">Sponsors</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class=bs-docs-header id=content tabindex=-1>
+        <div class="container">
+            <h1>Configuring xFramium</h1>
+            <p>xFramium XML Keyword-Driver allows for rapid test case development using using a simple and elegant XML alternative to coding.</p>
+        </div>
+    </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-3" role="complementary">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                    <ul class="nav bs-docs-sidenav">
+                        <li><a href=#device>Device Management</a>
+                            <ul class=nav>
+                                <li><a href=#driver-xml>XML</a></li>
+                                <li><a href=#driver-excel>Excel</a></li>
+                                <li><a href=#driver-csv>CSV</a></li>
+                            </ul></li>
+                        <li><a href=#cloud>Cloud Management</a>
+                            <ul class=nav>
+                                <li><a href=#cloud-xml>XML</a></li>
+                                <li><a href=#cloud-excel>Excel</a></li>
+                                <li><a href=#cloud-excel>CSV</a></li>
+                            </ul></li>
+                        <li><a href=#app>Application Management</a>
+                            <ul class=nav>
+                                <li><a href=#app-xml>XML</a></li>
+                                <li><a href=#app-excel>Excel</a></li>
+                                <li><a href=#app-excel>CSV</a></li>
+                            </ul></li>
+                        <li><a href=#data>Data Management</a>
+                            <ul class=nav>
+                                <li><a href=#data-xml>XML</a></li>
+                                <li><a href=#data-excel>Excel</a></li>
+                            </ul></li>
+                        <li><a href=#contentx>Content Management</a>
+                            <ul class=nav>
+                                <li><a href=#content-xml>XML</a></li>
+                                <li><a href=#content-excel>Excel</a></li>
+                            </ul></li>
+                        <li><a href=#artifact>Artifact Management</a>
+                    </ul>
+                    <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
+                </nav>
+            </div>
+            <div class=col-md-9 role=main>
+                <div class=bs-docs-section>
+                    <h1 id="device" class=page-header>Device Management</h1>
+                    <p>The Device Management framework is responsible for acquisition of devices, locking and parallel execution. This library allows access to mobile devices and desktop browsers alike all through a single interface set. Along with
+                        device access it also provide artifact production, reporting and integration points for external systems. Using the default Test NG implementation a develop can quickly gain access to a rich feature set out of the box</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Perfecto:</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/data/perfectoMobile/PerfectoMobileDataProvider.html">com.perfectoMobile.devicve.data.perfectoMobile.PerfectoMobileDataProvider</a>:<br />
+                                        Used during script development to specify that your scripts should only run on devices that are reserved to the logged in user or on all available devices in the cloud. Other validators can be registered to allows
+                                        for different devices criteria to be included</td>
+                                </tr>
+                                <tr>
+                                    <td>named</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/data/NamedDataProvider.html">com.perfectoMobile.devicve.data.NamedDataProvider</a><br /> Allows the
+                                        developer to specify a unique device or list of devices by name to use during test execution. Great for development but should be used sparingly as it requires specific device's2</td>
+                                </tr>
+                                <tr>
+                                    <td>csv</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/data/CSVDataProvider.html">com.perfectoMobile.devicve.data.CVSDataProvider</a><br /> Used to feed a list of
+                                        device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the availableDevices
+                                        is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
+                                </tr>
+                                <tr>
+                                    <td>xml</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/data/XMLDataProvider.html">com.perfectoMobile.devicve.data.XMLDataProvider</a><br /> Used to feed a list of
+                                        device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the availableDevices
+                                        is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
+                                </tr>
+                                <tr>
+                                    <td>excel</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/data/ExcelDataProvider.html">com.perfectoMobile.devicve.data.ExcelDataProvider</a><br /> Used to feed a list
+                                        of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the
+                                        availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="device-xml">XML Configuration</h2>
+                    <p>The device registry format is defined using a XML Schema Definition file. This file is located at</p>
+                    <p>http://www.xframium.org/xsd/deviceManagement/deviceRegistry.xsd</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>deviceRegistry:</td>
+                                    <td width="100%">The root element of the device registry</td>
+                                </tr>
+                                <tr>
+                                    <td>device:</td>
+                                    <td>Represent a set of device criteria specifying a single device type
+                                        <ul>
+                                            <li>name: The name of the device used for reporting purposes</li>
+                                            <li>manufacturer: The device manufacturer - this is used as criteria and for reporting</li>
+                                            <li>model: The device mode - this is used as criteria and for reporting</li>
+                                            <li>os: The device os used as criteria</li>
+                                            <li>osVersion: The device os version used as criteria</li>
+                                            <li>browserName: The name of the browser used as criteria</li>
+                                            <li>browserVersion: The the versino of the browser used as criteria</li>
+                                            <li>id: A specific device identifier</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>capabilitiy:</td>
+                                    <td>Each device specification can contain a set of named capabilities in addition to those provided above.
+                                        <ul>
+                                            <li>name: The name of the capability</li>
+                                            <li>class: Specifies the type of value specified in the text content as <span class="pValues">STRING,BOOLEAN,PLATFORM or OBJECT)</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="15" readonly="readonly">
+<?xml version="1.0" encoding="UTF-8"?>
+<deviceRegistry xmlns="http://www.morelandlabs.com/deviceRegistry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.morelandlabs.com/deviceRegistry http://www.morelandlabs.com/xsd/deviceManagement/deviceRegistry.xsd">
+    <device name="Firefox" browserName="firefox" manufacturer="Mozilla" model="Firefox" os="Windows" active="false" availableDevices="1" />
+    <device name="Internet Explorer" browserName="internet explorer" manufacturer="Microsoft" model="Internet Explorer" os="Windows" active="false" availableDevices="1">
+        <capability name="test" class="BOOLEAN">true</capability>
+    </device>
+    <device name="Samsung S6" manufacturer="Samsung" model="Galaxy S6" os="Android" active="false" availableDevices="2" />
+    <device name="Samsung S5" manufacturer="Samsung" model="Galaxy S5" os="Android" active="true" availableDevices="1" />
+    <device name="iPhone 6" manufacturer="Apple" os="iOS" model="iPhone-6" active="true" availableDevices="1" />
+    <device name="iPhone 5" manufacturer="Apple" os="iOS" model="iPhone-5" active="false" availableDevices="1" />
+    <device name="iPhone 6 Plus" manufacturer="Apple" os="iOS" model="iPhone-6 Plus" active="false" availableDevices="1" />
+</deviceRegistry>
+                        </textarea>
+                    </figure>
+                    <h2 id="device-excel">Excel Configuration</h2>
+                    <h2 id="device-csv">CSV Configuration</h2>
+                    <h1 id="cloud" class=page-header>Cloud Management</h1>
+                    <p>The Cloud registry controls access to our various cloud instances. All access information and credentials are stored here for use by the system. A cloud is defined as a remote set of resource and can consist of a commercial cloud
+                        provider as well as a local Selenium based grid.</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>csv</td>
+                                    <td width="100%"><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/CSVCloudProvider.html">com.perfectoMobile.device.cloud.CSVCloudProvider</a><br /> An
+                                        comma separated list based cloud registry</td>
+                                </tr>
+                                <tr>
+                                    <td>xml</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/XMLCloudProvider.html">com.perfectoMobile.device.cloud.XMLVCloudProvider</a><br /> An XML based cloud
+                                        registry</td>
+                                </tr>
+                                <tr>
+                                    <td>excel</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/ExcelCloudProvider.html">com.perfectoMobile.device.cloud.ExcelCloudProvider</a><br /> An Excel based
+                                        cloud registry</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="cloud-xml">XML Configuration</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cloudRegistry:</td>
+                                    <td width="100%">The root element of the cloud registry</td>
+                                </tr>
+                                <tr>
+                                    <td>cloud:</td>
+                                    <td>Represent a set of device criteria specifying a single device type
+                                        <ul>
+                                            <li>name: The name of the cloud that</li>
+                                            <li>userName: The user name used to connect to the cloud for test execution</li>
+                                            <li>password: The password used to connect to the cloud</li>
+                                            <li>hostName: The hose name of the cloud instance</li>
+                                            <li>grid: A name of another defined cloud instance pointing to a Selenium grid for desktop browsers</li>
+                                            <li>proxyHost: An optional proxy host</li>
+                                            <li>proxyPort: An optional proxy port</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="6" readonly="readonly">
+<?xml version="1.0" encoding="UTF-8"?>
+<cloudRegistry xmlns="http://www.morelandlabs.com/cloudRegistry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.morelandlabs.com/cloudRegistry http://www.morelandlabs.com/xsd/deviceManagement/cloudRegistry.xsd">
+   <cloud name="demo" userName="user@domain.com" password="password" hostName="demo.perfectomobile.com" proxyHost="" grid="local" />
+   <cloud name="local" userName="" password="" hostName="127.0.0.1:4444" />
+</cloudRegistry>
+                        </textarea>
+                    </figure>
+                    <h2 id="cloud-excel">Excel Configuration</h2>
+                    <p>Defines the clouds using the following column specifications</p>
+                    <ul>
+                        <li>1: The name of the cloud that</li>
+                        <li>2: The user name used to connect to the cloud for test execution</li>
+                        <li>3: The password used to connect to the cloud</li>
+                        <li>4: The hose name of the cloud instance</li>
+                        <li>5: An optional proxy host</li>
+                        <li>6: An optional proxy port</li>
+                        <li>7: A name of another defined cloud instance pointing to a Selenium grid for desktop browsers</li>
+                        <li>8: A description of this cloud</li>
+                    </ul>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+demo,user@domain.com,password,demo.perfectomobile.com,,,local
+demo,,,127.0.0.1:4444,,,
+                            </code>
+                        </pre>
+                    </figure>
+                    <h2 id="cloud-csv">CSV Configuration</h2>
+                    <p>Defines the clouds using the following comman seperated value specifications</p>
+                    <ul>
+                        <li>1: The name of the cloud that</li>
+                        <li>2: The user name used to connect to the cloud for test execution</li>
+                        <li>3: The password used to connect to the cloud</li>
+                        <li>4: The hose name of the cloud instance</li>
+                        <li>5: An optional proxy host</li>
+                        <li>6: An optional proxy port</li>
+                        <li>7: A name of another defined cloud instance pointing to a Selenium grid for desktop browsers</li>
+                        <li>8: A description of this cloud</li>
+                    </ul>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+demo,user@domain.com,password,demo.perfectomobile.com,,,local
+demo,,,127.0.0.1:4444,,,
+                            </code>
+                        </pre>
+                    </figure>
+                    <h1 id="app" class=page-header>Application Management</h1>
+                    <p>The Application Registry allows for all application details required for testing to be stored in a single place for easy access. An application is defined as a native mobile application installed on a mobile device or a website
+                        access via a mobile device or desktop browser.</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>csv</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/serviceProviderInterface/com/morelandLabs/application/CSVApplicationProvider.html">com.morelandLabs.application.CSVApplicationProvider</a><br /> An
+                                        comma separated list based application registry</td>
+                                </tr>
+                                <tr>
+                                    <td>xml</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/serviceProviderInterface/com/morelandLabs/application/XMLApplicationProvider.html">com.morelandLabs.application.XMLApplicationProvider</a><br /> An
+                                        XML based application registry</td>
+                                </tr>
+                                <tr>
+                                    <td>excel</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/serviceProviderInterface/com/morelandLabs/application/ExcelApplicationProvider.html">com.morelandLabs.application.ExcelApplicationProvider</a><br />
+                                        An Excel based application registry</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="app-xml">XML Configuration</h2>
+                    <p>The application registry format is defined using a XML Schema Definition file. This file is located at</p>
+                    <p>http://www.morelandlabs.com/xsd/deviceManagement/applicationRegistry.xsd</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="name">applicationRegistry:</td>
+                                    <td>The root element of the application registry</td>
+                                </tr>
+                                <tr>
+                                    <td class="name">application:</td>
+                                    <td>Represents the application specifications or url for web sites
+                                        <ul>
+                                            <li>name: The name of the application</li>
+                                            <li>appPackage: The name of the android package for this application (NATIVE)</li>
+                                            <li>bundleId: The name of this IOS bundle for this application (NATIVE)</li>
+                                            <li>url: The URL for web applications (WEB)</li>
+                                            <li>iosInstall: The Perfecto Cloud location of the IOS Installation file</li>
+                                            <li>androidInstall: The Perfecto Cloud location of the Android Installation file</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="name">capabilitiy:</td>
+                                    <td>Each application can contain a set of named capabilities in addition to those provided above.
+                                        <ul>
+                                            <li>name: The name of the capability</li>
+                                            <li>class: Specifies the type of value specified in the text content as STRING,BOOLEAN,PLATFORM or OBJECT)</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="6" readonly="readonly">
+<?xml version="1.0" encoding="UTF-8"?>
+<applicationRegistry xmlns="http://www.morelandlabs.com/applicationRegistry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                xsi:schemaLocation="http://www.morelandlabs.com/applicationRegistry http://www.morelandlabs.com/xsd/deviceManagement/applicationRegistry.xsd">
+   <application name="default" appPackage="" bundleId="" url="" />
+   <application name="Settings" appPackage="com.android.settings" bundleId="com.apple.settings" url="" />
+   <application name="Google" appPackage="" bundleId="" url="http://www.google.com">
+        <capability name="test" class="BOOLEAN">true</capability>
+   </application>
+</applicationRegistry>
+                        </textarea>
+                    </figure>
+                    <h2 id="app-excel">Excel Configuration</h2>
+                    <p>Defines the clouds using the following column specifications</p>
+                    <ul>
+                        <li>1: The name of the application</li>
+                        <li>2: The name of the android package for this application (NATIVE)</li>
+                        <li>3: The name of this IOS bundle for this application (NATIVE)</li>
+                        <li>4: The URL for web applications (WEB)</li>
+                        <li>5: The Cloud location of the IOS Installation file</li>
+                        <li>6: The Cloud location of the Android Installation file</li>
+                    </ul>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+default,com.android.settings,com.apple.settings,http://www.google.com,,
+                            </code>
+                        </pre>
+                    </figure>
+                    <h2 id="app-csv">CSV Configuration</h2>
+                    <p>Defines the clouds using the following comman seperated value specifications</p>
+                    <ul>
+                        <li>1: The name of the application</li>
+                        <li>2: The name of the android package for this application (NATIVE)</li>
+                        <li>3: The name of this IOS bundle for this application (NATIVE)</li>
+                        <li>4: The URL for web applications (WEB)</li>
+                        <li>5: The Cloud location of the IOS Installation file</li>
+                        <li>6: The Cloud location of the Android Installation file</li>
+                    </ul>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+default,com.android.settings,com.apple.settings,http://www.google.com,,
+                            </code>
+                        </pre>
+                    </figure>
+                    <h1 id="data" class=page-header>Data Management</h1>
+                    <p>Data-driven testing (DDT) is a term used in the testing of computer software to describe testing done using a table of conditions directly as test inputs and verifiable outputs as well as the process where test environment
+                        settings and control are not hard-coded. Data-driven testing is the creation of test scripts to run together with their related data sets in a framework. The framework provides re-usable test logic to reduce maintenance and improve
+                        test coverage. Input and result data values can be stored in one or more central data sources. The data comprises variables used for both input values and output verification values. The DDT framework performs "play back" of
+                        harvested data producing a powerful automated regression testing tool. While a test may use multiple tables from the data source, only one data source may be used</p>
+                    <h2 id="data-xml">XML Configuration</h2>
+                    <p>When defining page data using XML the data designer will create record type elements. A record type element is the same concept as a database table in that it contains a set of records.</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="name">recordType:</td>
+                                    <td>The root element of the application registry
+                                        <ul>
+                                            <li>name: The name attribute represents the data source name as it will be referenced within the test cases</li>
+                                            <li>lockRecords: Lock records is a flag (true/false) indicating if a record can be used in parallel. When true a record will be locked by an individual iteration of a test case and released for reuse upon
+                                                completion otherwise the records can be reused as requested by the test case</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="name">record:</td>
+                                    <td>Represents the application specifications or url for web sites
+                                        <ul>
+                                            <li>name: The name attribute represents the field name as it will be referenced within the test cases</li>
+                                            <li>active: Active is a flag (true/false) indicating if this record is active. Setting a record's active flag to false tells the subsystem to ignore it during a run</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>The following table provides authentication data using attributes. The data will have 2 active records and on inactive record and the records will be locked</p>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="8" readonly="readonly">
+<data>
+	<recordType name="authData" lockRecords="true">
+		<record name="userOne" userName="rgears" password="aaaaa" />
+		<record name="userTwo" userName="deart" password="bbbbb" />
+		<record name="userThree" userName="pkate" password="aaaacccca" active="false" />
+	</recordType>
+</data>
+                        </textarea>
+                    </figure>
+                    <p>This example is functionality the same as the above example however it is defined using both attributes and element intermixed to demonstrate the flexibility of the engine</p>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="14" readonly="readonly">
+<data>
+	<recordType name="authData" lockRecords="true">
+		<record name="userOne">
+			<userName>rgears</userName>
+			<password>aaaaa</password>
+		</record>
+		<record name="userTwo">
+			<userName>deart</userName>
+			<password>bbbb</password>
+		</record>
+		<record name="userThree" userName="pkate" password="aaaacccca" active="false" />
+	</recordType>
+</data>
+                        </textarea>
+                    </figure>
+                    <p>This example contains 2 record types. userType references authData and is filtered by the user category. The admins record will contain 2 authData records and the users will contain 1</p>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="13" readonly="readonly">
+<data>
+    <recordType name="authData" lockRecords="true">
+        <record name="userOne" userName="rgears" password="aaaaa" userType="admin" />
+        <record name="userTwo" userName="deart" password="bbbbb" userType="user" />
+        <record name="userThree" userName="pkate" password="aaaacccca" userType="admin" />
+    </recordType>
+    <recordType name="userType" lockRecords="true">
+        <record name="admins" type="admin" users="|userType:[type='admin']|" />
+        <record name="users" type="user" users="|userType:[type='user']|" />
+    </recordType>
+</data>
+                        </textarea>
+                    </figure>
+                    <h2 id="data-excel">Excel Configuration</h2>
+                    <p>When defining page data using Excel each table is represented by a tab. Each individual field name is specified using the values in the first row of the sheet. You can use a single Excel file for all of the data tables splitting
+                        them in using this format. If you want to create a tiered data structures where page data can contain other page data structures then the pipe character will be used. When surrounding a value with the pipe character it indicates
+                        that this value is actually a reference to another table. So |authData| indicates that this field is a reference to the authData record type and will contain all of the rows. You can filter the data as well by providing a set of
+                        criteria, each contained within a set of square brackets as needed. |authData:[type='user'][age='10']| indicates that this references the authData record type however only the fields that contains the field value of user for type
+                        and 10 for age will be selected</p>
+                    <p>The following example specifies authentication data defined in a tab named authData</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+TAB NAMED authData
+userName,password
+rgears,aaaaa
+pkate,bbbbb
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>The following example specifies authentication data defined in a tab named authData with a user type table defining the types.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+TAB NAMED authData
+userName,password,userType
+rgears,aaaaa,admin
+pkate,bbbbb,user
+
+
+TAB NAMED userType
+name,type,users
+admins,admin,|userType:[type='admin']|
+users,user,|userType:[type='user']|
+                            </code>
+                        </pre>
+                    </figure>
+                    <h1 id="contentx" class=page-header>Content Management</h1>
+                    <p>Localization for a multi-lingual application is every automation engineer’s nightmare. Internationalization and localization are means of adapting computer software to different languages however automated tests need to be
+                        created to handle the different languages. Content Management is the process of adapting internationalized software for a specific region or language by adding locale-specific components and translating text for use by the automated
+                        test scripts. The engine allows for on the fly content replacement for lookups and verification make multi-lingual support easy to implement.</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key only:</td>
+                                    <td>If you key name provided for lookup contains the name of the key with nothing else, then the value will be located using the first lookup columns value</td>
+                                </tr>
+                                <tr>
+                                    <td>key{columnName}</td>
+                                    <td>Using the key followed by the lookup name in curly brackets then that fields value will be used</td>
+                                </tr>
+                                <tr>
+                                    <td>key{#num}</td>
+                                    <td>Using the key followed by the pound sign (#) and the index in curly brackets then the fields value indicated by the index will be used</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Find the default value for name key name STATE</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+STATE
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>Find the ENGLISH value for name key name STATE</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+STATE{ENGLISH}
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>Find the value at the first index for the key name STATE</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+STATE{#1}
+                            </code>
+                        </pre>
+                    </figure>
+                    <h2 id="content-xml">XML Configuration</h2>
+                    <p>When defining content using XML you must provide a name attribute and lookup attributes. The lookup attributes can be named anything but must be consistent throughout the records</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name:</td>
+                                    <td>The represents the key value used to locate the specific XML element</td>
+                                </tr>
+                                <tr>
+                                    <td>other attributes</td>
+                                    <td>These are the attributes used to define the replaceable values. You must provide a minimum of one attribute and each attribute must exist throughout all fo the records.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>The following table could be used to provide an upper and lower case version of the named state</p>
+                    <figure class=highlight>
+                        <textarea cols="120" rows="5" readonly="readonly">
+<content>
+	<model>uppercase,lowercase</model>
+	<record name="Pennsylvania" uppercase="PA" lowercase="pa" />
+	<record name="Georgia" uppercase="GA" lowercase="ga" />
+</content>
+                        </textarea>
+                    </figure>
+                    <h2 id="content-excel">Excel Configuration</h2>
+                    <p>When defining content using Excel you must provide a key column and lookup columns. They can exist in any position and will be defined.</p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key:</td>
+                                    <td>The key column is used to locate the specific row for the lookup value. The key column is case sensitive and must be unique throughout the column.</td>
+                                </tr>
+                                <tr>
+                                    <td>lookup:</td>
+                                    <td>The lookup columns(s) are the columns that contain the value for replacement. You must provide a minimum of 1 lookup column.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>The following table could be used to provide an upper and lower case version of the named state</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+key,uppercase,lowercase
+Pennsylvania,PA,pa
+Georgia,GA,ga
+                            </code>
+                        </pre>
+                    </figure>
+                    <h1 id="artifact" class=page-header>Artifact Management</h1>
+                    <p>
+                        There are a few points of interest when dealing with Test Artifacts and integrations for reporting and result delivery. There are a handful of prepared reports that are already integrated that can be turned on for automatic
+                        delivery. When defining a test run, you can instruct the <a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/data/DataManager.html">DataManger</a> instance to automatically download
+                        test artifacts at the appropriate times using the setAutomaticDownloads() method. The following artifact types can be used as defined by the ArtifactType enum
+                    </p>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>EXECUTION_REPORT_PDF</td>
+                                    <td>Gets a copy of the Perfecto Execution report in PDF format</td>
+                                </tr>
+                                <tr>
+                                    <td>EXECUTION_REPORT_HTML</td>
+                                    <td>Gets a copy of the Perfecto Execution report in HTML format</td>
+                                </tr>
+                                <tr>
+                                    <td>EXECUTION_REPORT_CSV</td>
+                                    <td>Gets a copy of the Perfecto Execution report in CSV format</td>
+                                </tr>
+                                <tr>
+                                    <td>EXECUTION_REPROT_XML</td>
+                                    <td>Gets a copy of the Perfecto Execution report in XML format</td>
+                                </tr>
+                                <tr>
+                                    <td>FAILURE_SOURCE</td>
+                                    <td>Extracts the state of the device and application. That states is extracted and saved as failureDom.xml to allow for quick debugging of object identification issues</td>
+                                </tr>
+                                <tr>
+                                    <td>WCAG_REPORT</td>
+                                    <td>If WCAG operations were used (Branding, contrast, etc) then this will contain the extracted images and their operational statistics.</td>
+                                </tr>
+                                <tr>
+                                    <td>DEVICE_LOG</td>
+                                    <td>Extracts the previous 1000 lines of the device's log file</td>
+                                </tr>
+                                <tr>
+                                    <td>CONSOLE_LOG</td>
+                                    <td>Writes the console output for the specified test on the specified device. Only information pertaining to that test/device is stored here</td>
+                                </tr>
+                                <tr>
+                                    <td>EXECUTION_RECORD_HTML</td>
+                                    <td>Contains a clean execution report of the test steps that were executed. In addition, a master index file will be created showing the status of all tests executed in this run</td>
+                                </tr>
+                                <tr>
+                                    <td>EXECUTION_RECORD_CSV</td>
+                                    <td>Contains an CSV based reports of all test steps that were executed</td>
+                                </tr>
+                                <tr>
+                                    <td>EXECUTION_TIMING</td>
+                                    <td>Contains a small timing report of elements marked as timed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src=./js/docs.min.js></script>
+    <footer class=bs-docs-footer role=contentinfo>
+        <p>xFramium - Rapid Test Case Development</p>
+    </footer>
+</body>
+</html>
