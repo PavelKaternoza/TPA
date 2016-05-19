@@ -12,22 +12,27 @@ body {
 	padding-top: 50px;
 	padding-bottom: 20px;
 }
+
 .code {
-         background-color: #1e1e1e;
-         color: #7b7b7b;
-      }
-      .comment {
-        color: green;
-      }
-      .attribute {
-        color: #96d6fa;
-      }
-      .value {
-        color: #c58a70;
-      }
-      .tag {
-        color: #4e91ca;
-      }
+	background-color: #1e1e1e;
+	color: #7b7b7b;
+}
+
+.comment {
+	color: green;
+}
+
+.attribute {
+	color: #96d6fa;
+}
+
+.value {
+	color: #c58a70;
+}
+
+.tag {
+	color: #4e91ca;
+}
 </style>
 <link rel="icon" href="./favicon.ico">
 <title>xFramium - Rapid Test Case Development</title>
@@ -62,8 +67,8 @@ body {
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Architectural Overview </a></li>
-                            <li><a href="#">API Reference</a></li>
-                            <li><a href="#">Extending the Framework</a></li>
+                            <li><a href="/apidocs/index.html">API Reference</a></li>
+                            <li><a href="/extending.html">Extending the Framework</a></li>
                         </ul></li>
                     <li><a href="/sponsors.html">Sponsors</a></li>
                 </ul>
@@ -75,8 +80,8 @@ body {
         <div class="container">
             <img src="images/xframium.png" />
             <p>xFramium, a unified testing framework for desktop and mobile web, native, and hybrid apps. Write tests using a simple and elegant XML keyword-driven alternative to coding. Use the same test cases on desktop and mobile web browsers. Take
-                advantage of high-performance parallel execution, advanced caching and intelligent device selection algorithms. Easily connect test data from Excel, XML, JSON, CSV, JDBC and more. And coders, before you write off xFramium, there’s something
-                for you to like - an option for page object model scripts written in Java.</p>
+                advantage of high-performance parallel execution, advanced caching and intelligent device selection algorithms. Easily connect test data from Excel, XML, JSON, CSV, JDBC and more.</p>
+            <p>Prefer to code in Java? xFramium also supports Java test code writing using all of the features of xFramium such as the extended page object model.</p>
             <p>
                 <a class="btn btn-primary btn-lg" href="https://github.com/xframium/xframium-java" role="button">Git xFramium &raquo;</a>
             </p>
@@ -95,7 +100,8 @@ body {
     &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">&quot;Version&quot;</span> /&gt;
   &lt;/<span class="tag">model</span>&gt;
   <span class="comment">&lt;!-- TEST CASES --&gt;</span>
-  &lt;<span class="tag">test</span> <span class="attribute">name</span>=<span class="value">&quot;VersionTest&quot;</span> <span class="attribute">dataProvider</span>=<span class="value">&quot;versionData&quot;</span> <span class="attribute">tagNames</span>=<span class="value">&quot;smoke&quot;</span>&gt;
+  &lt;<span class="tag">test</span> <span class="attribute">name</span>=<span class="value">&quot;VersionTest&quot;</span> <span class="attribute">dataProvider</span>=<span class="value">&quot;versionData&quot;</span> <span class="attribute">tagNames</span>=<span
+                        class="value">&quot;smoke&quot;</span>&gt;
     &lt;<span class="tag">step</span> <span class="attribute">timed</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;CONTEXT&quot;</span> <span class="attribute">type</span>=<span
                         class="value">&quot;DEVICE&quot;</span>&gt;
       &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">&quot;STATIC&quot;</span> <span class="attribute">value</span>=<span class="value">&quot;NATIVE_APP&quot;</span> /&gt;
@@ -114,7 +120,9 @@ body {
 &lt;/<span class="tag">suite</span>&gt;
           </pre>
             </div>
-            <div class="col-md-5"><img src="./images/usage.png" /></div>
+            <div class="col-md-5">
+                <img src="./images/usage.png" />
+            </div>
         </div>
     </div>
     <div class="container">
@@ -135,6 +143,8 @@ body {
                     <a class="btn btn-default" href="https://www.xframium.org/jnlp/xframium-launcher.jnlp" role="button">Test Drive &raquo;</a>
                 </p>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <h2>Customizable</h2>
                 <p>The entire xFramium initiative has been based on portability and customization. Every element is customizable and replaceable helping to make xFramium adaptable to any new testing technology, configuration file format or integration

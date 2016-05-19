@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<style>
+body {
+	padding-top: 100px;
+	padding-bottom: 20px;
+}
+</style>
+<link rel="icon" href="../favicon.ico">
+<title>xFramium - Rapid Test Case Development</title>
+<!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="data:text/css;charset=utf-8," data-href="./css/bootstrap-theme.min.css" rel=stylesheet id=bs-theme-stylesheet>
+<link href="./css/docs.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./index.html">xFramium</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Getting Started <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/installation.html">Installation</a></li>
+                            <li><a href="/configuration.html">Configuration</a></li>
+                            <li><a href="/keyword.html">Writing tests using keywords</a></li>
+                            <li><a href="/java.html">Writing tests in Java</a></li>
+                        </ul></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Architectural Overview </a></li>
+                            <li><a href="/apidocs/index.html">API Reference</a></li>
+                            <li><a href="/extending.html">Extending the Framework</a></li>
+                        </ul></li>
+                    <li><a href="/sponsors.html">Sponsors</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class=bs-docs-header id=content tabindex=-1>
+        <div class="container">
+            <h1>Extending xFramium</h1>
+            <p>xFramium, while feature rich, was made to be extended.</p>
+        </div>
+    </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-3" role="complementary">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                    <ul class="nav bs-docs-sidenav">
+                        <li><a href=#java>Java</a>
+                            <ul class=nav>
+                                <li><a href=#java-keyword>Creating a Keyword</a></li>
+                                <li><a href=#java-library>Referencing an External Library</a></li>
+                            </ul></li>
+                    </ul>
+                    <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
+                </nav>
+            </div>
+            <div class=col-md-9 role=main>
+                <div class=bs-docs-section>
+                    <h1 id="java" class=page-header>Java</h1>
+                    <p>As the original xFramium library the Java implementation is a feature rich set of libraries. There are many integration and extension points.</p>
+                    <h2 id="java-keyword">Add Keywords</h2>
+                    <p>
+                        Before creating a new keyword it is best for the project as a whole that you verify that the functionality is not already available elsewhere. If you feel that a keyword is necessary then post the need up to the <a
+                            hRef="https://github.com/xframium/xframium-java/wiki">Wiki</a> to make sure you are not duplicating functionality.
+                    </p>
+                    <p>Once you decide to create the keyword, there are are a few steps to ensure success</p>
+                    <ol>
+                        <li>All keywords must implement the org.xframium.page.keyWord.KeyWordStep interface. It is recommended that you extend org.xframium.page.keyWord.step.AbstractKeyWordStep to gain some base functionality but that it not required</li>
+                        <li>Implement the executeStep() method. The method takes 5 parameters
+                            <div class=table-responsive>
+                                <table class="table table-bordered table-striped js-options-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="pName">pageObject</td>
+                                            <td class="pDescription">Page class representing the current page.  If a page implementation was created and specified as part of the model then this will be an instance of that class otherwise it will be a generated version of the KeyWordPage class </td>
+                                        </tr> 
+                                        <tr>
+                                            <td class="pName">webDriver</td>
+                                            <td class="pDescription">The Selenium WebDriver object</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pName">contentMap</td>
+                                            <td class="pDescription">The context map contains a Map of context variable previously set.  This may is scoped to a single test case and will be available in its entirety through the execution of that test case included all set test and function calls.  You can use and modify the Map</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pName">dataMap</td>
+                                            <td class="pDescription">A map contained the named PageData objects available to this test.  These are the PageData objects specified by the dataProvider/dataDriver for the test case</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pName">pageMap</td>
+                                            <td class="pDescription">Contains a cached copy of all page objects created.  This Map should be used when a step needs to call another step such as the LOOP/FORK steps</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li>Inside of your executeStep() method it is often required to access page objects.  Page objects can be access via the getElement() method.  The getElement() method takes 4 or 5 parameters.  Using this will also ensure that all page data and content replacements are correctly applied
+                            <div class=table-responsive>
+                                <table class="table table-bordered table-striped js-options-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="pName">pageObject</td>
+                                            <td class="pDescription">Page class representing the current page.  If a page implementation was created and specified as part of the model then this will be an instance of that class otherwise it will be a generated version of the KeyWordPage class </td>
+                                        </tr> 
+                                        <tr>
+                                            <td class="pName">webDriver</td>
+                                            <td class="pDescription">The Selenium WebDriver object</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pName">contentMap</td>
+                                            <td class="pDescription">The context map contains a Map of context variable previously set.  This may is scoped to a single test case and will be available in its entirety through the execution of that test case included all set test and function calls.  You can use and modify the Map</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pName">dataMap</td>
+                                            <td class="pDescription">A map contained the named PageData objects available to this test.  These are the PageData objects specified by the dataProvider/dataDriver for the test case</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pName">nameOverride</td>
+                                            <td class="pDescription">This is an optional parameter - normally the NAME attribute of the step will be used to lookup the page element.  This allows you to override that lookup and find any named page element</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li>Everything else you do inside of the keyword is in the hands of the developer</li>
+                        <li>Once completed, you need to register the keyword with the system.  To do so, call addKeyword() on the org.xframium.page.keyWord.step.KeyWordStepFactory giving it the KeyWord name and the class name.</li>
+                    </ol>
+                    <h2 id="java-library">Integrating your library</h2>
+                    <p>When using the xFramium-driver with your custom code you will need to make the system aware of your libraries.  </p>
+                    <ol>
+                        <li>Create a new Class that implements the org.xframium.Initialzable interface.  The xframium-driver will call the public void initialize( String propertyPrefix, Properties propertyMap ) method to allow your library to take advantage of the driverConfig.txt properties passed in.</li>
+                        <li>Decide on a property prefix.  Each property that you will reference will start with your property prefix.</li>
+                        <li>Add a line to the driverConfig properties file.  The property name is integrations.import and it will reference a comma separated list of property prefixs representing each library that is defined</li>
+                        <li>Using your property prefix, add a single entry named [prefix].initialization and set it equal to the fully qualified class name of your Initialization class create in step one.</li>
+                        <li>This will allow your class to be executed as part of the xFramium-driver run.  Any initialization (such as registering keywords) should occur as part of the initialize method</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src=./js/docs.min.js></script>
+    <footer class=bs-docs-footer role=contentinfo>
+        <p>xFramium - Rapid Test Case Development</p>
+    </footer>
+</body>
+</html>
