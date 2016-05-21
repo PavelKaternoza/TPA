@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<style>
+body {
+	padding-top: 100px;
+	padding-bottom: 20px;
+}
+</style>
+<link rel="icon" href="../favicon.ico">
+<title>xFramium - Rapid Test Case Development</title>
+<!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="data:text/css;charset=utf-8," data-href="./css/bootstrap-theme.min.css" rel=stylesheet id=bs-theme-stylesheet>
+<link href="./css/docs.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./index.html">xFramium</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Getting Started <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/installation.html">Installation</a></li>
+                            <li><a href="/configuration.html">Configuration</a></li>
+                            <li><a href="/keyword.html">Writing tests using keywords</a></li>
+                            <li><a href="/java.html">Writing tests in Java</a></li>
+                        </ul></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Architectural Overview </a></li>
+                            <li><a href="/apidocs/index.html">API Reference</a></li>
+                            <li><a href="/extending.html">Extending the Framework</a></li>
+                        </ul></li>
+                    <li><a href="/sponsors.html">Sponsors</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class=bs-docs-header id=content tabindex=-1>
+        <div class="container">
+            <h1>Preparing xFramium</h1>
+            <p>xFramium can be used with many different environments.  </p>
+        </div>
+    </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-3" role="complementary">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                    <ul class="nav bs-docs-sidenav">
+                        <li><a href=#eclipse>Eclipse</a>
+                            <ul class=nav>
+                                <li><a href=#e-pre>Prerequisites</a></li>
+                                <li><a href=#e-download>Downloading the Source code</a></li>
+                                <li><a href=#e-proxy>Proxy Configuration</a></li>
+                                <li><a href=#e-maven>Maven Proxy Configuration</a></li>
+                                <li><a href=#e-project>Driver and Folder Structure</a></li>
+                                <li><a href=#e-copy>My First Project</a></li>
+                            </ul>
+                         </li>
+                         <li><a href=#launcher>Remote Launcher</a></li>
+                    </ul>
+                    <a class=back-to-top href=#top> Back to top </a>
+                </nav>
+            </div>
+            <div class=col-md-9 role=main>
+                <div class=bs-docs-section>
+                    <h1 id="eclipse" class=page-header>Eclipse</h1>
+                    <p>xFramium can be run from Eclipse allowing for execution and script development to occur in a single pane of glass</p>
+                    <h2 id="e-pre">Prerequisites</h2>
+                    <ol>
+                        <li>Confirm if you have Java installed and what version. You need 1.7.x or later.  You can check via the Windows command prompt by typing java -version
+                        <p><img src="./images/e1.png" /></p></li>
+                        <li>If you do not have it installed already install Java JDK 1.8 you can get it <a hRef="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">here</a></li>
+                        <li>Install Eclipse Mars.2 if you do not already have it installed you may need to install Maven as well.  Eclipse can be found <a hRef="http://www.eclipse.org/downloads/">here</a></li>
+                    </ol>
+                    <h2 id="e-download">Downloading the Source Code</h2>
+                    <p>The XML Framework is downloaded from the following Git Hub repository in to Eclipse</p>
+                    <div class="bs-callout bs-callout-danger">*Note* If you get an error message as below when attempting to clone the directory from Github you will need to set up Eclipse and Maven for proxies described later in this document</div>
+                    <p><img src="./images/e2.png" /></p>
+                    <p>If you do NOT get this error or if you have now completed the steps for proxy set up continue here:</p>
+                    <ol>
+                        <li>Open Eclipse, Window -> Show View -> Other… -> Git -> Git Repositories.  Press a link called “Clone a Git repository</li>
+                        <li>In the window “Clone Git Repository enter the following URL in to URL location: https://github.com/xframium/xframium.java
+                            <p>Host: github.com</p>
+                            <p>Repository path: https://github.com/xframium/xframium-java</p>
+                            <p>User: You can leave blank if you do not have a Github account</p>
+                            <p>Password: You can leave blank if you do not have a Github account</p> 
+                            <p><img src="./images/e3.png" /></p>
+                        </li>
+                        <li>Select only Master and Press Next on Branch Selection
+                        <p><img src="./images/e4.png" /></p>
+                        </li>
+                        <li>Choose Local Destination location and press Finish. </li>
+                        <li>Keep the default directory and click finish
+                        <p><img src="./images/e5.png" /></p>
+                        </li>
+                        <li>in Git Repositories tab Right click on Xframium and scroll down to Import Projects...
+                        <p><img src="./images/e6.png" /></p>
+                        </li>
+                        <li>Check import existing eclipse projects and click Next
+                        <p><img src="./images/e7.png" /></p>
+                        </li>
+                        <li>Select only the Xframium driver to import
+                        <p><img src="./images/e8.png" /></p>
+                        </li>
+                        <li>Press Finish to import the project</li>
+                        <li>Now that the project has been imported you will run the file Testdriver.java as an application.  This folder is found under the Xframium working set the folder path is src> org> xframium>driver.  If successful, you will receive a usage message stating that you need to specify a configuration file.
+                        <p><img src="./images/e9.png" /></p>
+                        </li>
+                        <li>Once this is completed you can move on to creating your folder structure</li>
+
+                    </ol>
+                    <h2 id="e-proxy">Proxy Configuration</h2>
+                    <p>If error below is shown, follow the following steps to fix it.</p>
+                    <p><img src="./images/e10.png" /></p>
+                    <p>Go To Window -> Preferences -> Team -> Git-> Configuration.</p>
+                    <p>Press “User Settings” tab. Press Add Entry… In the Key field type: http.sslVerify  Value field: false </p>
+                    <p>Press OK, Apply, OK.</p>
+                    <p>Note: Location: field can be anything you want.</p>
+                    <p><img src="./images/e11.png" /></p>
+                    <p>Once this is complete you should be able to complete the steps to clone the github repository.</p>
+                    <h2 id="e-maven">Maven Proxy Configuration</h2>
+                    <ol>
+                        <li>In Eclipse, configure proxy and set it to “Native”. Proxy can be found at Window --> Preferences.  General --> Network Connections
+                        <p><img src="./images/e12.png" /></p></li>
+                        <li>Change value in Active Provider drop down to Native.
+                        <p><img src="./images/e13.png" /></p></li>
+                        <li>Configure Maven to use a proxy.   First, find your local Maven repository.  Go to Window --> Preferences then Maven --> User Settings.
+                        <p><img src="./images/e14.png" /></p></li>
+                        <li>4.  Create XML file call it settings.xml with content below. Store it in the .m2 folder (next to the repository folder). .M2 folder is located in C:\Users\yourWindowsID\.m2\
+                        <div class="bs-callout bs-callout-danger">*Note* Proxy settings differ in each environment.  Contact your network administrator for your appropriate settings</div>
+                        <figure class=highlight>
+                        <textarea cols="120" rows="25" readonly="readonly">
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              http://maven.apache.org/xsd/settings-1.0.0.xsd">
+   <proxies>
+      <proxy>
+         <id>myproxy</id>
+         <active>true</active>
+         <protocol>http</protocol>
+         <host> yourproxy.net</host>
+         <port>8080</port>
+      </proxy> 
+
+
+      <proxy>
+         <id>myproxy</id>
+         <active>true</active>
+         <protocol>https</protocol>
+         <host>yourproxy.net</host>
+         <port>8080</port>
+      </proxy>
+   </proxies>
+</settings>
+                        </textarea>
+                    </figure>
+                        </li>
+                        <li>In the User Settings field press Browse and locate settings.xml which you just created. Press Apply and OK buttons. Close User Settings</li>
+                        <li>Open up the Maven Console
+                        <p><img src="./images/e15.png" /></p></li>
+                        <li>In Project Explorer right click on Test-Driver, find Maven option -> click on Update Project
+                        <p><img src="./images/e16.png" /></p></li>
+                        <li>Select Check box for Force Update of Snapshots/Releases and click ok
+                        <p><img src="./images/e17.png" /></p></li>
+                        <li>At this point Maven jars should start downloading.  After completing this set up you should be able to import the Driver in to Eclipse.</li>
+                    </ol>
+                    <h2 id="e-project">Driver and Folder Structures</h2>
+                    <ol>
+                    <li>Now that you have downloaded the framework and imported it in to your Eclipse you need to run Test Driver as a Java Application.  Right click on the Test Driver project and select Run As a Java Application
+                    <p><img src="./images/e18.png" /></p></li>
+                    <li>Once that is completed you can Create some new folders for your testing.  Open Eclipse and click File > New > Project.  Search for General and select Project and then select Next
+                    <p><img src="./images/e19.png" /></p></li>
+                    <li>Create a name for your folder (typically XMLDriven) and select Finish
+                    <p><img src="./images/e20.png" /></p></li>
+                    <li>Now under that Project you just created create a folder for the Application you will be working with. 
+                    <p><img src="./images/e21.png" /></p></li>
+                    <li>Once your folders have been created you can copy over the files needed from Test driver in the next section 
+                    <p><img src="./images/e22.png" /></p></li>
+                    </ol>
+                    <h2 id="e-copy">My First Project</h2>
+                    <p>Now that you have downloaded and imported the Test Driver backend to the XML Framework you can move the appropriate files in to the folder structure you created.</p>
+                    <ol>
+                        <li>Under Projects Test Driver look for the resources folder and the XML folder below</li>
+                        <li>Copy the following file from the resources folder to the Main folder we created (XMLDriven) driverConfig.txt</li>
+                        <li>Copy the following three files from the XML folder in to the Main folder we created (XMLDriven)
+                            <div class="bs-callout bs-callout-warning" >
+                                <ul>
+                                    <li>applicationRegistry.xml</li>
+                                    <li>cloudRegistry.xml</li>
+                                    <li>deviceRegistry.xml</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>Now copy the following three files from the XML folder to the application folder we created (TestApp)
+                            <div class="bs-callout bs-callout-warning" >
+                                <ul>
+                                    <li>pageData.xml</li>
+                                    <li>pageElements.xml</li>
+                                    <li>tests.xml</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ol>
+                    <p><img src="./images/e23.png" /></p>
+                    For a detailed description of the file types listed here, please refer to the <a hRef="./configuration.html">Configuration</a> documentation
+                    
+                    <h1 id="remote" class=page-header>Remote</h1>
+                    <p>The Remote Launcher offers a way to execute scripts without having to configure the driver.  All of the code is pre-compiled and access via JNLP launcher window so it can be ran anywhere.  If you don't want to both with the IDE configuration portion then give the xFramium Launcher a try</p>
+                    <p><a hRef="./jnlp/xframium-launcher.jnlp">Launch xFramium!</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src=./js/docs.min.js></script>
+    <footer class=bs-docs-footer role=contentinfo>
+        <p>xFramium - Rapid Test Case Development</p>
+    </footer>
+</body>
+</html>

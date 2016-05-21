@@ -90,6 +90,7 @@ body {
     <div class="container">
         <div class="row">
             <div class="col-md-7">
+            Test Case
                 <pre class="code">
 &lt;?<span class="tag">xml</span> <span class="attribute">version</span>=<span class="value">&quot;1.0&quot;</span> <span class="attribute">encoding</span>=<span class="value">&quot;UTF-8&quot;</span>?&gt;
 &lt;<span class="tag">suite</span> <span class="attribute">xmlns</span>=<span class="value">&quot;http://www.xframium.org/testRegistry&quot;</span> <span class="attribute">xmlns:xsi</span>=<span class="value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span
@@ -122,6 +123,23 @@ body {
             </div>
             <div class="col-md-5">
                 <img src="./images/usage.png" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                Page Elements defined in many formats to meet any coding style
+                <pre class="code">
+&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">homePage</span>"&gt;
+	&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">TITLE</span>" <span class="attribute">value</span>="<span class="value">Webpage( 'html tag:=h1', 'innerText:=.*Shopping.*')</span>" <span class="attribute">descriptor</span>="<span class="value">HTML</span>" /&gt;
+	&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">CLEAR_CART</span>" <span class="attribute">value</span>="<span class="value">Link( 'html tag:=a', 'innerText:=.*CLEAR CART.*' )</span>" <span class="attribute">descriptor</span>="<span class="value">HTML</span>" /&gt;
+	&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">CLEAR_ALL</span>" <span class="attribute">value</span>="<span class="value">Remove Cart Item</span>" <span class="attribute">descriptor</span>="<span class="value">V_TEXT</span>" /&gt;
+	&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">HOME</span>" <span class="attribute">value</span>="<span class="value">//img[@alt='Logo']</span>" <span class="attribute">descriptor</span>="<span class="value">XPATH</span>" /&gt;
+	&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">DONE</span>" <span class="attribute">value</span>="<span class="value">/There are no items in your cart</span>" <span class="attribute">descriptor</span>="<span class="value">V_TEXT</span>" /&gt;
+	&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">HOME</span>" <span class="attribute">value</span>="<span class="value">alt=logo</span>" <span class="attribute">descriptor</span>="<span class="value">PROP</span>" /&gt;
+	&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">HOME</span>" <span class="attribute">value</span>="<span class="value">resource-id=imageLogo</span>" <span class="attribute">descriptor</span>="<span class="value">PROP</span>" /&gt;
+	&lt;<span class="tag">page</span> <span class="attribute">name</span>="<span class="value">PASSCODE_IMAGE</span>" <span class="attribute">descriptor</span>="<span class="value">V_IMAGE</span>" <span class="attribute">value</span>="<span class="value">PUBLIC:images/passcodeImage.png</span>" /&gt;
+&lt;/<span class="tag">page</span>&gt;
+          </pre>
             </div>
         </div>
     </div>
