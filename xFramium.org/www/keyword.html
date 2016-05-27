@@ -43,15 +43,13 @@ body {
                             <li><a href="/configuration.html">Configuration</a></li>
                             <li><a href="/keyword.html">Writing tests using keywords</a></li>
                             <li><a href="/java.html">Writing tests in Java</a></li>
-                        </ul>
-                    </li>
+                        </ul></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Architectural Overview </a></li>
                             <li><a href="/apidocs/index.html">API Reference</a></li>
                             <li><a href="/extending.html">Extending the Framework</a></li>
-                        </ul>
-                    </li>
+                        </ul></li>
                     <li><a href="/sponsors.html">Sponsors</a></li>
                 </ul>
             </div>
@@ -95,10 +93,18 @@ body {
                             </ul></li>
                         <li><a href=#kw>Keywords</a>
                             <ul class=nav>
+                                <li><a href=#kw-addcookie>ADD_COOKIE</a></li>
                                 <li><a href=#kw-adddevice>ADD_DEVICE</a></li>
+                                <li><a href=#kw-align>ALIGN</a></li>
+                                <li><a href=#kw-at>AT</a></li>
                                 <li><a href=#kw-attribute>ATTRIBUTE</a></li>
+                                <li><a href=#kw-break>BREAK</a></li>
+                                <li><a href=#kw-cache>CACHE</a></li>
+                                <li><a href=#kw-call>CALL</a></li>
+                                <li><a href=#kw-click>CLICK</a></li>
                                 <li><a href=#kw-compare>COMPARE</a></li>
                                 <li><a href=#kw-loop>LOOP</a></li>
+                                <li><a href=#kw-checkcolor>VERIFY_COLOR</a></li>
                             </ul></li>
                     </ul>
                     <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
@@ -748,6 +754,50 @@ body {
 </test>
                         </textarea>
                     </figure>
+                    <h2 id="kw-align">ALIGN</h2>
+                    <p>The align keyword allows your to verify horizontal or vertical align of the many element on the screen in relation to the named anchor element. You could validate the individual alignment properties of each specified element. On
+                        single anchor element can be used to verify the positions of many other elements and alignment options</p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>You can pass any number parameters here. Each parameter will represent the element to compare to and which alignment property to validate</p>
+                        <ol>
+                            <li>Each parameter will be formatted as [name]=[alignment property]. When comparing the alignment property you can optionally specify a maximum pixel deviation in parenthesis</li>
+                        </ol>
+                    </div>
+                    <p>Extract the USER_NAME object and ensure that the PASSWORD field is aligned exactly the same on the right and left side. Then make sure the BUTTON is close to the LEFT side</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="USER_NAME" page="LOGIN" type="ALIGN"&gt;
+  &lt;parameter type="STATIC" value="LEFT=PASSWORD" /&gt;
+  &lt;parameter type="STATIC" value="RIGHT=PASSWORD" /&gt;
+  &lt;parameter type="STATIC" value="RIGHT=BUTTON(50)" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    <h2 id="kw-at">AT</h2>
+                    <p>The AT keyword allows you to extract the current position and dimension of the specified element and store that information in CONTEXT variables for later use. The element does not validate the position however it will validate
+                        the existence of the element. If a CONTEXT name is specified, 4 context variables will be created as specified below. Note is context name is NOT specified then the element name will be used in place of the context name<ul>
+                        <li>[contextName].x - The X position of the top left corner of the element</li>
+                            <li>[contextName].y - The Y position of the top left corner of the element</li>
+                            <li>[contextName].width - The width of the element</li>
+                            <li>[contextName].height - The height of the element</li>
+                        </ul>
+                    </p>
+                    
+                    <p>Locate the USER_NAME object and store the location and dimension using USER_NAME as the context name</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="USER_NAME" page="LOGIN" type="AT" /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>Locate the USER_NAME object and store the location and dimension using location as the context name</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="USER_NAME" page="LOGIN" type="AT" context="location" /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
                     <h2 id="kw-attribute">ATTRIBUTE</h2>
                     <p>
                         The attribute step allows the script engineer to extract and/or compare the value of any named XML/HTML attribute from the named page element. When a single parameter is specified, the attribute is extracted only and can optionally
@@ -770,7 +820,7 @@ body {
                     <p>Extract the WIDTH value from the MY_ELEMENT element on the MENU page and store it as ATTR_WIDTH for later use</p>
                     <figure class=highlight>
                         <textarea cols="120" rows="4" readonly="readonly">
-<step type="ATTRIBUTE" name="MY_ELEMENT" page="MENU" context="ATTR_WIDTH" >
+<step type="ATTRIBUTE" name="MY_ELEMENT" page="MENU" context="ATTR_WIDTH">
 	<parameter type="STATIC" value="WIDTH" />
 </step> 
                         </textarea>
@@ -778,11 +828,170 @@ body {
                     <p>Extract the WIDTH value from the MY_ELEMENT element on the MENU page and compare it to the static value 100</p>
                     <figure class=highlight>
                         <textarea cols="120" rows="5" readonly="readonly">
-<step type="ATTRIBUTE" name="MY_ELEMENT" page="MENU" >
+<step type="ATTRIBUTE" name="MY_ELEMENT" page="MENU">
 	<parameter type="STATIC" value="100" />
 	<parameter type="STATIC" value="WIDTH" />
 </step>
                         </textarea>
+                    </figure>
+                    
+                    
+                    <h2 id="kw-break">BREAK</h2>
+                    <p>
+                        Break is a specialized keyword that must be used in the function called by a LOOP keyword.  The break keyword will allow you to exit the loop and continue on with the test
+                    </p>
+                    <p>This function will check of RESULT exists on the screen.  If it does, then we call the break and exit it out of the calling loop</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;function name="checkResult"&gt;
+  &lt;!-- CONDITIONAL LOGIC - ADD TO REPORT IF WE HAVE THE WRITE LINK AND CLICK ON IT --&gt;
+  &lt;step name="RESULT" type="EXISTS" page="Search" failureMode="IGNORE" context="textValue"&gt;
+    &lt;step name="BREAK" type="BREAK" page="Search" /&gt;
+  &lt;/step&gt;
+&lt;/function&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <h2 id="kw-break">CACHE</h2>
+                    <p>
+                        The cache keyword is a simple but powerful keyword that allows you to control page object caching dynamically in a script.  page object caching pulls the current state of the device and build a local object tree allowing for all calls to go against this cached tree instead of a round trip to the remote device.  In instances of heavy read (many EXISTS statements) you will see a large improvement in speed.  In the event that a call hits the cache but the value does not exist the cache management system will be disabled and that call along with future calls will go against the remote device.  It is recommended to turn caching on and off as needed for areas of high read.  Each call to the cache keyword will invert its state so if you reference the cache keyword when caching is on it will turn it off an vice versa.
+                    </p>
+                    <p>This example will turn on caching and read several values from the cache transparently to the test case</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="CACHE ON" page="LOGIN" type="CACHE" /&gt;
+&lt;step type="CALL" name="validateVersion" page="LOGIN" /&gt;
+&lt;step type="CALL" name="loginPageElements" page="LOGIN" /&gt;
+&lt;step name="KB_PREV" page="LOGIN" type="EXISTS" /&gt;
+&lt;step name="KB_NEXT" page="LOGIN" type="EXISTS" /&gt;
+&lt;step name="KB_DONE" page="LOGIN" type="EXISTS" /&gt;
+&lt;step name="CACHE OFF" page="LOGIN" type="CACHE" /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    <h2 id="kw-attribute">CALL</h2>
+                    <p>
+                        The Call keyword allows the developer to execute a function or test defined in XML.  The test or function will inherit any dataProvider and dataDriverdata that was provided to the calling test/function.  If a function is called and the function defined a dataProvider that did not exist on the calling test/functionthen it will be added during execution.  It is possible to override the name of a dataProvider/dataDriver using a parameter as defined below.  This allows a function to use a single dataProvider name while other calling function may use dataProvider/dataDrivers with different names. 
+                    </p>
+                    <div class="bs-callout bs-callout-danger" id=callout-overview-not-both>
+                        Note: The NAME attribute on the step defines the name of the test/fucntion to call.    
+                    </div>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>Each parameter passed to a call keyword is used for data provider name overrides.  You can pass multiple overrides to a single call for multiple data providers</p>
+                        <ol>
+                            <li>Parameter formatted as [name]=[value] where name is the name that you want to use in the function and value is the name of the data provider used in the test case</li>
+                        </ol>
+                    </div>
+                    <p>Calls a function userLogin</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="userLogin" page="LOGIN" type="CALL" /&gt;</code>
+                        </pre>
+                    </figure>
+                    <p>This example will call a function name LOGIN and override the systemLogin with authData (the function expects authData)</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="userLogin" page="LOGIN" type="CALL" &gt;
+  &lt;parameter type="STATIC" value="authData=systemLogin" /&gt;
+&lt;/step&gt;
+                            </code>
+                        </pre>
+                    </figure>
+                    
+                    <h2 id="kw-click">CLICK</h2>
+                    <p>
+                        The click keyword is a simple but widely used keyword in xFramium.  This will locate an element and click once in the center of that element. 
+                    </p>
+                    <p>Calls a function userLogin</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="userLogin" page="LOGIN" type="CALL" /&gt;</code>
+                        </pre>
+                    </figure>
+                    <p>This example will click on an element named 'TEST_ELEMENT' from TEST_PAGE</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="TEST_ELEMENT" type="CLICK" page="TEST_PAGE" /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <h2 id="kw-compare">COMPARE</h2>
+                    <p>
+                        The compare keyword takes 2 parameter values and compares them together.  If they are the same then the test passes. 
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>There are 2 required parameters for the compare function.  Both parameters will be evaluated and compare to each other to ensure that they are equal</p>
+                        <ol>
+                            <li>The first parameter to compare</li>
+                            <li>The second parameter to compare</li>
+                        </ol>
+                    </div>
+                    <p>Compares a static text to a system property name USER_ENV</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="USER_ENV" page="LOGIN" type="COMAPRE"&gt;
+  &lt;parameter type="PROPERTY" value="USER_ENV" /&gt;
+  &lt;parameter type="STATIC" value="userEnvironmentOne" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    <p>Compares a previously acquired context variable named userEnv to a system property named USER_ENV</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="USER_ENV" page="LOGIN" type="COMAPRE"&gt;
+  &lt;parameter type="PROPERTY" value="USER_ENV" /&gt;
+  &lt;parameter type="CONTEXT" value="userEnv" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <h2 id="kw-checkcolor">VERIFY_COLOR</h2>
+                    <p>
+                        The verify color keyword allow you to select a point from a named element, extract the color and compare it to a know color.  If the deviation falls outside of a predefined threshold then the step fails.  The determine the deviation, the color is broken down into 3 bands: red, green and blue.  Each band is compare as a percentage difference against 255.  The 3 differences are then average out and compared to the deviation value specified.  Note that PageManager can be configured to dump these images to disk for analysis purposes. 
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>The 2 parameter version of this keyword allows the user to extract the color of the a specific point in an element.  This is usually in conjunction with a context set as the 2 parameter version does not validate anything other than object existence</p>
+                        <ol>
+                            <li>Resolution: high, med or low.  The specifies the screenshot resolution that will be used.</li>
+                            <li>Reference Point: The specifies the point on the extracted element that you want to have the color extracted from.  This point is absolute to the image starting from 1,1</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>The 4 parameter version of this keyword allows the user to extract the color of the a specific point in an element then compare it to a specified color with a specified color band deviation.  This is most often used with branding as some colors are trade marked.  This will allow you to see what the color looks like when rendered on the device.</p>
+                        <ol>
+                            <li>Resolution: high, med or low.  The specifies the screenshot resolution that will be used.</li>
+                            <li>Reference Point: The specifies the point on the extracted element that you want to have the color extracted from.  This point is absolute to the image starting from 1,1</li>
+                            <li>Color: This specifies the color to compare to.  This can be specified as an HTML color (#FFEE44) and integer represented all 3 bands or a comma separated list specifying red, green and blue</li>
+                            <li>Percent Deviation: 0 for no deviation and 100 for maximum deviation.  If the calculated deviation is great than this value then the step fails</li>
+                        </ol>
+                    </div>
+                    
+                    <p>This example will find the LOGO element and store the color at the 3,3 position in a context variable named useColor</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="LOGO" type="VERIFY_COLOR" page="TEST_PAGE" context="useColor"&gt;
+  &lt;parameter type="static" value="high" /&gt;
+  &lt;parameter type="static" value="3,3" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    <p>This example will call a function name LOGIN and override the systemLogin with authData (the function expects authData)</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="LOGO" type="VERIFY_COLOR" page="TEST_PAGE" context="useColor"&gt;
+  &lt;parameter type="static" value="high" /&gt;
+  &lt;parameter type="static" value="3,3" /&gt;
+  &lt;parameter type="static" value="#FFFFFF" /&gt;
+  &lt;parameter type="static" value="5" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
                     </figure>
                 </div>
             </div>
