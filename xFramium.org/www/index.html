@@ -95,48 +95,68 @@ body {
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-10">
-                First, identify pages and elements using XPath, HTML Properties, Optical Character Recognition, Image Identification, etc
+            <div class="col-lg-12">
+                <b>First, identify pages and elements using Xpath, HTML properties, optical character recognition, image identification, etc.</b>
                 <pre class="code">
 &lt;model siteName="Google"&gt;
-    &lt;page name="Search"&gt;
-        &lt;element name="SEARCH" value="//input[@id='lst-ib']" descriptor="XPATH"/&gt;
-        &lt;element name="SEARCH_BUTTON" value="//button[@id='tsbb']/div|//div[@id='sblsbb']/button" descriptor="XPATH"/&gt;
-        &lt;element name="RESULTS" value="//*[@id='rso']/div/div" descriptor="XPATH"/&gt;
-        &lt;element name="RESULT" value="//*[@id='rso']/div/div//a[text()='xFramium - Rapid Test Case Development']" descriptor="XPATH"/&gt;
-    &lt;/page&gt;
-    &lt;page name="Home"&gt;
-        &lt;element name="GET" value="//a[contains( text(), 'Git xFramium')]" descriptor="XPATH"/&gt;
-        &lt;element name="TITLE" value="xFramium" descriptor="V_TEXT"/&gt;
-    &lt;/page&gt;
-    &lt;page name="Git"&gt;
-        &lt;element name="TITLE" value="//strong/a[contains( text(), 'xframium-java' )]" descriptor="XPATH" /&gt;
-    &lt;/page&gt;
-&lt;/model&gt;
+  &lt;page name="Search"&gt;
+    &lt;element name="SEARCH" value="//input[@id='lst-ib']" descriptor="XPATH" /&gt;
+    &lt;element name="SEARCH_BUTTON" value="//button[@id='tsbb']/div|//div[@id='sblsbb']/button" descriptor="XPATH" /&gt;
+    &lt;element name="RESULTS" value="//*[@id='rso']/div/div" descriptor="XPATH" /&gt;
+    &lt;element name="RESULT" value="//*[@id='rso']/div/div[{resultIndex}]//a[contains( @href, '{urlToken}')]" descriptor="XPATH" /&gt;
+  &lt;/page&gt;
+  &lt;page name="Home"&gt;
+    &lt;element name="GET" value="//a[contains( text(), 'Git xFramium')]" descriptor="XPATH" /&gt;
+    &lt;element name="TITLE" value="xFramium" descriptor="V_TEXT" /&gt;
+  &lt;/page&gt;
+  &lt;page name="Git"&gt;
+    &lt;element name="TITLE" value="//strong/a[contains( text(), 'xframium-java' )]" descriptor="XPATH" /&gt;
+  &lt;/page&gt;
+&lt;/model&gt;</pre>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-5">
-                Sample of XML keyword-driven test (no coding needed)
+            <div class="col-md-6">
+                <b>Sample of XML keyword-driven test (no coding needed)</b>
                 <pre class="code">
-&lt;suite provider="LOCAL"&gt;
-    &lt;test name="TC-001"&gt;
-        &lt;step name="SEARCH" type="EXISTS" page="Search" /&gt;
-        &lt;step name="SEARCH" type="SET" page="Search" &gt;
-            &lt;parameter type="STATIC" value="xFramium"/&gt;
-        &lt;/step&gt;
-        &lt;step name="SEARCH_BUTTON" type="CLICK" page="Search" /&gt;
-        &lt;step name="RESULTS" type="WAIT_FOR" page="Search" /&gt;
-        &lt;step name="RESULT" type="CLICK" page="Search" /&gt;
-        &lt;step name="GET" type="WAIT_FOR" page="Home" /&gt;
-        &lt;step name="TITLE" type="EXISTS" page="Home" /&gt;
-        &lt;step name="GET" type="CLICK" page="Home" /&gt;
-    &lt;/test&gt;
-&lt;/suite&gt;
-                </pre>
+&lt;test name="TC-001"&gt;
+  &lt;step name="SEARCH" type="EXISTS" page="Search" /&gt;
+  &lt;step name="SEARCH" type="SET" page="Search"&gt;
+    &lt;parameter type="STATIC" value="xFramium" /&gt;
+  &lt;/step&gt;
+  &lt;step name="SEARCH_BUTTON" type="CLICK" page="Search" /&gt;
+  &lt;step name="RESULTS" type="WAIT_FOR" page="Search" /&gt;
+  &lt;step name="RESULTS" type="EXISTS" page="Search" context="resultCount" /&gt;
+  &lt;!-- LOOP OVER THE RESULTS --&gt;
+  &lt;step name="LOOP_OVER_RESULTS" type="LOOP" page="Search"&gt;
+    &lt;parameter type="CONTEXT" value="resultCount" /&gt;
+    &lt;parameter type="STATIC" value="checkResult" /&gt;
+  &lt;/step&gt;
+
+  &lt;step name="GET" type="WAIT_FOR" page="Home" /&gt;
+  &lt;step name="GET" type="CLICK" page="Home" /&gt;
+&lt;/test&gt;
+
+&lt;function name="checkResult"&gt;
+  &lt;!-- CONDITIONAL LOGIC - ADD TO REPORT IF WE HAVE THE WRITE LINK AND CLICK ON IT --&gt;
+  &lt;step name="RESULT" type="EXISTS" page="Search" failureMode="IGNORE" context="textValue"&gt;
+    &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
+    &lt;token name="urlToken" type="STATIC" value="xframium.org" /&gt;
+     &lt;step name="ADD_TO_REPORT" type="REPORT" page="Search"&gt;
+      &lt;parameter type="STATIC" value="URL Link Name" /&gt;
+      &lt;parameter type="CONTEXT" value="textValue" /&gt;
+    &lt;/step&gt;
+    &lt;step name="RESULT" type="CLICK" page="Search"&gt;
+      &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
+      &lt;token name="urlToken" type="STATIC" value="xframium.org" /&gt;
+    &lt;/step&gt;
+    &lt;step name="BREAK" type="BREAK" page="Search" /&gt;
+  &lt;/step&gt;
+&lt;/function&gt;
+</pre>
             </div>
-            <div class="col-md-5">
-                Sample of Java-based test
+            <div class="col-md-6">
+                <b>The same test case in Java</b>
                 <pre class="code">
 @Test( dataProvider = "deviceManager")
 public void testSearchPage( TestName testName ) throws Exception
@@ -149,19 +169,26 @@ public void testSearchPage( TestName testName ) throws Exception
     searchPage.getElement( Search.SEARCH ).setValue( "xFramium" );
     searchPage.getElement( Search.SEARCH_BUTTON ).click();        
     searchPage.getElement( Search.RESULTS ).waitFor( 30, TimeUnit.SECONDS, WAIT_FOR.VISIBLE, "" );
-    searchPage.getElement( Search.RESULT ).click();
+    for ( int i=0; i&lt;searchPage.getElement( Search.RESULTS ).getCount(); i++ )
+    {
+        if ( searchPage.getElement( Search.RESULTS )[ i ].getAttribute( "href" ).contains( "xframium.org" ) )
+        {
+            searchPage.getElement( Search.RESULT ).click();
+            continue;
+        }    
+    }
+    
     searchPage.getElement( Search.GET ).waitFor( 30, TimeUnit.SECONDS, WAIT_FOR.VISIBLE, "" );
     searchPage.getElement( Search.TITLE ).isPresent();
     searchPage.getElement( Search.GET ).click();
-} 
-                </pre>
+}</pre>
             </div>
         </div>
     </div>
     <div class="container">
         <!-- Example row of columns -->
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h2>Keyword-Driven</h2>
                 <p>Not a seasoned developer? No problem! xFramium offers an XML based extension that allows for tests to be created without writing any code. Most frameworks require automation experts to continuously write code behind the keywords.
                     xFramium’s configuration-based approach is different.</p>
@@ -169,7 +196,7 @@ public void testSearchPage( TestName testName ) throws Exception
                     <a class="btn btn-default" href="./keyword.html" role="button">View details &raquo;</a>
                 </p>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h2>Run Anywhere</h2>
                 <p>Don't have your development environment configured? Try out the xFramium Test Launcher and get testing today!</p>
                 <p>
@@ -178,7 +205,7 @@ public void testSearchPage( TestName testName ) throws Exception
             </div>
         </div>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h2>Customizable</h2>
                 <p>The entire xFramium initiative has been based on portability and customization. Every element is customizable and replaceable helping to make xFramium adaptable to any new testing technology, configuration file format or integration
                     point</p>
@@ -186,7 +213,7 @@ public void testSearchPage( TestName testName ) throws Exception
                     <a class="btn btn-default" href="./configuration.html" role="button">View details &raquo;</a>
                 </p>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h2>Or write tests in Java</h2>
                 <p>Our feature rich extension to commonly used testing frameworks such as Selenium and Appium allow for rapid test case development.</p>
                 <p>
@@ -195,55 +222,77 @@ public void testSearchPage( TestName testName ) throws Exception
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-10">
-                xFramiums flexible configuration model even allows for a single file definition of an entire test suite
+            <div class="col-lg-12">
+                <b>xFramium's flexible configuration model even allows for a single file definition of an entire test suite</b>
                 <pre class="code">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xFramium xmlns="http://www.xframium.org/xFramiumDriver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xframium.org/xFramiumDriver http://www.xframium.org/xsd/xFramiumDriver.xsd"&gt;
-    &lt;cloud provider="LOCAL" name="partners" userName="ageary@morelandlabs.com" password="Spike123!" hostName="partners.perfectomobile.com" proxyHost="" grid="EMBEDDED"/&gt;
-    &lt;application provider="LOCAL" name="Google" appPackage="" bundleId="" url="http://www.google.com" /&gt;
-    &lt;devices provider="LOCAL"&gt;
-        &lt;device name="Firefox" browserName="firefox" manufacturer="Mozilla" model="Firefox" os="Windows" active="true" availableDevices="1" /&gt;
-        &lt;device name="Samsung S6" manufacturer="Samsung" model="Galaxy S6" os="Android" active="false" availableDevices="1" /&gt;
-        &lt;device name="iPhone 6 Plus" manufacturer="Apple" os="iOS" model="iPhone-6 Plus" active="false" availableDevices="1" /&gt;
-    &lt;/devices&gt;
-    &lt;driver type="WEB" outputFolder="test-output" &gt;
-        &lt;artifact type="EXECUTION_RECORD_HTML"/&gt;
-        &lt;artifact type="FAILURE_SOURCE"/&gt;
-        &lt;artifact type="DEVICE_LOG"/&gt;
-        &lt;artifact type="CONSOLE_LOG"/&gt;
-    &lt;/driver&gt;
-    &lt;model siteName="Google"&gt;
-        &lt;page name="Search"&gt;
-            &lt;element name="SEARCH" value="//input[@id='lst-ib']" descriptor="XPATH"/&gt;
-            &lt;element name="SEARCH_BUTTON" value="//button[@id='tsbb']/div|//div[@id='sblsbb']/button" descriptor="XPATH"/&gt;
-            &lt;element name="RESULTS" value="//*[@id='rso']/div/div" descriptor="XPATH"/&gt;
-            &lt;element name="RESULT" value="//*[@id='rso']/div/div//a[text()='xFramium - Rapid Test Case Development']" descriptor="XPATH"/&gt;
-        &lt;/page&gt;
-        &lt;page name="Home"&gt;
-            &lt;element name="GET" value="//a[contains( text(), 'Git xFramium')]" descriptor="XPATH"/&gt;
-            &lt;element name="TITLE" value="xFramium" descriptor="V_TEXT"/&gt;
-        &lt;/page&gt;
-        &lt;page name="Git"&gt;
-            &lt;element name="TITLE" value="//strong/a[contains( text(), 'xframium-java' )]" descriptor="XPATH" /&gt;
-        &lt;/page&gt;
-    &lt;/model&gt;
-    &lt;suite provider="LOCAL"&gt;
-        &lt;test name="TC-001"&gt;
-            &lt;step name="SEARCH" type="EXISTS" page="Search" /&gt;
-            &lt;step name="SEARCH" type="SET" page="Search" &gt;
-                &lt;parameter type="STATIC" value="xFramium"/&gt;
-            &lt;/step&gt;
-            &lt;step name="SEARCH_BUTTON" type="CLICK" page="Search" /&gt;
-            &lt;step name="RESULTS" type="WAIT_FOR" page="Search" /&gt;
-            &lt;step name="RESULT" type="CLICK" page="Search" /&gt;
-            &lt;step name="GET" type="WAIT_FOR" page="Home" /&gt;
-            &lt;step name="TITLE" type="EXISTS" page="Home" /&gt;
-            &lt;step name="GET" type="CLICK" page="Home" /&gt;
-        &lt;/test&gt;
-    &lt;/suite&gt;
-&lt;/xFramium&gt;
-                </pre>
+  &lt;cloud provider="LOCAL" name="partners" userName="ageary@morelandlabs.com" password="Spike123!" hostName="partners.perfectomobile.com" proxyHost="" grid="EMBEDDED" /&gt;
+  &lt;application provider="LOCAL" name="Google" appPackage="" bundleId="" url="http://www.google.com" /&gt;
+  &lt;devices provider="LOCAL"&gt;
+    &lt;device name="Firefox" browserName="firefox" manufacturer="Mozilla" model="Firefox" os="Windows" active="true" availableDevices="1" /&gt;
+    &lt;device name="Samsung S6" manufacturer="Samsung" model="Galaxy S6" os="Android" active="false" availableDevices="1" /&gt;
+    &lt;device name="iPhone 6 Plus" manufacturer="Apple" os="iOS" model="iPhone-6 Plus" active="false" availableDevices="1" /&gt;
+  &lt;/devices&gt;
+  &lt;driver type="WEB" outputFolder="test-output"&gt;
+    &lt;artifact type="EXECUTION_RECORD_HTML" /&gt;
+    &lt;artifact type="FAILURE_SOURCE" /&gt;
+    &lt;artifact type="DEVICE_LOG" /&gt;
+    &lt;artifact type="CONSOLE_LOG" /&gt;
+  &lt;/driver&gt;
+  &lt;model siteName="Google"&gt;
+    &lt;page name="Search"&gt;
+      &lt;element name="SEARCH" value="//input[@id='lst-ib']" descriptor="XPATH" /&gt;
+      &lt;element name="SEARCH_BUTTON" value="//button[@id='tsbb']/div|//div[@id='sblsbb']/button" descriptor="XPATH" /&gt;
+      &lt;element name="RESULTS" value="//*[@id='rso']/div/div" descriptor="XPATH" /&gt;
+      &lt;element name="RESULT" value="//*[@id='rso']/div/div[{resultIndex}]//a[contains( @href, '{urlToken}')]" descriptor="XPATH" /&gt;
+    &lt;/page&gt;
+    &lt;page name="Home"&gt;
+      &lt;element name="GET" value="//a[contains( text(), 'Git xFramium')]" descriptor="XPATH" /&gt;
+      &lt;element name="TITLE" value="xFramium" descriptor="V_TEXT" /&gt;
+    &lt;/page&gt;
+    &lt;page name="Git"&gt;
+      &lt;element name="TITLE" value="//strong/a[contains( text(), 'xframium-java' )]" descriptor="XPATH" /&gt;
+    &lt;/page&gt;
+  &lt;/model&gt;
+  &lt;suite provider="LOCAL"&gt;
+    &lt;test name="TC-001"&gt;
+      &lt;step name="SEARCH" type="EXISTS" page="Search" /&gt;
+      &lt;step name="SEARCH" type="SET" page="Search"&gt;
+        &lt;parameter type="STATIC" value="xFramium" /&gt;
+      &lt;/step&gt;
+      &lt;step name="SEARCH_BUTTON" type="CLICK" page="Search" /&gt;
+      &lt;step name="RESULTS" type="WAIT_FOR" page="Search" /&gt;
+      &lt;step name="RESULTS" type="EXISTS" page="Search" context="resultCount" /&gt;
+      &lt;!-- LOOP OVER THE RESULTS --&gt;
+      &lt;step name="LOOP_OVER_RESULTS" type="LOOP" page="Search"&gt;
+        &lt;parameter type="CONTEXT" value="resultCount" /&gt;
+        &lt;parameter type="STATIC" value="checkResult" /&gt;
+      &lt;/step&gt;
+
+      &lt;step name="GET" type="WAIT_FOR" page="Home" /&gt;
+      &lt;step name="GET" type="CLICK" page="Home" /&gt;
+    &lt;/test&gt;
+
+    &lt;function name="checkResult"&gt;
+      &lt;!-- CONDITIONAL LOGIC - ADD TO REPORT IF WE HAVE THE WRITE LINK AND CLICK ON IT --&gt;
+      &lt;step name="RESULT" type="EXISTS" page="Search" failureMode="IGNORE" context="textValue"&gt;
+        &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
+        &lt;token name="urlToken" type="STATIC" value="xframium.org" /&gt;
+
+        &lt;step name="ADD_TO_REPORT" type="REPORT" page="Search"&gt;
+          &lt;parameter type="STATIC" value="URL Link Name" /&gt;
+          &lt;parameter type="CONTEXT" value="textValue" /&gt;
+        &lt;/step&gt;
+        &lt;step name="RESULT" type="CLICK" page="Search"&gt;
+          &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
+          &lt;token name="urlToken" type="STATIC" value="xframium.org" /&gt;
+        &lt;/step&gt;
+        &lt;step name="BREAK" type="BREAK" page="Search" /&gt;
+      &lt;/step&gt;
+    &lt;/function&gt;
+  &lt;/suite&gt;
+&lt;/xFramium&gt;</pre>
             </div>
 
         </div>
