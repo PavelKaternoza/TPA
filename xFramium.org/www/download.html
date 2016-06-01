@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<style>
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+</style>
+<link rel="icon" href="../favicon.ico">
+<title>xFramium - Rapid Test Case Development</title>
+<!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="data:text/css;charset=utf-8," data-href="./css/bootstrap-theme.min.css" rel=stylesheet id=bs-theme-stylesheet>
+<link href="./css/docs.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./index.html">xFramium</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Getting Started <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/installation.html">Installation</a></li>
+                            <li><a href="/configuration.html">Configuration</a></li>
+                            <li><a href="/keyword.html">Writing tests using keywords</a></li>
+                            <li><a href="/java.html">Writing tests in Java</a></li>
+                            <li><a href="/download.html">Download xFramium</a></li>
+                        </ul></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Architectural Overview </a></li>
+                            <li><a href="/apidocs/index.html" target="_blank">API Reference</a></li>
+                            <li><a href="/extending.html">Extending the Framework</a></li>
+                        </ul></li>
+                    <li><a href="/sponsors.html">Sponsors</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class=bs-docs-header id=content tabindex=-1>
+        <div class="container">
+            <h1>xFramium Release</h1>
+            <p>xFramium monthly release notes and download information.  Get started today</p>
+        </div>
+    </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-3" role="complementary">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                    <ul class="nav bs-docs-sidenav">
+                        <li><a href="#source">Source</a></li>
+                        <li><a href=#rn>Release Notes</a>
+                            <ul class=nav>
+                                <li><a href="#1.0.0">1.0.0</a>
+                                <li><a href="#1.0.1">1.0.1</a>
+                            </ul></li>
+                        <li><a href=#maven>Maven</a>
+                            <ul class=nav>
+                                <li><a href="#m1.0.0">1.0.0</a></li>
+                                <li><a href="#m1.0.1">1.0.1</a></li>
+                                <li><a href="#mdev">Nightly Build</a></li>
+                            </ul></li>
+                        <li><a href=#download>Downloads</a>
+                            <ul class=nav>
+                                <li><a href="#dw1.0.0">1.0.0</a></li>
+                                <li><a href="#dw1.0.1">1.0.1</a></li>
+                            </ul></li>
+                    </ul>
+                    <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
+                </nav>
+            </div>
+            <div class=col-md-9 role=main>
+                <div class=bs-docs-section>
+                    <h1 id=rn class=page-header>Source</h1>
+                    <p>xFramium is open source and hosted on GitHub.  https://github.com/xframium/xframium-java.git</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="https://github.com/xframium/xframium-java" role="button">Git xFramium &raquo;</a>
+                    </p>
+                    <h1 id=rn class=page-header>Releases</h1>
+                    <p>
+                        xFramium is built the first weekend of each month. The current stable build of xFramium is <a hRef="#1.0.1">1.0.1</a>. If you are feeling brave you can always refer to the development snapshot as well. The current development
+                        snapshot is <a href="#mdev">1.0.2-SNAPSHOT</a>.
+                    </p>
+                    <h2 id="#1.0.0">1.0.0</h2>
+                    <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
+                        <h4>
+                            <i>Aries</i>
+                        </h4>
+                        5/1/2016
+                        <ul>
+                            <li>The initial public release of xFramium. While it was in use for 18 months before hand this was the first public release of the framework</li>
+                            <li>Added multi-device support. A single script can now control multiple devices for chained actions</li>
+                            <li>Added gesturing support for Perfecto and Appium</li>
+                            <li>Added tiered data structures to allow for data trees per record</li>
+                            <li>Added the tagNames filter for test steps to allow steps to be skipped</li>
+                            <li>Added Perfecto REST API support</li>
+                        </ul>
+                    </div>
+                    <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
+                        <h4>
+                            <i>Chronos</i>
+                        </h4>
+                        6/4/2016
+                        <ul>
+                            <li>Reorganization of package structure</li>
+                            <li>Added checks for page object not appearing in the XML model.  </li>
+                            <li>Added checks for validating all XPATH statements - The test will error out at the begining if invalid XPATH statements are found</li>
+                            <li>Added database backed application registry</li>
+                            <li>Added database backed cloud registry</li>
+                            <li>Added database backed device registry</li>
+                            <li>Added database backed page data</li>
+                            <li>Added database backed object registry</li>
+                            <li>Added database backed test definitions</li>
+                            <li>Added a simple else clause.  The else clause can be added to a step to execute on failure</li>
+                            <li>Pulled latest selenium JARS</li>
+                            <li>Added context variable for looping for more loop control</li>
+                            <li>XML configuration option added for xframiumn-driver.  Added the ability for a self contained test for POC and small tests</li>
+                            <li>Press gestures added relative to element by percentages</li>
+                            <li>Configuration files are not located relative to the location of the driver configuration files</li>
+                            <li>output files are now relative to the driver configuration file</li>
+                            <li>Added the property object descriptor - this is a simplified descriptor finding elements using a simple property reference</li>
+                            <li>Added the ALIGN keyword to allow for alignment checks to various elements in relation to other elements on teh page</li>
+                            <li>Added the GUI Launcher</li>
+                            <li>Various documentation additions and bug fixes</li>
+                        </ul>
+                    </div>
+                    <h1 id=maven class=page-header>Maven Information</h1>
+                    <p>xFramium is available in our Maven repository located at www.xframium.org/repository</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;repository&gt;
+  &lt;id&gt;xframium&lt;/id&gt;
+  &lt;name&gt;xFramium&lt;/name&gt;
+  &lt;url&gt;http://www.xframium.org/repository&lt;/url&gt;
+  &lt;snapshots&gt;
+    &lt;enabled&gt;true&lt;/enabled&gt;
+    &lt;updatePolicy&gt;always&lt;/updatePolicy&gt;
+  &lt;/snapshots&gt;
+&lt;/repository&gt;</code>
+                        </pre>
+                    </figure>
+                    <h2 id="#m1.0.0">1.0.0</h2>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;dependency&gt;
+  &lt;groupId&gt;org.xframium&lt;/groupId&gt;
+  &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code>
+                        </pre>
+                    </figure>
+                    <h2 id="#m1.0.1">1.0.1</h2>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;dependency&gt;
+  &lt;groupId&gt;org.xframium&lt;/groupId&gt;
+  &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
+  &lt;version&gt;1.0.1&lt;/version&gt;
+&lt;/dependency&gt;</code>
+                        </pre>
+                    </figure>
+                    <h2 id="#mdev">Nightly Build</h2>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;dependency&gt;
+  &lt;groupId&gt;org.xframium&lt;/groupId&gt;
+  &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
+  &lt;version&gt;1.0.2-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    <h1 id=download class=page-header>Downloads</h1>
+                    <h2 id="#dw1.0.0">1.0.0</h2>
+                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.0/xframium-java-1.0.0.jar">Binaries</a></p>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.0/xframium-java-1.0.0-sources.jar">Source</a></p>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.0/xframium-java-1.0.0-javadoc.jar">Documentation</a></p>
+                    </div>
+                    <h2 id="#dw1.0.1">1.0.1</h2>
+                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1.jar">Binaries</a></p>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1-sources.jar">Source</a></p>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1-javadoc.jar">Documentation</a></p>
+                    </div>
+                    <h2 id="#dwdev">Nightly</h2>
+                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2-SNAPSHOT/xframium-java-1.0.2-SNAPSHOT.jar">Binaries</a></p>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2-SNAPSHOT/xframium-java-1.0.2-SNAPSHOT-sources.jar">Source</a></p>
+                        <p><a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2-SNAPSHOT/xframium-java-1.0.2-SNAPSHOT-javadoc.jar">Documentation</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>xFramium - Rapid Test Case Development</p>
+        </footer>
+    </div>
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src=./js/docs.min.js></script>
+</body>
+</html>
