@@ -104,6 +104,11 @@ body {
                                 <li><a href=#kw-call>CALL</a></li>
                                 <li><a href=#kw-click>CLICK</a></li>
                                 <li><a href=#kw-compare>COMPARE</a></li>
+                                <li><a href=#kw-dump>DUMP_STATE</a></li>
+                                <li><a href=#kw-else>ELSE</a></li>
+                                <li><a href=#kw-execjs>EXEC_JS</a></li>
+                                <li><a href=#kw-fork>FORK</a></li>
+                                
                                 <li><a href=#kw-loop>LOOP</a></li>
                                 <li><a href=#kw-checkcolor>VERIFY_COLOR</a></li>
                             </ul></li>
@@ -947,10 +952,87 @@ body {
                         </pre>
                     </figure>
                     
+                    <h2 id="kw-dump">DUMP_STATE</h2>
+                    <p>
+                        This keyword takes a snapshot of the device and writes it to disk.  If the EXECUTION_RECORD_HTML Artifact type is active then this screen shot will be added to the HTML report.  In addition to the screenshot the current state of the application is captured in XML form.  This will be written to disk and a link to the file will be dumped out to the report is well.  The output can be used to validate XPATH statements as it is a representation fo the device at that poitn in time. 
+                    </p>
+
+                    <p>Dump the current state of the application</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="checkState" page="LOGIN" type="DUMP_STATE"/&gt;</code>
+                        </pre>
+                    </figure>
                     
+                    <h2 id="kw-else">ELSE</h2>
+                    <p>
+                        Any step can contain sub steps that are executed upon success of the parent step.  The ELSE keyword is a special step that is executed only if the parent step failed.  The special step will contain a list of steps to execute in the event that the ELSE clause is triggered. 
+                    </p>
+                    <p>This example will check if the RESUILT element exists on the Search page.  IF not, it will add a record to the report in the else clause</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="RESULT" type="EXISTS" page="Search" failureMode="IGNORE" context="textValue"&gt;
+  &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
+  &lt;token name="urlToken" type="STATIC" value="Rapid Test Case Development" /&gt;
+  &lt;step name="RESULT" type="CLICK" page="Search"&gt;
+    &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
+    &lt;token name="urlToken" type="STATIC" value="Rapid Test Case Development" /&gt;
+  &lt;/step&gt;
+  &lt;step name="BREAK" type="BREAK" page="Search" /&gt;
+        
+  &lt;step name="elseCondition" type="ELSE" page="Search"&gt;
+    &lt;step name="ADD_TO_REPORT" type="REPORT" page="Search"&gt;
+      &lt;parameter type="STATIC" value="Result Index" /&gt;
+      &lt;parameter type="CONTEXT" value="_LOOP.INDEX" /&gt;
+    &lt;/step&gt;
+  &lt;/step&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
                     
+
+                    <h2 id="kw-execjs">EXEC_JS</h2>
+                    <p>
+                        The EXEC_JS keyword allows for JavaScript code to be passed and executed given that the communication method supports JavascriptExecutor.  The code will be passed through and executed  
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>The only parameter passed to the function is the actual escaped Javascript code to execute</p>
+                        <ol>
+                            <li>Javascript code</li>
+                        </ol>
+                    </div>
+                    <p>This example will execute the alert() function and make it appear on a website that is under test</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="USER_ENV" page="LOGIN" type="EXEC_JS"&gt;
+  &lt;parameter type="STATIC" value="alert('xFramium!');" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
                     
-                    
+                    <h2 id="kw-execjs">FORK</h2>
+                    <p>
+                        For is a complicated keyword used to define locate multiple elements in parallel and select the appropriate path depending on the located element.  Each parameter specified represents an element name and there must be a matching step defined.  These steps must be defined in the same order as the elements following the last parameter.  Forking is used mainly when script performance is an issue with multiple checks to determine that direction to go.  The FORK will allow all checks to occur simultaneously and the correct path selected without a lot of conditional logic   
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>Each parameter represents an element name to locate in parallel on the page specified in the FORK step.</p>
+                        <ol>
+                            <li>The name of the element to find</li>
+                        </ol>
+                    </div>
+                    <p>This example will assume a search was completed and will allow the script to check for results, no results or a search error and call the correct function</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="FORK_ONE" type="FORK" page="Search&gt;
+  &lt;parameter type="STATIC" value="RESULT" /&gt;
+  &lt;parameter type="STATIC" value="NO_RESULT" /&gt;
+  &lt;parameter type="STATIC" value="ERROR_MESSAGE" /&gt;
+  &lt;step name="handleResult" type="CALL" page="Search" /&gt;
+  &lt;step name="handleNoResult" type="CALL" page="Search" /&gt;
+  &lt;step name="handleError" type="CALL" page="Search" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
                     
                     <h2 id="kw-checkcolor">VERIFY_COLOR</h2>
                     <p>
