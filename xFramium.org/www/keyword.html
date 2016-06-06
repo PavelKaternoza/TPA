@@ -108,6 +108,7 @@ body {
                                 <li><a href=#kw-else>ELSE</a></li>
                                 <li><a href=#kw-execjs>EXEC_JS</a></li>
                                 <li><a href=#kw-fork>FORK</a></li>
+                                <li><a href=#kw-gesture>GESTURE</a></li>
                                 
                                 <li><a href=#kw-loop>LOOP</a></li>
                                 <li><a href=#kw-checkcolor>VERIFY_COLOR</a></li>
@@ -695,11 +696,23 @@ body {
                     </div>
                     <h3 id=step-ex>Examples</h3>
                     <figure class=highlight>
-                        <textarea cols="80">
-<test name="allen">
-    <step xxxx />
-</test>         
-            </textarea>
+                        <pre><code>&lt;test name="TC-001"&gt;
+  &lt;step name="SEARCH" type="EXISTS" page="Search" /&gt;
+  &lt;step name="SEARCH" type="SET" page="Search"&gt;
+    &lt;parameter type="STATIC" value="xFramium" /&gt;
+  &lt;/step&gt;
+  &lt;step name="SEARCH_BUTTON" type="CLICK" page="Search" /&gt;
+  &lt;step name="RESULTS" type="WAIT_FOR" page="Search" /&gt;
+  &lt;step name="RESULTS" type="EXISTS" page="Search" context="resultCount" /&gt;
+  &lt;!-- LOOP OVER THE RESULTS --&gt;
+  &lt;step name="LOOP_OVER_RESULTS" type="LOOP" page="Search"&gt;
+    &lt;parameter type="CONTEXT" value="resultCount" /&gt;
+    &lt;parameter type="STATIC" value="checkResult" /&gt;
+  &lt;/step&gt;
+
+  &lt;step name="GET" type="WAIT_FOR" page="Home" /&gt;
+  &lt;step name="GET" type="CLICK" page="Home" /&gt;
+&lt;/test&gt;</code></pre>
                     </figure>
                     <h1 id=kw class=page-header>Keywords</h1>
                     <p>There are many useful Keywords that are built into the system</p>
@@ -858,7 +871,7 @@ body {
                         </pre>
                     </figure>
                     
-                    <h2 id="kw-break">CACHE</h2>
+                    <h2 id="kw-cache">CACHE</h2>
                     <p>
                         The cache keyword is a simple but powerful keyword that allows you to control page object caching dynamically in a script.  page object caching pulls the current state of the device and build a local object tree allowing for all calls to go against this cached tree instead of a round trip to the remote device.  In instances of heavy read (many EXISTS statements) you will see a large improvement in speed.  In the event that a call hits the cache but the value does not exist the cache management system will be disabled and that call along with future calls will go against the remote device.  It is recommended to turn caching on and off as needed for areas of high read.  Each call to the cache keyword will invert its state so if you reference the cache keyword when caching is on it will turn it off an vice versa.
                     </p>
@@ -876,7 +889,7 @@ body {
                     </figure>
                     
                     
-                    <h2 id="kw-attribute">CALL</h2>
+                    <h2 id="kw-call">CALL</h2>
                     <p>
                         The Call keyword allows the developer to execute a function or test defined in XML.  The test or function will inherit any dataProvider and dataDriverdata that was provided to the calling test/function.  If a function is called and the function defined a dataProvider that did not exist on the calling test/functionthen it will be added during execution.  It is possible to override the name of a dataProvider/dataDriver using a parameter as defined below.  This allows a function to use a single dataProvider name while other calling function may use dataProvider/dataDrivers with different names. 
                     </p>
@@ -1010,7 +1023,7 @@ body {
                         </pre>
                     </figure>
                     
-                    <h2 id="kw-execjs">FORK</h2>
+                    <h2 id="kw-fork">FORK</h2>
                     <p>
                         For is a complicated keyword used to define locate multiple elements in parallel and select the appropriate path depending on the located element.  Each parameter specified represents an element name and there must be a matching step defined.  These steps must be defined in the same order as the elements following the last parameter.  Forking is used mainly when script performance is an issue with multiple checks to determine that direction to go.  The FORK will allow all checks to occur simultaneously and the correct path selected without a lot of conditional logic   
                     </p>
@@ -1030,6 +1043,128 @@ body {
   &lt;step name="handleResult" type="CALL" page="Search" /&gt;
   &lt;step name="handleNoResult" type="CALL" page="Search" /&gt;
   &lt;step name="handleError" type="CALL" page="Search" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <h2 id="kw-gesture">GESTURE</h2>
+                    <p>
+                        Allows for integration to the Gesturing library to execute gestures on a mobile device.  A gesture is a movement on the device screen such as a swipe or a pinch.   
+                    </p>
+                    <div class="bs-callout bs-callout-warning" id=callout-scrollspy-invisible-targets>
+                        <p>Note:  The NAME attribute when used in a GESTURE step specifies the name of the GESTURE to execute.  If the NAME contains a period then this indicates that this gesture will 
+                        be executed on a named element with the name after the period.  When an element is specified then the GESTURE positions are relative to the element so 50,50 will click in the middle of an element on a PRESS.</p>
+                        <p>[GESTURE] - Just the name using the coordinates and dimensions of the entire screen</p>
+                        <p>[GESTURE].[ELEMENT_NAME] - The name using the coordinates and dimensions of the specified element</p>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>PINCH</b> The PINCH will start at the top left coordinate and the bottom right coordinate and meet in the middle</p>
+                        <ol>
+                            <li>The X of the top left point</li>
+                            <li>The Y of the top left point</li>
+                            <li>The X of the bottom right point</li>
+                            <li>The Y of the bottom right point</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>ZOOM</b> The PINCH will start at the middle and move to \the top left coordinate and the bottom right coordinate</p>
+                        <ol>
+                            <li>The X of the top left point</li>
+                            <li>The Y of the top left point</li>
+                            <li>The X of the bottom right point</li>
+                            <li>The Y of the bottom right point</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>SWIPE</b> Single Parameter</p>
+                        <ol>
+                            <li>UP, DOWN, LEFT, or RIGHT - Indicates a swipe of one page length</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>SWIPE</b> 2 Parameters</p>
+                        <ol>
+                            <li>X,Y Percentage point to start - each value between 1 and 100 - do not add the Percentage sign</li>
+                            <li>X,Y Percentage point to end - each value between 1 and 100 - do not add the Percentage sign</li>
+                        </ol>
+                    </div>
+  
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>PRESS</b> Single Parameter</p>
+                        <ol>
+                            <li>X,Y Percentage point to press - value between 1 and 100 - do not add the Percentage sign</li>
+                        </ol>
+                    </div>
+  
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>PRESS</b> 2 Parameters</p>
+                        <ol>
+                            <li>X,Y Percentage point to press - value between 1 and 100 - do not add the Percentage sign</li>
+                            <li>The amount of times to press</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>ROTATE</b></p>
+                        <ol>
+                            <li>PORTRAIT or LANDSCAPE</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>KEYPRESS</b> A special case the presses a key</p>
+                        <ol>
+                            <li>The Integer value representing the keycode to press</li>
+                        </ol>
+                    </div>
+                    
+                    <p>Executes 2 PRESS's 2% over and 99% down of the element PLAYER</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="PRESS.PLAYER" page="SHOW"&gt;
+  &lt;parameter type="STATIC" value="2,99" /&gt;
+  &lt;parameter type="STATIC" value="2" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>Executes a PRESS 2% over and 99% down on the screen</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="PRESS" page="SHOW"&gt;
+  &lt;parameter type="STATIC" value="2,99" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>Executes a SWIPE UP on the screen one page</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="SWIPE" page="SHOW"&gt;
+  &lt;parameter type="STATIC" value="UP" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>Executes a SWIPE UP on the 50% of the way</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="SWIPE" page="SHOW"&gt;
+  &lt;parameter type="STATIC" value="50,99" /&gt;
+  &lt;parameter type="STATIC" value="50,50" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>Executes a SWIPE UP on the PICKER element</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="SWIPE.PICKER" page="SHOW"&gt;
+  &lt;parameter type="STATIC" value="UP" /&gt;
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
