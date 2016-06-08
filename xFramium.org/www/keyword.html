@@ -96,6 +96,7 @@ body {
                             <ul class=nav>
                                 <li><a href=#kw-addcookie>ADD_COOKIE</a></li>
                                 <li><a href=#kw-adddevice>ADD_DEVICE</a></li>
+                                <li><a href=#kw-alert>ALERT</a></li>
                                 <li><a href=#kw-align>ALIGN</a></li>
                                 <li><a href=#kw-at>AT</a></li>
                                 <li><a href=#kw-attribute>ATTRIBUTE</a></li>
@@ -773,25 +774,44 @@ body {
 </test>
                         </textarea>
                     </figure>
-                    <h2 id="kw-align">ALIGN</h2>
-                    <p>The align keyword allows your to verify horizontal or vertical align of the many element on the screen in relation to the named anchor element. You could validate the individual alignment properties of each specified element. On
-                        single anchor element can be used to verify the positions of many other elements and alignment options</p>
+                    
+                    <h2 id="kw-alert">ALERT</h2>
+                    <p>The ALERT keyword allows for handling of JavaScript pop up messages on web applications.  Test scripts can interact with and dismiss alerts with this keyword.  If the alert dialog is not present then this will return a failure</p>
+                    <div class="bs-callout bs-callout-warning" id=callout-scrollspy-invisible-targets>
+                        <p>Note:  The NAME attribute when used in a ALERT step type specifies the ALERT action to take.  The alert actions are defined below</p>
+                    </div>
+                    
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p>You can pass any number parameters here. Each parameter will represent the element to compare to and which alignment property to validate</p>
+                        <p><b>ACCEPT</b> Clicks the OK/Accept button on the pop up.  This takes not parameters</p>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>CANCEL</b> Clicks the Cancel/Close button on the pop up.  This takes not parameters</p>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p><b>SEND_KEYS</b> Sends the specified text to the alert pop up and clicks the OK/Accept button.</p>
                         <ol>
-                            <li>Each parameter will be formatted as [name]=[alignment property]. When comparing the alignment property you can optionally specify a maximum pixel deviation in parenthesis</li>
+                            <li>The text to send to the Alert pop up</li>
                         </ol>
                     </div>
-                    <p>Extract the USER_NAME object and ensure that the PASSWORD field is aligned exactly the same on the right and left side. Then make sure the BUTTON is close to the LEFT side</p>
+
+                    <p>Click the OK button on a pop up window</p>
                     <figure class=highlight>
                         <pre>
-                            <code class=language-xml data-lang=xml>&lt;step name="USER_NAME" page="LOGIN" type="ALIGN"&gt;
-  &lt;parameter type="STATIC" value="LEFT=PASSWORD" /&gt;
-  &lt;parameter type="STATIC" value="RIGHT=PASSWORD" /&gt;
-  &lt;parameter type="STATIC" value="RIGHT=BUTTON(50)" /&gt;
+                            <code class=language-xml data-lang=xml>&lt;step name="ACCEPT" page="LOGIN" type="ALERT" /&gt;</code>
+                        </pre>
+                    </figure>
+                    <p>Sends the user name <i>userOne</i> and clicks the OK button</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEND_KEYS" page="LOGIN" type="ALERT&gt;
+  &lt;parameter type="STATIC" value="userOne" /&gt;
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
+                    
+                    
                     <h2 id="kw-at">AT</h2>
                     <p>The AT keyword allows you to extract the current position and dimension of the specified element and store that information in CONTEXT variables for later use. The element does not validate the position however it will validate
                         the existence of the element. If a CONTEXT name is specified, 4 context variables will be created as specified below. Note is context name is NOT specified then the element name will be used in place of the context name<ul>
@@ -816,6 +836,26 @@ body {
                         </pre>
                     </figure>
                     
+                    
+                    <h2 id="kw-align">ALIGN</h2>
+                    <p>The align keyword allows your to verify horizontal or vertical align of the many element on the screen in relation to the named anchor element. You could validate the individual alignment properties of each specified element. On
+                        single anchor element can be used to verify the positions of many other elements and alignment options</p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>You can pass any number parameters here. Each parameter will represent the element to compare to and which alignment property to validate</p>
+                        <ol>
+                            <li>Each parameter will be formatted as [name]=[alignment property]. When comparing the alignment property you can optionally specify a maximum pixel deviation in parenthesis</li>
+                        </ol>
+                    </div>
+                    <p>Extract the USER_NAME object and ensure that the PASSWORD field is aligned exactly the same on the right and left side. Then make sure the BUTTON is close to the LEFT side</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="USER_NAME" page="LOGIN" type="ALIGN"&gt;
+  &lt;parameter type="STATIC" value="LEFT=PASSWORD" /&gt;
+  &lt;parameter type="STATIC" value="RIGHT=PASSWORD" /&gt;
+  &lt;parameter type="STATIC" value="RIGHT=BUTTON(50)" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
                     
                     <h2 id="kw-attribute">ATTRIBUTE</h2>
                     <p>

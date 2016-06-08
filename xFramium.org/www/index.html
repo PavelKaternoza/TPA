@@ -97,92 +97,90 @@ body {
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <b>First, identify pages and elements using Xpath, HTML properties, optical character recognition, image identification, etc.</b>
-                <pre class="code">
-&lt;model siteName="Google"&gt;
-  &lt;page name="Search"&gt;
-    &lt;element name="SEARCH" value="//input[@id='lst-ib']" descriptor="XPATH" /&gt;
-    &lt;element name="SEARCH_BUTTON" value="//button[@id='tsbb']/div|//div[@id='sblsbb']/button" descriptor="XPATH" /&gt;
-    &lt;element name="RESULTS" value="//*[@id='rso']/div/div" descriptor="XPATH" /&gt;
-    &lt;element name="RESULT" value="//*[@id='rso']/div/div[{resultIndex}]//a[contains( @href, '{urlToken}')]" descriptor="XPATH" /&gt;
-  &lt;/page&gt;
-  &lt;page name="Home"&gt;
-    &lt;element name="GET" value="//a[contains( text(), 'Git xFramium')]" descriptor="XPATH" /&gt;
-    &lt;element name="TITLE" value="xFramium" descriptor="V_TEXT" /&gt;
-  &lt;/page&gt;
-  &lt;page name="Git"&gt;
-    &lt;element name="TITLE" value="//strong/a[contains( text(), 'xframium-java' )]" descriptor="XPATH" /&gt;
-  &lt;/page&gt;
-&lt;/model&gt;</pre>
+                <b>Define pages and elements using Xpath, HTML properties, optical character recognition, image identification, etc.</b>
+                <pre class="code">&lt;<span class="tag">model</span> <span class="attribute">siteName</span>=<span class="value">"Google"</span>&gt;
+  &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Search"</span>&gt;
+    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"SEARCH"</span> <span class="attribute">value</span>=<span class="value">"//input[@id='lst-ib']"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"SEARCH_BUTTON"</span> <span class="attribute">value</span>=<span class="value">"//button[@id='tsbb']/div|//div[@id='sblsbb']/button"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"RESULTS"</span> <span class="attribute">value</span>=<span class="value">"//*[@id='rso']/div/div"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"RESULT"</span> <span class="attribute">value</span>=<span class="value">"//*[@id='rso']/div/div[{resultIndex}]//a[contains( @href, '{urlToken}')]"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+  &lt;<span class="tag">/page</span>&gt;
+  &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Home"</span>&gt;
+    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">value</span>=<span class="value">"//a[contains( text(), 'Git xFramium')]"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"TITLE"</span> <span class="attribute">value</span>=<span class="value">"xFramium"</span> <span class="attribute">descriptor</span>=<span class="value">"V_TEXT"</span> /&gt;
+  &lt;<span class="tag">/page</span>&gt;
+  &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Git"</span>&gt;
+    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"TITLE"</span> <span class="attribute">value</span>=<span class="value">"//strong/a[contains( text(), 'xframium-java' )]"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+  &lt;<span class="tag">/page</span>&gt;
+&lt;<span class="tag">/model</span>&gt;</pre>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <b>Sample of XML keyword-driven test (no coding needed)</b>
-                <pre class="code">
-&lt;test name="TC-001"&gt;
-  &lt;step name="SEARCH" type="EXISTS" page="Search" /&gt;
-  &lt;step name="SEARCH" type="SET" page="Search"&gt;
-    &lt;parameter type="STATIC" value="xFramium" /&gt;
-  &lt;/step&gt;
-  &lt;step name="SEARCH_BUTTON" type="CLICK" page="Search" /&gt;
-  &lt;step name="RESULTS" type="WAIT_FOR" page="Search" /&gt;
-  &lt;step name="RESULTS" type="EXISTS" page="Search" context="resultCount" /&gt;
-  &lt;!-- LOOP OVER THE RESULTS --&gt;
-  &lt;step name="LOOP_OVER_RESULTS" type="LOOP" page="Search"&gt;
-    &lt;parameter type="CONTEXT" value="resultCount" /&gt;
-    &lt;parameter type="STATIC" value="checkResult" /&gt;
-  &lt;/step&gt;
-
-  &lt;step name="GET" type="WAIT_FOR" page="Home" /&gt;
-  &lt;step name="GET" type="CLICK" page="Home" /&gt;
-&lt;/test&gt;
-
-&lt;function name="checkResult"&gt;
-  &lt;!-- CONDITIONAL LOGIC - ADD TO REPORT IF WE HAVE THE WRITE LINK AND CLICK ON IT --&gt;
-  &lt;step name="RESULT" type="EXISTS" page="Search" failureMode="IGNORE" context="textValue"&gt;
-    &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
-    &lt;token name="urlToken" type="STATIC" value="xframium.org" /&gt;
-     &lt;step name="ADD_TO_REPORT" type="REPORT" page="Search"&gt;
-      &lt;parameter type="STATIC" value="URL Link Name" /&gt;
-      &lt;parameter type="CONTEXT" value="textValue" /&gt;
-    &lt;/step&gt;
-    &lt;step name="RESULT" type="CLICK" page="Search"&gt;
-      &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
-      &lt;token name="urlToken" type="STATIC" value="xframium.org" /&gt;
-    &lt;/step&gt;
-    &lt;step name="BREAK" type="BREAK" page="Search" /&gt;
-  &lt;/step&gt;
-&lt;/function&gt;
+                <pre class="code">&lt;<span class="tag">test</span> <span class="attribute">name</span>=<span class="value">"Search Web"</span>&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"SEARCH"</span> <span class="attribute">type</span>=<span class="value">"EXISTS"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"SEARCH"</span> <span class="attribute">type</span>=<span class="value">"SET"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
+    &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"xFramium"</span> /&gt;
+  &lt;<span class="tag">/step</span>&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"SEARCH_BUTTON"</span> <span class="attribute">type</span>=<span class="value">"CLICK"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULTS"</span> <span class="attribute">type</span>=<span class="value">"WAIT_FOR"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULTS"</span> <span class="attribute">type</span>=<span class="value">"EXISTS"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> <span class="attribute">context</span>=<span class="value">"resultCount"</span> /&gt;
+  &lt;!-- Loop through the results --&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"LOOP_OVER_RESULTS"</span> <span class="attribute">type</span>=<span class="value">"LOOP"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
+    &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"resultCount"</span> /&gt;
+    &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"checkResult"</span> /&gt;
+  &lt;<span class="tag">/step</span>&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">type</span>=<span class="value">"WAIT_FOR"</span> <span class="attribute">page</span>=<span class="value">"Home"</span> /&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">type</span>=<span class="value">"CLICK"</span> <span class="attribute">page</span>=<span class="value">"Home"</span> /&gt;
+&lt;<span class="tag">/test</span>&gt;
+&lt;<span class="tag">function</span> <span class="attribute">name</span>=<span class="value">"checkResult"</span>&gt;
+  &lt;!-- If the link is correct, add it to report then click on it --&gt;
+  &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULT"</span> <span class="attribute">type</span>=<span class="value">"EXISTS"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> <span class="attribute">failureMode</span>=<span class="value">"IGNORE"</span> <span class="attribute">context</span>=<span class="value">"textValue"</span>&gt;
+    &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"resultIndex"</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"_LOOP.INDEX"</span> /&gt;
+    &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"urlToken"</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"xframium.org"</span> /&gt;
+     &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"ADD_TO_REPORT"</span> <span class="attribute">type</span>=<span class="value">"REPORT"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
+      &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"URL Link Name"</span> /&gt;
+      &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"textValue"</span> /&gt;
+    &lt;<span class="tag">/step</span>&gt;
+    &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULT"</span> <span class="attribute">type</span>=<span class="value">"CLICK"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
+      &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"resultIndex"</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"_LOOP.INDEX"</span> /&gt;
+      &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"urlToken"</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"xframium.org"</span> /&gt;
+    &lt;<span class="tag">/step</span>&gt;
+    &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"BREAK"</span> <span class="attribute">type</span>=<span class="value">"BREAK"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
+  &lt;<span class="tag">/step</span>&gt;
+&lt;<span class="tag">/function</span>&gt;
 </pre>
             </div>
             <div class="col-md-6">
                 <b>The same test case in Java</b>
-                <pre class="code">
-@Test( dataProvider = "deviceManager")
-public void testSearchPage( TestName testName ) throws Exception
+                <pre class="code" style="color:white;">
+@Test(dataProvider=<span class="value">"deviceManager"</span>)
+<span class="tag">public void</span> testSearchPage(<span class="tag">TestName</span> testName) throws <span class="tag">Exception</span>
 {
-    //
-    // Gets a proxied instance to your page implementation
-    //
-    Search searchPage = (Search) PageManager.instance().createPage( Search.class, getWebDriver() );
-    
-    searchPage.getElement( Search.SEARCH ).setValue( "xFramium" );
-    searchPage.getElement( Search.SEARCH_BUTTON ).click();        
-    searchPage.getElement( Search.RESULTS ).waitFor( 30, TimeUnit.SECONDS, WAIT_FOR.VISIBLE, "" );
-    for ( int i=0; i&lt;searchPage.getElement( Search.RESULTS ).getCount(); i++ )
+  <span class="comment">// Get a proxied instance to your page implementation</span>
+  <span class="tag">Search</span> searchPage = (<span class="tag">Search</span>) <span class="tag">PageManager</span>.instance().createPage(<span class="tag">Search</span>.class, getWebDriver());
+
+  searchPage.getElement(<span class="tag">Search</span>.SEARCH).setValue(<span class="value">"xFramium"</span>);
+  searchPage.getElement(<span class="tag">Search</span>.SEARCH_BUTTON).click();        
+  searchPage.getElement(<span class="tag">Search</span>.RESULTS).waitFor(30, <span class="tag">TimeUnit</span>.SECONDS, WAIT_FOR.VISIBLE, <span class="value">""</span>);
+
+  <span class="comment">// Loop through results</span>
+  <span class="tag">for</span> (<span class="tag">int</span> i=0; i&lt;searchPage.getElement(<span class="tag">Search</span>.RESULTS).getCount(); i++)
+  {
+    <span class="comment">// If link is correct, add to report and click on it</span>
+    <span class="tag">if</span> (searchPage.getElement(<span class="tag">Search</span>.RESULTS)[i].getAttribute(<span class="value">"href"</span>).contains(<span class="value">"xframium.org"</span>))
     {
-        if ( searchPage.getElement( Search.RESULTS )[ i ].getAttribute( "href" ).contains( "xframium.org" ) )
-        {
-            searchPage.getElement( Search.RESULT ).click();
-            continue;
-        }    
-    }
-    
-    searchPage.getElement( Search.GET ).waitFor( 30, TimeUnit.SECONDS, WAIT_FOR.VISIBLE, "" );
-    searchPage.getElement( Search.TITLE ).isPresent();
-    searchPage.getElement( Search.GET ).click();
-}</pre>
+      searchPage.getElement(<span class="tag">Search</span>.RESULT).click();
+      <span class="tag">continue</span>;
+    }    
+  }
+
+  searchPage.getElement(<span class="tag">Search</span>.GET).waitFor(30, <span class="tag">TimeUnit</span>.SECONDS, WAIT_FOR.VISIBLE, <span class="value">""</span>);
+  searchPage.getElement(<span class="tag">Search</span>.TITLE).isPresent();
+  searchPage.getElement(<span class="tag">Search</span>.GET).click();
+}
+</pre>
             </div>
         </div>
     </div>
