@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xFramium xmlns="http://www.xframium.org/xFramiumDriver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xframium.org/xFramiumDriver http://www.xframium.org/xsd/xFramiumDriver.xsd">
+  <cloud provider="LOCAL" name="partners" userName="ageary@morelandlabs.com" password="Spike123!" hostName="partners.perfectomobile.com" proxyHost="" grid="EMBEDDED" />
+  <application provider="LOCAL" name="Google" appPackage="" bundleId="" url="http://www.google.com" />
+  
+  <devices provider="LOCAL">
+    <device name="Firefox" browserName="firefox" manufacturer="Mozilla" model="Firefox"  os="Windows" active="true" availableDevices="1"  />
+    <device name="Samsung S6" manufacturer="Samsung" model="Galaxy S5" os="Android" active="false" availableDevices="1" />
+    <device name="iPhone 6S" manufacturer="Apple" os="iOS" model="iPhone-6S" active="false" availableDevices="1" />
+    <device name="iPhone 6 Plus" manufacturer="Apple" os="iOS" model="iPhone-6Plus" active="false" availableDevices="1" />
+  </devices>
+  <driver type="WEB" outputFolder="test-output" personas="EMPTY">
+    <artifact type="EXECUTION_RECORD_HTML" />
+    <artifact type="FAILURE_SOURCE" />
+    <artifact type="DEVICE_LOG" />
+    <artifact type="CONSOLE_LOG" />
+    <artifact type="EXECUTION_REPORT_HTML" />
+  </driver>
+  
+  <model siteName="Google">
+    <page name="Search"> 
+      <element name="SEARCH" value="//input[@id='lst-ib']" descriptor="XPATH" />
+      <element name="SEARCH_BUTTON" value="//button[@id='tsbb']/div|//div[@id='sblsbb']/button" descriptor="XPATH" />
+      <element name="RESULTS" value="//*[@id='rso']/div/div" descriptor="XPATH" />
+      <element name="RESULT" value="//*[@id='rso']/div/div[{resultIndex}]//a[contains( text(), '{urlToken}')]" descriptor="XPATH" />
+    </page>
+    <page name="Home">
+      <element name="GET" value="//a[contains( text(), 'Get xFramium')]" descriptor="XPATH" />
+      <element name="TITLE" value="xFramium" descriptor="V_TEXT" />
+      <element name="GIT" value="//a[contains( text(), 'Git xFramium')]" descriptor="XPATH" />
+    </page>
+    <page name="Git">
+      <element name="TITLE" value="//strong/a[contains( text(), 'xframium-java' )]" descriptor="XPATH" />
+      <element name="SIGN_IN" value="//a[text()='Sign in']" descriptor="XPATH" />
+      <element name="USERNAME" value="//*[@id='login_field']" descriptor="XPATH" />
+      <element name="PASSWORD" value="//*[@id='password']" descriptor="XPATH" />
+      <element name="SUBMIT" value="//input[@type='submit']" descriptor="XPATH" />
+      <element name="USER_LINK" value="//*[@id='user-links']" descriptor="XPATH" />
+    </page>
+  </model>
+  
+  <suite provider="LOCAL">
+    <test name="TC-001 Search" active="true">
+      <step name="SEARCH" type="EXISTS" page="Search" />
+      <step name="SEARCH" type="SET" page="Search">
+        <parameter type="STATIC" value="Download xFramium" />
+      </step>
+      <step name="checkPoint" type="STATE" page="Search" />
+      <step name="SEARCH_BUTTON" type="CLICK" page="Search" />
+      <step name="RESULTS" type="WAIT_FOR" page="Search" />
+      <step name="RESULTS" type="EXISTS" page="Search" context="resultCount" />
+      <!-- LOOP OVER THE RESULTS -->
+      <step name="checkPoint" type="STATE" page="Search" />
+      <step name="LOOP_OVER_RESULTS" type="LOOP" page="Search">
+        <parameter type="CONTEXT" value="resultCount_count" />
+        <parameter type="STATIC" value="checkResult" />
+      </step>
+
+      <step name="GIT" type="WAIT_FOR" page="Home" />
+      <step name="GIT" type="CLICK" page="Home" />
+      <step name="checkPoint" type="STATE" page="Search" />
+    </test>
+    
+    <test name="TC-002 Link Check" active="true">
+      <step name="SEARCH" type="EXISTS" page="Search" />
+      <step name="SEARCH" type="SET" page="Search">
+        <parameter type="STATIC" value="Download xFramium" />
+      </step>
+      <step name="checkPoint" type="STATE" page="Search" />
+      <step name="SEARCH_BUTTON" type="CLICK" page="Search" />
+      <step name="RESULTS" type="WAIT_FOR" page="Search" />
+      <step name="RESULTS" type="EXISTS" page="Search" context="resultCount" />
+      <!-- LOOP OVER THE RESULTS -->
+      <step name="checkPoint" type="STATE" page="Search" />
+    </test>
+
+    <test name="TC-003 Login" dataProvider="git" active="false">
+      <step type="DEVICE" name="URL" page="Git">
+        <parameter type="STATIC" value="https://github.com/xframium"/>
+      </step>
+      <step name="SIGN_IN" type="WAIT_FOR" page="Git" />
+      <step name="SIGN_IN" type="CLICK" page="Git" />
+      <step name="USERNAME" type="WAIT_FOR" page="Git" />
+      <step name="USERNAME" type="SET" page="Git" >
+        <parameter type="DATA" value="git.user"/>
+      </step>
+      
+      <step name="PASSWORD" type="SET" page="Git" >
+        <parameter type="DATA" value="git.password"/>
+      </step>
+      <step name="SUBMIT" type="CLICK" page="Git" />
+      <step name="USER_LINK" type="WAIT_FOR" page="Git" />
+      
+    </test>
+
+    <function name="checkResult">
+      <!-- CONDITIONAL LOGIC - ADD TO REPORT IF WE HAVE THE WRITE LINK AND CLICK ON IT -->
+      <step name="RESULT" type="EXISTS" page="Search" failureMode="IGNORE" context="textValue">
+        <token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" />
+        <token name="urlToken" type="STATIC" value="Rapid Test Case Development" />
+
+        <step name="ADD_TO_REPORT" type="REPORT" page="Search">
+          <parameter type="STATIC" value="URL Link Name" />
+          <parameter type="CONTEXT" value="textValue" />
+          <parameter type="STATIC" value="Result Index" />
+          <parameter type="CONTEXT" value="_LOOP.INDEX" />
+        </step>
+        <step name="RESULT" type="CLICK" page="Search">
+          <token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" />
+          <token name="urlToken" type="STATIC" value="Rapid Test Case Development" />
+        </step>
+        <step name="BREAK" type="BREAK" page="Search" />
+        <step name="elseCondition" type="ELSE" page="Search">
+          <step name="ADD_TO_REPORT" type="REPORT" page="Search">
+            <parameter type="STATIC" value="Result Index" />
+            <parameter type="CONTEXT" value="_LOOP.INDEX" />
+          </step>
+        </step>
+      </step>
+    </function>
+  </suite>
+  <data fileName="pageData.xml" />
+</xFramium>
+
+
+
+

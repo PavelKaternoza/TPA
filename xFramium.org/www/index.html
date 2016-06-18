@@ -1,100 +1,268 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<style>
-body {
-	padding-top: 50px;
-	padding-bottom: 20px;
-}
 
-.code {
-	background-color: #1e1e1e;
-	color: #7b7b7b;
-}
+    <meta charset="utf-8">
 
-.comment {
-	color: green;
-}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-.attribute {
-	color: #96d6fa;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-.value {
-	color: #c58a70;
-}
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-.tag {
-	color: #4e91ca;
-}
 
-.jumbotron {
-	padding-bottom: 28px !important;
-}
-</style>
-<link rel="icon" href="./favicon.ico">
-<title>xFramium - Rapid Test Case Development</title>
-<!-- Bootstrap core CSS -->
-<link href="./css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="jumbotron.css" rel="stylesheet">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <meta name="description" content="xFramium, an open source testing framework for desktop and mobile web, native, and hybrid apps. ">
+
+    <meta name="author" content="Allen Geary">
+
+    <style>
+
+        body {
+
+            padding-top: 50px;
+
+            padding-bottom: 20px;
+
+        }
+
+
+
+        .code {
+
+            background-color: #1e1e1e;
+
+            color: #7b7b7b;
+
+        }
+
+
+
+        .comment {
+
+            color: green;
+
+        }
+
+
+
+        .attribute {
+
+            color: #96d6fa;
+
+        }
+
+
+
+        .value {
+
+            color: #c58a70;
+
+        }
+
+
+
+        .tag {
+
+            color: #4e91ca;
+
+        }
+
+
+
+        .jumbotron {
+
+            padding-bottom: 28px !important;
+
+        }
+
+    </style>
+
+    <link rel="icon" href="./favicon.ico">
+
+    <title>xFramium - Framework for rapid test case development</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+    <link href="jumbotron.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
+
 </head>
+
 <body>
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
+
         <div class="container">
+
             <div class="navbar-header">
+
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+
                 </button>
+
                 <a class="navbar-brand" href="./index.html">xFramium</a>
+
             </div>
+
             <div id="navbar" class="navbar-collapse collapse">
+
                 <ul class="nav navbar-nav">
+
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Getting Started <span class="caret"></span></a>
+
                         <ul class="dropdown-menu">
+
                             <li><a href="/installation.html">Installation</a></li>
+
                             <li><a href="/configuration.html">Configuration</a></li>
+
                             <li><a href="/keyword.html">Writing tests using keywords</a></li>
+
                             <li><a href="/java.html">Writing tests in Java</a></li>
+
                             <li><a href="/download.html">Download xFramium</a></li>
+
                         </ul></li>
+
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+
                         <ul class="dropdown-menu">
+
                             <li><a href="#">Architectural Overview </a></li>
+
                             <li><a href="/apidocs/index.html" target="_blank">API Reference</a></li>
+
                             <li><a href="/extending.html">Extending the Framework</a></li>
+
                         </ul></li>
+
                     <li><a href="/sponsors.html">Sponsors</a></li>
+
                 </ul>
+
             </div>
+
             <!--/.navbar-collapse -->
+
         </div>
+
     </nav>
+
+
+
     <div class="jumbotron">
+
         <div class="container">
-            <img src="images/xframium.png" style="height: 300px; width: 300px; float: left; position: relative; left: -40px; top: -5px; margin-bottom: 20px;" xsd/ />
+
+            <img src="images/xframium.png" style="height: 300px; width: 300px; float: left; position: relative; left: -40px; top: -5px; margin-bottom: 20px; margin-left: 0px;" xsd/ />
+
             <p>
-                <b>xFramium</b>, a unified testing framework for desktop and mobile web, native, and hybrid apps. Write tests using a simple and elegant XML keyword-driven alternative to coding. Use the same test cases on desktop and mobile web browsers.
+
+                <b>xFramium</b>, an open source testing framework for desktop and mobile web, native, and hybrid apps. Write tests using a simple and elegant XML keyword-driven alternative to coding. Use the same test cases on desktop and mobile web browsers.
+
                 Take advantage of high-performance parallel execution, advanced caching and intelligent device selection algorithms. Easily connect test data from Excel, XML, JSON, CSV, JDBC and more.
+
             </p>
+
             <p>Prefer to code in Java? xFramium also supports Java test code writing using all of the features of xFramium such as the extended page object model.</p>
+
             <p>
+
                 <a class="btn btn-primary btn-lg" href="/download.html" role="button">Get xFramium &raquo;</a>
+
             </p>
+
         </div>
+
     </div>
+
+
+
     <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h2>Keyword-driven</h2>
+
+                <p>Not a seasoned developer? No problem! xFramium offers an XML-based extension that allows for tests to be created without writing any code. Most frameworks require automation experts to continuously write code behind the keywords.
+
+                    xFramium’s configuration-based approach is different.</p>
+
+                <p>
+
+                    <a class="btn btn-primary" href="./keyword.html" role="button">Learn More &raquo;</a>
+
+                </p>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h2>Run anywhere</h2>
+
+                <p>xFramium's Test Launcher, a Java Web Start application, is a quick way to try out the framework without configuring your local environment.  Click <a href="https://www.xframium.org/jnlp/xframium-launcher.jnlp">Test Drive</a> to get started. <a href="https://www.xframium.org/sample/sampleSuite.xml">Download this sample test suite</a> and run it with the Test Launcher to see an automation example for <a href="https://www.mozilla.org">Firefox</a>.  <a hRef="/sample/index.html" target="_blank">View sample output.</a></p>
+
+                <p>
+
+                    <a class="btn btn-primary" href="https://www.xframium.org/jnlp/xframium-launcher.jnlp" role="button">Test Drive &raquo;</a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h2>Customizable</h2>
+
+                <p>The entire xFramium initiative has been based on portability and customization. Every element is customizable and replaceable helping to make xFramium adaptable to any new testing technology, configuration file format or integration
+
+                    point.</p>
+
+                <p>
+
+                    <a class="btn btn-primary" href="./configuration.html" role="button">Learn More &raquo;</a>
+
+                </p>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h2>...Or write tests in Java</h2>
+
+                <p>Our feature rich extension to commonly used testing frameworks such as Selenium and Appium allow for rapid test case development.</p>
+
+                <p>
+
+                    <a class="btn btn-primary" href="./java.html" role="button">Learn More &raquo;</a>
+
+                </p>
+            </div>
+        </div>
+        <h2>Samples</h2>
         <div class="row">
             <div class="col-lg-12">
                 <b>Define pages and elements using Xpath, HTML properties, optical character recognition, image identification, etc.</b>
@@ -106,7 +274,7 @@ body {
     &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"RESULT"</span> <span class="attribute">value</span>=<span class="value">"//*[@id='rso']/div/div[{resultIndex}]//a[contains( @href, '{urlToken}')]"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
   &lt;<span class="tag">/page</span>&gt;
   &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Home"</span>&gt;
-    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">value</span>=<span class="value">"//a[contains( text(), 'Git xFramium')]"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+    &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">value</span>=<span class="value">"Link( 'html tag:=a' ).WebElement( 'html tag:=span', 'innerText:=.*Cart.*')"</span> <span class="attribute">descriptor</span>=<span class="value">"HTML"</span> /&gt;
     &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"TITLE"</span> <span class="attribute">value</span>=<span class="value">"xFramium"</span> <span class="attribute">descriptor</span>=<span class="value">"V_TEXT"</span> /&gt;
   &lt;<span class="tag">/page</span>&gt;
   &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Git"</span>&gt;
@@ -126,7 +294,7 @@ body {
   &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"SEARCH_BUTTON"</span> <span class="attribute">type</span>=<span class="value">"CLICK"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
   &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULTS"</span> <span class="attribute">type</span>=<span class="value">"WAIT_FOR"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
   &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULTS"</span> <span class="attribute">type</span>=<span class="value">"EXISTS"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> <span class="attribute">context</span>=<span class="value">"resultCount"</span> /&gt;
-  &lt;!-- Loop through the results --&gt;
+  <span class="comment">&lt;!-- Loop through results --&gt;</span>
   &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"LOOP_OVER_RESULTS"</span> <span class="attribute">type</span>=<span class="value">"LOOP"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
     &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"resultCount"</span> /&gt;
     &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"checkResult"</span> /&gt;
@@ -135,7 +303,7 @@ body {
   &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">type</span>=<span class="value">"CLICK"</span> <span class="attribute">page</span>=<span class="value">"Home"</span> /&gt;
 &lt;<span class="tag">/test</span>&gt;
 &lt;<span class="tag">function</span> <span class="attribute">name</span>=<span class="value">"checkResult"</span>&gt;
-  &lt;!-- If the link is correct, add it to report then click on it --&gt;
+  <span class="comment">&lt;!-- If link is correct, add it to report then click on it --&gt;</span>
   &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULT"</span> <span class="attribute">type</span>=<span class="value">"EXISTS"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> <span class="attribute">failureMode</span>=<span class="value">"IGNORE"</span> <span class="attribute">context</span>=<span class="value">"textValue"</span>&gt;
     &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"resultIndex"</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"_LOOP.INDEX"</span> /&gt;
     &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"urlToken"</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"xframium.org"</span> /&gt;
@@ -149,11 +317,13 @@ body {
     &lt;<span class="tag">/step</span>&gt;
     &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"BREAK"</span> <span class="attribute">type</span>=<span class="value">"BREAK"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
   &lt;<span class="tag">/step</span>&gt;
-&lt;<span class="tag">/function</span>&gt;
-</pre>
-            </div>
+&lt;<span class="tag">/function</span>&gt;</pre>
+</div>
+
             <div class="col-md-6">
+
                 <b>The same test case in Java</b>
+
                 <pre class="code" style="color:white;">
 @Test(dataProvider=<span class="value">"deviceManager"</span>)
 <span class="tag">public void</span> testSearchPage(<span class="tag">TestName</span> testName) throws <span class="tag">Exception</span>
@@ -179,132 +349,89 @@ body {
   searchPage.getElement(<span class="tag">Search</span>.GET).waitFor(30, <span class="tag">TimeUnit</span>.SECONDS, WAIT_FOR.VISIBLE, <span class="value">""</span>);
   searchPage.getElement(<span class="tag">Search</span>.TITLE).isPresent();
   searchPage.getElement(<span class="tag">Search</span>.GET).click();
-}
-</pre>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Keyword-Driven</h2>
-                <p>Not a seasoned developer? No problem! xFramium offers an XML based extension that allows for tests to be created without writing any code. Most frameworks require automation experts to continuously write code behind the keywords.
-                    xFramium’s configuration-based approach is different.</p>
-                <p>
-                    <a class="btn btn-default" href="./keyword.html" role="button">View details &raquo;</a>
-                </p>
-            </div>
-            <div class="col-md-6">
-                <h2>Run Anywhere</h2>
-                <p>Don't have your development environment configured? Try out the xFramium Test Launcher and get testing today!</p>
-                <p>
-                    <a class="btn btn-default" href="https://www.xframium.org/jnlp/xframium-launcher.jnlp" role="button">Test Drive &raquo;</a>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Customizable</h2>
-                <p>The entire xFramium initiative has been based on portability and customization. Every element is customizable and replaceable helping to make xFramium adaptable to any new testing technology, configuration file format or integration
-                    point</p>
-                <p>
-                    <a class="btn btn-default" href="./configuration.html" role="button">View details &raquo;</a>
-                </p>
-            </div>
-            <div class="col-md-6">
-                <h2>Or write tests in Java</h2>
-                <p>Our feature rich extension to commonly used testing frameworks such as Selenium and Appium allow for rapid test case development.</p>
-                <p>
-                    <a class="btn btn-default" href="./java.html" role="button">View details &raquo;</a>
-                </p>
+}</pre>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <b>xFramium's flexible configuration model even allows for a single file definition of an entire test suite</b>
-                <pre class="code">
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xFramium xmlns="http://www.xframium.org/xFramiumDriver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xframium.org/xFramiumDriver http://www.xframium.org/xsd/xFramiumDriver.xsd"&gt;
-  &lt;cloud provider="LOCAL" name="partners" userName="demouser@domain.com" password="demopass" hostName="partners.perfectomobile.com" proxyHost="" grid="EMBEDDED" /&gt;
-  &lt;application provider="LOCAL" name="Google" appPackage="" bundleId="" url="http://www.google.com" /&gt;
-  &lt;devices provider="LOCAL"&gt;
-    &lt;device name="Firefox" browserName="firefox" manufacturer="Mozilla" model="Firefox" os="Windows" active="true" availableDevices="1" /&gt;
-    &lt;device name="Samsung S6" manufacturer="Samsung" model="Galaxy S6" os="Android" active="false" availableDevices="1" /&gt;
-    &lt;device name="iPhone 6 Plus" manufacturer="Apple" os="iOS" model="iPhone-6 Plus" active="false" availableDevices="1" /&gt;
-  &lt;/devices&gt;
-  &lt;driver type="WEB" outputFolder="test-output"&gt;
-    &lt;artifact type="EXECUTION_RECORD_HTML" /&gt;
-    &lt;artifact type="FAILURE_SOURCE" /&gt;
-    &lt;artifact type="DEVICE_LOG" /&gt;
-    &lt;artifact type="CONSOLE_LOG" /&gt;
-  &lt;/driver&gt;
-  &lt;model siteName="Google"&gt;
-    &lt;page name="Search"&gt;
-      &lt;element name="SEARCH" value="//input[@id='lst-ib']" descriptor="XPATH" /&gt;
-      &lt;element name="SEARCH_BUTTON" value="//button[@id='tsbb']/div|//div[@id='sblsbb']/button" descriptor="XPATH" /&gt;
-      &lt;element name="RESULTS" value="//*[@id='rso']/div/div" descriptor="XPATH" /&gt;
-      &lt;element name="RESULT" value="//*[@id='rso']/div/div[{resultIndex}]//a[contains( @href, '{urlToken}')]" descriptor="XPATH" /&gt;
-    &lt;/page&gt;
-    &lt;page name="Home"&gt;
-      &lt;element name="GET" value="//a[contains( text(), 'Git xFramium')]" descriptor="XPATH" /&gt;
-      &lt;element name="TITLE" value="xFramium" descriptor="V_TEXT" /&gt;
-    &lt;/page&gt;
-    &lt;page name="Git"&gt;
-      &lt;element name="TITLE" value="//strong/a[contains( text(), 'xframium-java' )]" descriptor="XPATH" /&gt;
-    &lt;/page&gt;
-  &lt;/model&gt;
-  &lt;suite provider="LOCAL"&gt;
-    &lt;test name="TC-001"&gt;
-      &lt;step name="SEARCH" type="EXISTS" page="Search" /&gt;
-      &lt;step name="SEARCH" type="SET" page="Search"&gt;
-        &lt;parameter type="STATIC" value="xFramium" /&gt;
-      &lt;/step&gt;
-      &lt;step name="SEARCH_BUTTON" type="CLICK" page="Search" /&gt;
-      &lt;step name="RESULTS" type="WAIT_FOR" page="Search" /&gt;
-      &lt;step name="RESULTS" type="EXISTS" page="Search" context="resultCount" /&gt;
-      &lt;!-- LOOP OVER THE RESULTS --&gt;
-      &lt;step name="LOOP_OVER_RESULTS" type="LOOP" page="Search"&gt;
-        &lt;parameter type="CONTEXT" value="resultCount" /&gt;
-        &lt;parameter type="STATIC" value="checkResult" /&gt;
-      &lt;/step&gt;
-
-      &lt;step name="GET" type="WAIT_FOR" page="Home" /&gt;
-      &lt;step name="GET" type="CLICK" page="Home" /&gt;
-    &lt;/test&gt;
-
-    &lt;function name="checkResult"&gt;
-      &lt;!-- CONDITIONAL LOGIC - ADD TO REPORT IF WE HAVE THE WRITE LINK AND CLICK ON IT --&gt;
-      &lt;step name="RESULT" type="EXISTS" page="Search" failureMode="IGNORE" context="textValue"&gt;
-        &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
-        &lt;token name="urlToken" type="STATIC" value="xframium.org" /&gt;
-
-        &lt;step name="ADD_TO_REPORT" type="REPORT" page="Search"&gt;
-          &lt;parameter type="STATIC" value="URL Link Name" /&gt;
-          &lt;parameter type="CONTEXT" value="textValue" /&gt;
-        &lt;/step&gt;
-        &lt;step name="RESULT" type="CLICK" page="Search"&gt;
-          &lt;token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" /&gt;
-          &lt;token name="urlToken" type="STATIC" value="xframium.org" /&gt;
-        &lt;/step&gt;
-        &lt;step name="BREAK" type="BREAK" page="Search" /&gt;
-      &lt;/step&gt;
-    &lt;/function&gt;
-  &lt;/suite&gt;
-&lt;/xFramium&gt;</pre>
+                <b>xFramium's flexible configuration model allows an entire test suite to be contained in a single file</b>
+                <pre class="code">&lt;?<span class="tag">xml</span> <span class="attribute">version</span>=<span class="value">"1.0"</span> <span class="attribute">encoding</span>=<span class="value">"UTF-8"</span>?&gt;
+&lt;<span class="tag">xFramium</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.xframium.org/xFramiumDriver"</span> <span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attribute">xsi:schemaLocation</span>=<span class="value">"http://www.xframium.org/xFramiumDriver http://www.xframium.org/xsd/xFramiumDriver.xsd"</span>&gt;
+  &lt;<span class="tag">cloud</span> <span class="attribute">provider</span>=<span class="value">"LOCAL"</span> <span class="attribute">name</span>=<span class="value">"partners"</span> <span class="attribute">userName</span>=<span class="value">"demouser@domain.com"</span> <span class="attribute">password</span>=<span class="value">"demopass"</span> <span class="attribute">hostName</span>=<span class="value">"partners.perfectomobile.com"</span> <span class="attribute">proxyHost</span>=<span class="value">""</span> <span class="attribute">grid</span>=<span class="value">"EMBEDDED"</span> /&gt;
+  &lt;<span class="tag">application</span> <span class="attribute">provider</span>=<span class="value">"LOCAL"</span> <span class="attribute">name</span>=<span class="attribute">"Google"</span> <span class="attribute">appPackage</span>=<span class="value">""</span> <span class="attribute">bundleId</span>=<span class="value">""</span> <span class="attribute">url</span>=<span class="value">"http://www.google.com"</span> /&gt;
+  &lt;<span class="tag">devices</span> <span class="attribute">provider</span>=<span class="value">"LOCAL"</span>&gt;
+    &lt;<span class="tag">device</span> <span class="attribute">name</span>=<span class="value">"Firefox"</span> <span class="attribute">browserName</span>=<span class="value">"firefox"</span> <span class="attribute">manufacturer</span>=<span class="value">"Mozilla"</span> <span class="attribute">model</span>=<span class="value">"Firefox"</span> <span class="attribute">os</span>=<span class="value">"Windows"</span> <span class="attribute">active</span>=<span class="value">"true"</span> <span class="attribute">availableDevices</span>=<span class="value">"1"</span> /&gt;
+    &lt;<span class="tag">device</span> <span class="attribute">name</span>=<span class="value">"Samsung S6"</span> <span class="attribute">manufacturer</span>=<span class="value">"Samsung"</span> <span class="attribute">model</span>=<span class="value">"Galaxy S6"</span> <span class="attribute">os</span>=<span class="value">"Android"</span> <span class="attribute">active</span>=<span class="value">"false"</span> <span class="attribute">availableDevices</span>=<span class="value">"1"</span> /&gt;
+    &lt;<span class="tag">device</span> <span class="attribute">name</span>=<span class="value">"iPhone 6 Plus"</span> <span class="attribute">manufacturer</span>=<span class="value">"Apple"</span> <span class="attribute">os</span>=<span class="value">"iOS"</span> <span class="attribute">model</span>=<span class="value">"iPhone-6 Plus"</span> <span class="attribute">active</span>=<span class="value">"false"</span> <span class="attribute">availableDevices</span>=<span class="value">"1"</span> /&gt;
+  &lt;<span class="tag">/devices</span>&gt;
+  &lt;<span class="tag">driver</span> <span class="attribute">type</span>=<span class="value">"WEB"</span> <span class="attribute">outputFolder</span>=<span class="value">"test-output"</span>&gt;
+    &lt;<span class="tag">artifact</span> <span class="attribute">type</span>=<span class="value">"EXECUTION_RECORD_HTML"</span> /&gt;
+    &lt;<span class="tag">artifact</span> <span class="attribute">type</span>=<span class="value">"FAILURE_SOURCE"</span> /&gt;
+    &lt;<span class="tag">artifact</span> <span class="attribute">type</span>=<span class="value">"DEVICE_LOG"</span> /&gt;
+    &lt;<span class="tag">artifact</span> <span class="attribute">type</span>=<span class="value">"CONSOLE_LOG"</span> /&gt;
+  &lt;<span class="tag">/driver</span>&gt;
+  &lt;<span class="tag">model</span> <span class="attribute">siteName</span>=<span class="value">"Google"</span>&gt;
+    &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Search"</span>&gt;
+      &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"SEARCH"</span> <span class="attribute">value</span>=<span class="value">"//input[@id='lst-ib']"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+      &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"SEARCH_BUTTON"</span> <span class="attribute">value</span>=<span class="value">"//button[@id='tsbb']/div|//div[@id='sblsbb']/button"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+      &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"RESULTS"</span> <span class="attribute">value</span>=<span class="value">"//*[@id='rso']/div/div"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+      &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"RESULT"</span> <span class="attribute">value</span>=<span class="value">"//*[@id='rso']/div/div[{resultIndex}]//a[contains(@href, '{urlToken}')]"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+    &lt;<span class="tag">/page</span>&gt;
+    &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Home"</span>&gt;
+      &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">value</span>=<span class="value">"Link('html tag:=a').WebElement('html tag:=span', 'innerText:=.*Cart.*')"</span> <span class="attribute">descriptor</span>=<span class="value">"HTML"</span> /&gt;
+      &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"TITLE"</span> <span class="attribute">value</span>=<span class="value">"xFramium"</span> <span class="attribute">descriptor</span>=<span class="value">"V_TEXT"</span> /&gt;
+    &lt;<span class="tag">/page</span>&gt;
+    &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Git"</span>&gt;
+      &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"TITLE"</span> <span class="attribute">value</span>=<span class="value">"//strong/a[contains(text(), 'xframium-java')]"</span> <span class="attribute">descriptor</span>=<span class="value">"XPATH"</span> /&gt;
+    &lt;<span class="tag">/page</span>&gt;
+  &lt;<span class="tag">/model</span>&gt;
+  &lt;<span class="tag">suite</span> <span class="attribute">provider</span>=<span class="value">"LOCAL"</span>&gt;
+    &lt;<span class="tag">test</span> <span class="attribute">name</span>=<span class="value">"TC-001 Search.EMPTY"</span>&gt;
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"SEARCH"</span> <span class="attribute">type</span>=<span class="value">"EXISTS"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"SEARCH"</span> <span class="attribute">type</span>=<span class="value">"SET"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
+        &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"xFramium"</span> /&gt;
+      &lt;<span class="tag">/step</span>&gt;
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"SEARCH_BUTTON"</span> <span class="attribute">type</span>=<span class="value">"CLICK"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULTS"</span> <span class="attribute">type</span>=<span class="value">"WAIT_FOR"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULTS"</span> <span class="attribute">type</span>=<span class="value">"EXISTS"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> <span class="attribute">context</span>=<span class="value">"resultCount "</span>/&gt;
+      <span class="comment">&lt;!-- Loop through results --&gt;</span>
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"LOOP_OVER_RESULTS"</span> <span class="attribute">type</span>=<span class="value">"LOOP"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
+        &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"resultCount"</span> /&gt;
+        &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"checkResult"</span> /&gt;
+      &lt;<span class="tag">/step</span>&gt;
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">type</span>=<span class="value">"WAIT_FOR"</span> <span class="attribute">page</span>=<span class="value">"Home"</span> /&gt;
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"GET"</span> <span class="attribute">type</span>=<span class="value">"CLICK"</span> <span class="attribute">page</span>=<span class="value">"Home"</span> /&gt;
+    &lt;<span class="tag">/test</span>&gt;
+    &lt;<span class="tag">function</span> <span class="attribute">name</span>=<span class="value">"checkResult"</span>&gt;
+      <span class="comment">&lt;!-- If link is correct, add it to report then click on it --&gt;</span>
+      &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULT"</span> <span class="attribute">type</span>=<span class="value">"EXISTS"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> <span class="attribute">failureMode</span>=<span class="value">"IGNORE" </span><span class="attribute">context</span>=<span class="value">"textValue"</span>&gt;
+        &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"resultIndex"</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"_LOOP.INDEX"</span> /&gt;
+        &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"urlToken"</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"xframium.org"</span> /&gt;
+        &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"ADD_TO_REPORT"</span> <span class="attribute">type</span>=<span class="value">"REPORT"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
+          &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"URL Link Name"</span> /&gt;
+          &lt;<span class="tag">parameter</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"textValue"</span> /&gt;
+        &lt;<span class="tag">/step</span>&gt;
+        &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"RESULT"</span> <span class="attribute">type</span>=<span class="value">"CLICK"</span> <span class="attribute">page</span>=<span class="value">"Search"</span>&gt;
+          &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"resultIndex"</span> <span class="attribute">type</span>=<span class="value">"CONTEXT"</span> <span class="attribute">value</span>=<span class="value">"_LOOP.INDEX"</span> /&gt;
+          &lt;<span class="tag">token</span> <span class="attribute">name</span>=<span class="value">"urlToken"</span> <span class="attribute">type</span>=<span class="value">"STATIC"</span> <span class="attribute">value</span>=<span class="value">"xframium.org"</span> /&gt;
+        &lt;<span class="tag">/step</span>&gt;
+        &lt;<span class="tag">step</span> <span class="attribute">name</span>=<span class="value">"BREAK"</span> <span class="attribute">type</span>=<span class="value">"BREAK"</span> <span class="attribute">page</span>=<span class="value">"Search"</span> /&gt;
+      &lt;<span class="tag">/step</span>&gt;
+    &lt;<span class="tag">/function</span>&gt;
+  &lt;<span class="tag">/suite</span>&gt;
+&lt;<span class="tag">/xFramium</span>&gt;</pre>
             </div>
-
         </div>
         <hr>
-        <footer>
-            <p>xFramium - Rapid Test Case Development</p>
-        </footer>
-    </div>
-    <!-- /container -->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-</body>
+            <footer>
+                <p>xFramium, an open source testing framework for desktop and mobile web, native, and hybrid apps.</p>
+            </footer>
+        </div>
+        <!-- /container -->
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+    </body>
 </html>
