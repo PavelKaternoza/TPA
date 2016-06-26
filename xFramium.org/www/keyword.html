@@ -196,6 +196,7 @@ body {
                                             <li>XML: A provider based off of XML</li>
                                             <li>CSV: A provider based off of a comma separated list of values</li>
                                             <li>EXCEL: A provider using Excel</li>
+                                            <li>SQL: A provider reading data from a database table</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -210,6 +211,10 @@ body {
                                 <tr>
                                     <td>cloudRegistry.cloudUnderTest:</td>
                                     <td>The name of the cloud being used for this test</td>
+                                </tr>
+                                <tr>
+                                    <td>cloudRegistry.query:</td>
+                                    <td>An optional override for the default query used by the SQL provider.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -231,6 +236,7 @@ body {
                                             <li>XML: A provider based off of XML</li>
                                             <li>CSV: A provider based off of a comma separated list of values</li>
                                             <li>EXCEL: A provider using Excel</li>
+                                            <li>SQL: A provider reading data from a database table</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -245,6 +251,10 @@ body {
                                 <tr>
                                     <td>applicationRegistry.applicationUnderTest:</td>
                                     <td>The name of the cloud being used for this test</td>
+                                </tr>
+                                <tr>
+                                    <td>applicationRegistry.query:</td>
+                                    <td>An optional override for the default query used by the SQL provider.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -269,6 +279,7 @@ body {
                                             <li>XML: A provider based off of a devices defined via XML</li>
                                             <li>CSV: A provider based off of a comma separated list of values</li>
                                             <li>EXCEL: A provider using Excel</li>
+                                            <li>SQL: A provider reading data from a database table</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -294,6 +305,10 @@ body {
                                     <td>deviceManagement.deviceList:</td>
                                     <td>A comma separated list of device identifies used to define mobile device for use in the NAMED provider</td>
                                 </tr>
+                                <tr>
+                                    <td>deviceManagement.query:</td>
+                                    <td>An optional override for the default query used by the SQL provider.</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -314,6 +329,7 @@ body {
                                             <li>XML: A provider based off of XML</li>
                                             <li>CSV: A provider based off of a comma separated list of values</li>
                                             <li>EXCEL: A provider using Excel</li>
+                                            <li>SQL: A provider reading data from a database table</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -324,6 +340,10 @@ body {
                                 <tr>
                                     <td>pageManagement.siteName:</td>
                                     <td>Specifies the name of the site under test. When using the EXCEL provider this name is also corresponds to the tab name contains the page element data for this site</td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.query:</td>
+                                    <td>An optional override for the default query used by the SQL provider.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -344,6 +364,7 @@ body {
                                         <ul>
                                             <li>XML: A provider based off of XML</li>
                                             <li>EXCEL: A provider using Excel</li>
+                                            <li>SQL: A provider reading data from a database table</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -354,6 +375,10 @@ body {
                                 <tr>
                                     <td>pageManagement.pageData.tabNames:</td>
                                     <td>Specifies a comma separated list of tab names defining each of the record types for the EXCEL provider. Each tab represents a single named record type.</td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.pageData.query:</td>
+                                    <td>An optional override for the default query used by the SQL provider.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -374,6 +399,7 @@ body {
                                         <ul>
                                             <li>XML: A provider based off of XML</li>
                                             <li>EXCEL: A provider using Excel</li>
+                                            <li>SQL: A provider reading data from a database table</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -392,6 +418,10 @@ body {
                                 <tr>
                                     <td>pageManagement.content.lookupColumns:</td>
                                     <td>A comma separated list of zero based indexes of all lookup columns in the EXCEL provider.</td>
+                                </tr>
+                                <tr>
+                                    <td>pageManagement.content.query:</td>
+                                    <td>An optional override for the default query used by the SQL provider.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -450,6 +480,35 @@ body {
                                             <li>EXECUTION_TIMING: Contains a small timing report of elements marked as timed</li>
                                         </ul>
                                     </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-artifact">Database Connection Info (optional)</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>jdbc.username:</td>
+                                    <td width="100%">The user ID of the database account holding provider data</td>
+                                </tr>
+                                <tr>
+                                    <td>jdbc.password:</td>
+                                    <td>The password of the database account holding provider data</td>
+                                </tr>
+                                <tr>
+                                    <td>jdbc.url:</td>
+                                    <td>A URL specifying the location of the database holding the provider data account</td>
+                                </tr>
+                                <tr>
+                                    <td>jdbc.driverClassName:</td>
+                                    <td>The JDBC driver class required to access to the provider database account</td>
                                 </tr>
                             </tbody>
                         </table>
