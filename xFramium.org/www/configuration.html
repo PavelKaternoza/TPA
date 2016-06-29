@@ -147,6 +147,12 @@ body {
                                         of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the
                                         availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
                                 </tr>
+                                <tr>
+                                    <td>sql</td>
+                                    <td>Used to feed a list
+                                        of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the
+                                        availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -211,6 +217,24 @@ body {
                     </figure>
                     <h2 id="device-excel">Excel Configuration</h2>
                     <h2 id="device-csv">CSV Configuration</h2>
+                    <h2 id="device-csv">SQL Configuration</h2>
+                    <p>The device registry format is defined using a SQL Data Definition file. This file is located at:</p>
+                    <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/device/data/sql/tables.sql</p>
+                    <p>The default queries used by the provider are:</p>
+                    <figure class=highlight>
+                      <textarea cols="120" rows="10" readonly="readonly">
+Devices:
+                        
+SELECT NAME, ID, MANUFACTURER, MODEL, OS, OS_VERSION, BROWSER_NAME, BROWSER_VERSION, ACTIVE, AVAILABLE 
+FROM PERFECTO_DEVICES
+
+Capabilities:
+
+SELECT DEVICE_NAME, NAME, CLASS, VALUE
+FROM PERFECTO_DEVICE_CAPABILITIES
+                      </textarea>
+                    </figure>
+                    <p>If a non-default queries are used, they must select the device data elements in the order specified in the default queries.</p>
                     <h1 id="cloud" class=page-header>Cloud Management</h1>
                     <p>The Cloud registry controls access to our various cloud instances. All access information and credentials are stored here for use by the system. A cloud is defined as a remote set of resource and can consist of a commercial cloud
                         provider as well as a local Selenium based grid.</p>
@@ -236,6 +260,11 @@ body {
                                 <tr>
                                     <td>excel</td>
                                     <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/ExcelCloudProvider.html">com.perfectoMobile.device.cloud.ExcelCloudProvider</a><br /> An Excel based
+                                        cloud registry</td>
+                                </tr>
+                                <tr>
+                                    <td>sql</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/SQLCloudProvider.html">com.perfectoMobile.device.cloud.SQLCloudProvider</a><br /> An Database/SQL based
                                         cloud registry</td>
                                 </tr>
                             </tbody>
@@ -321,6 +350,18 @@ demo,,,127.0.0.1:4444,,,
                             </code>
                         </pre>
                     </figure>
+                    <h2 id="device-csv">SQL Configuration</h2>
+                    <p>The cloud registry format is defined using a SQL Data Definition file. This file is located at:</p>
+                    <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/device/cloud/sql/table.sql</p>
+                    <p>The default query used by the provider is:</p>
+                    <figure class=highlight>
+                      <textarea cols="120" rows="3" readonly="readonly">
+SELECT NAME, USER_NAME, PASSWORD, HOST_NAME, 
+       PROXY_HOST, PROXY_PORT, DESCRIPTION, GRID_INSTANCE
+FROM PERFECTO_CLOUDS
+                      </textarea>
+                    </figure>
+                    <p>If a non-default query is used, it must select the cloud data elements in the order specified in the default query.</p>
                     <h1 id="app" class=page-header>Application Management</h1>
                     <p>The Application Registry allows for all application details required for testing to be stored in a single place for easy access. An application is defined as a native mobile application installed on a mobile device or a website
                         access via a mobile device or desktop browser.</p>
@@ -347,6 +388,11 @@ demo,,,127.0.0.1:4444,,,
                                     <td>excel</td>
                                     <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/serviceProviderInterface/com/morelandLabs/application/ExcelApplicationProvider.html">com.morelandLabs.application.ExcelApplicationProvider</a><br />
                                         An Excel based application registry</td>
+                                </tr>
+                                <tr>
+                                    <td>sql</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/serviceProviderInterface/com/morelandLabs/application/ExcelApplicationProvider.html">com.morelandLabs.application.SQLApplicationProvider</a><br />
+                                        An Database/SQL based application registry</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -439,6 +485,24 @@ default,com.android.settings,com.apple.settings,http://www.google.com,,
                             </code>
                         </pre>
                     </figure>
+                    <h2 id="device-csv">SQL Configuration</h2>
+                    <p>The application registry format is defined using a SQL Data Definition file. This file is located at:</p>
+                    <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/application/sql/tables.sql</p>
+                    <p>The default queries used by the provider are:</p>
+                    <figure class=highlight>
+                      <textarea cols="120" rows="10" readonly="readonly">
+Applications:
+                        
+SELECT NAME, APP_PACKAGE, BUNDLE_ID, URL, IOS_INSTALL, ANDROID_INSTALL
+FROM PERFECTO_APPLICATIONS
+
+Capabilities:
+
+SELECT APP_NAME, NAME, CLASS, VALUE
+FROM PERFECTO_APP_DEV_CAPABILITIES
+                      </textarea>
+                    </figure>
+                    <p>If non-default queries are used, they must select the application data elements in the order specified in the default queries.</p>
                     <h1 id="data" class=page-header>Data Management</h1>
                     <p>Data-driven testing (DDT) is a term used in the testing of computer software to describe testing done using a table of conditions directly as test inputs and verifiable outputs as well as the process where test environment
                         settings and control are not hard-coded. Data-driven testing is the creation of test scripts to run together with their related data sets in a framework. The framework provides re-usable test logic to reduce maintenance and improve
@@ -557,6 +621,22 @@ users,user,|userType:[type='user']|
                             </code>
                         </pre>
                     </figure>
+                    <h2 id="device-csv">SQL Configuration</h2>
+                    <p>The page data registry format is defined using a SQL Data Definition file. This file is located at:</p>
+                    <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/page/data/provider/sql/tables.sql</p>
+                    <p>The default query used by the provider is:</p>
+                    <figure class=highlight>
+                      <textarea cols="120" rows="6" readonly="readonly">
+SELECT DT.NAME, DT.LOCK_RECORDS, 
+       PG.NAME, PG.ACTIVE, 
+       AT.NAME, AT.VALUE 
+FROM PERFECTO_PAGE_DATA_TYPE DT 
+     INNER JOIN PERFECTO_PAGE_DATA PG ON PG.TYPE_NAME = DT.NAME 
+     INNER JOIN PERFECTO_PAGE_DATA_ATTRS AT ON AT.TYPE_NAME = DT.NAME AND AT.RECORD_NAME = PG.NAME
+                      </textarea>
+                    </figure>
+                    <p>If a non-default query is used, it must select the page data elements in the order specified in the default query.</p>
+
                     <h1 id="contentx" class=page-header>Content Management</h1>
                     <p>Localization for a multi-lingual application is every automation engineer’s nightmare. Internationalization and localization are means of adapting computer software to different languages however automated tests need to be
                         created to handle the different languages. Content Management is the process of adapting internationalized software for a specific region or language by adding locale-specific components and translating text for use by the automated
@@ -673,6 +753,19 @@ Georgia,GA,ga
                             </code>
                         </pre>
                     </figure>
+                    <h2 id="device-csv">SQL Configuration</h2>
+                    <p>The content registry format is defined using a SQL Data Definition file. This file is located at:</p>
+                    <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/content/provider/sql/table.sql</p>
+                    <p>The default query used by the provider is:</p>
+                    <figure class=highlight>
+                      <textarea cols="120" rows="3" readonly="readonly">
+SELECT KEY_NAME, VALUE 
+FROM PERFECTO_CONTENT
+ORDER BY KEY_NAME, OFFSET
+                      </textarea>
+                    </figure>
+                    <p>If a non-default query is used, it must select the content data elements in the order specified in the default query.</p>
+
                     <h1 id="artifact" class=page-header>Artifact Management</h1>
                     <p>
                         There are a few points of interest when dealing with Test Artifacts and integrations for reporting and result delivery. There are a handful of prepared reports that are already integrated that can be turned on for automatic
