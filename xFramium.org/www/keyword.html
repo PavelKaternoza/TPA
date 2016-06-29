@@ -105,13 +105,16 @@ body {
                                 <li><a href=#kw-call>CALL</a></li>
                                 <li><a href=#kw-click>CLICK</a></li>
                                 <li><a href=#kw-compare>COMPARE</a></li>
-                                <li><a href=#kw-dump>DUMP_STATE</a></li>
+                                <li><a href=#kw-dump>STATE</a></li>
                                 <li><a href=#kw-else>ELSE</a></li>
                                 <li><a href=#kw-execjs>EXEC_JS</a></li>
                                 <li><a href=#kw-fork>FORK</a></li>
                                 <li><a href=#kw-gesture>GESTURE</a></li>
-                                
                                 <li><a href=#kw-loop>LOOP</a></li>
+                                <li><a href=#kw-math>MATH</a></li>
+                                <li><a href=#kw-mouse>MOUSE</a></li>
+                                <li><a href=#kw-report>REPORT</a></li>
+                                <li><a href=#kw-string>STRING</a></li>
                                 <li><a href=#kw-checkcolor>VERIFY_COLOR</a></li>
                             </ul></li>
                     </ul>
@@ -122,7 +125,7 @@ body {
                 <div class=bs-docs-section>
                     <h1 id=overview class=page-header>Overview</h1>
                     <p>Keyword-driven testing is a type of functional automation testing framework which is also known as table-driven testing or action word based testing. We provide a simple language defined using XML that allows functional testers
-                        and buiness analysts the means of directly created test cases. This eliminates the need for the time consuming two steps process in which testers create manual test cases and then converting them to automated scripts using
+                        and business analysts the means of directly created test cases. This eliminates the need for the time consuming two steps process in which testers create manual test cases and then converting them to automated scripts using
                         programming constructs on top frameworks such as UFT or Selenium. Built on top of the power of Java and Selenium, the Keyword Framework is simple to implement with a low adoption time while being very customizable and extensible. In
                         addition is ease of adoption the framework also added test case unification allowing for the same test case to be used for multiple testing strategies such as Regression, Smoke, User Acceptance and Performance testing using simple
                         tag names.</p>
@@ -1005,18 +1008,6 @@ body {
                         </pre>
                     </figure>
                     
-                    <h2 id="kw-dump">DUMP_STATE</h2>
-                    <p>
-                        This keyword takes a snapshot of the device and writes it to disk.  If the EXECUTION_RECORD_HTML Artifact type is active then this screen shot will be added to the HTML report.  In addition to the screenshot the current state of the application is captured in XML form.  This will be written to disk and a link to the file will be dumped out to the report is well.  The output can be used to validate XPATH statements as it is a representation fo the device at that poitn in time. 
-                    </p>
-
-                    <p>Dump the current state of the application</p>
-                    <figure class=highlight>
-                        <pre>
-                            <code class=language-xml data-lang=xml>&lt;step name="checkState" page="LOGIN" type="DUMP_STATE"/&gt;</code>
-                        </pre>
-                    </figure>
-                    
                     <h2 id="kw-else">ELSE</h2>
                     <p>
                         Any step can contain sub steps that are executed upon success of the parent step.  The ELSE keyword is a special step that is executed only if the parent step failed.  The special step will contain a list of steps to execute in the event that the ELSE clause is triggered. 
@@ -1205,6 +1196,248 @@ body {
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="SWIPE.PICKER" page="SHOW"&gt;
   &lt;parameter type="STATIC" value="UP" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    <h2 id="kw-loop">LOOP</h2>
+                    <p>
+                        The loop keyword allow the script to loop over different types of data sets and execute a function for each iteration.  During a loop function you can call the BREAK step to exit cleanly out of the loop before the specified iteration is completed
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>There are 2 parameters to pass to the LOOP keyword.  The first parameter can be in a few different formats specified below</p>
+                        <ol>
+                            <li>Iterator
+                                <ul>
+                                    <li>Numeric Value:  If a numeric value is specified then this loop will iterate the amount of times specified by the numeric value.  During the iteration, a special context variable will be set for each iteration named <b>_LOOP.INDEX</b> which will contain the current loop index. This value can be accessed the same as any other context variable</li>
+                                    <li>Data Value: If the parameter is wrapped with <b>data{...}</b> then this indicates that we are looping over a data table.  If then name starts with a period (.) then this indicates that we search from our current data table record, otherwise the table is read directly from the data provider</li>
+                                    <li>Element Name: If neither of the conditions above are met, then we assume that this value indicates an element name.  When using an element name, we assume that the element descriptor refers to a collection of elements rather than a single element.  If the name of the element is <b>_CONTEXT.ELEMENT</b> then we assume that this element was previously stored as the result of a nested loop statement.  During the iteration we set to context variables.  <b>_CONTEXT.ELEMENT</b> refers to the current element that is selected and <b>_CONTEXT.ELEMENT.INDEX</b> refers to the index of the current element.  You can reference both of these in the specified function
+                                </ul>
+                            </li>
+                            <li>Function Name: The name of the function to call for each loop iteration.</li>
+                        </ol>
+                    </div>
+                    
+                    
+                    <p>This example will loop 10 times and call the login function</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="LOGIN" type="LOOP" page="TEST_PAGE" &gt;
+  &lt;parameter type="static" value="10" /&gt;
+  &lt;parameter type="static" value="login" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will loop over the page data record type named authData and call the login function</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="LOGIN" type="LOOP" page="TEST_PAGE" &gt;
+  &lt;parameter type="static" value="data{authData}" /&gt;
+  &lt;parameter type="static" value="login" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will loop over the page data record type named myUsers contained with in the authData record passed into the test and call the login function</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="LOGIN" type="LOOP" page="TEST_PAGE" &gt;
+  &lt;parameter type="static" value="data{.authData.myUsers}" /&gt;
+  &lt;parameter type="static" value="login" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will loop over an element defined as RESULTS and call the search function</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="LOGIN" type="LOOP" page="TEST_PAGE" &gt;
+  &lt;parameter type="static" value="RESULTS" /&gt;
+  &lt;parameter type="static" value="search" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will loop over the current contexst element defined by a nested loop statement.  We assume that we are in the loop already and that the context element contains a reference to other elements</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="LOGIN" type="LOOP" page="TEST_PAGE" &gt;
+  &lt;parameter type="static" value="_CONTEXT.ELEMENT" /&gt;
+  &lt;parameter type="static" value="search" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    <p>This example will call a function name LOGIN and override the systemLogin with authData (the function expects authData)</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="LOGO" type="VERIFY_COLOR" page="TEST_PAGE" context="useColor"&gt;
+  &lt;parameter type="static" value="high" /&gt;
+  &lt;parameter type="static" value="3,3" /&gt;
+  &lt;parameter type="static" value="#FFFFFF" /&gt;
+  &lt;parameter type="static" value="5" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <h2 id="kw-math">MATH</h2>
+                    <p>
+                        The math keyword allows you to perform simple math operations on the specified parameters and optionally compare the result to a known value.  For this keyword, the NAME attribute indicates the operation to perform.  The supported operations are 
+                        <ul>
+                            <li>add: indicates that all of the parameters should be added together</li>
+                            <li>subtract: indicates that all of the parameters should be subtracted from the first parameter specified</li>
+                        </ul>
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>You can specify as many parameters as you want to operate on and will adhere to the normal parameter formats.  If the parameter value starts with a equals sign(=) then it indicates that the final calculated value should be compared to this value.</p>
+                        
+                    </div>
+                    
+                    <p>This example will add 10 and 20 and ensure that it is equals to 30</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="add" type="MATH" page="TEST_PAGE"&gt;
+  &lt;parameter type="static" value="=30" /&gt;
+  &lt;parameter type="static" value="10" /&gt;
+  &lt;parameter type="static" value="20" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will add 2 context variables and ensure they are equal to the data variable useValue</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="add" type="MATH" page="TEST_PAGE"&gt;
+  &lt;parameter type="data" value="=authData.useValue" /&gt;
+  &lt;parameter type="context" value="SC_DATA_ONE" /&gt;
+  &lt;parameter type="context" value="SC_DATA_TWO" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will subtract 20 from 10 and ensure that the result is 10</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="subtract" type="MATH" page="TEST_PAGE"&gt;
+  &lt;parameter type="static" value="=10" /&gt;
+  &lt;parameter type="static" value="20" /&gt;
+  &lt;parameter type="static" value="10" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <h2 id="kw-mouse">MOUSE</h2>
+                    <p>
+                        The mouse keyword allows you to control the mouse on an implementation that has input devices
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>There is a single parameter which specifies the mouse action to perform.  It can be any of the below values</p>
+                        <ul>
+                            <li>MOVE_TO:  This will move to the center of the element specified by the name attribute</li>
+                            <li>PRESS:  This will depress and hold the mouse at the center of the element specified by the name attribute</li>
+                            <li>RELEASE:  This will release the mouse at the center element specified by the name attribute</li>
+                        </ul>
+                    </div>
+                    
+                    <p>This example will move the mouse on top of a hover menu anchor named MENU</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="MENU" type="MOUSE" page="TEST_PAGE"&gt;
+  &lt;parameter type="static" value="MOVE_TO" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    <h2 id="kw-report">REPORT</h2>
+                    <p>
+                        Allows data to be added as information items to the output report.  The data will be displayed at the information and can comprise of parameters and static data
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>You can have 1 or more parameters which contain individual line items.  Each parameter will be added to the report</p>
+                    </div>
+                    
+                    <p>This example will add the static label test to the report</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="MENU" type="REPORT" page="TEST_PAGE"&gt;
+  &lt;parameter type="static" value="test" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will add the value of the context varialbel SC_TEST to the report</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="MENU" type="REPORT" page="TEST_PAGE"&gt;
+  &lt;parameter type="context" value="SC_TEST" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    
+                    <h2 id="kw-dump">STATE</h2>
+                    <p>
+                        This keyword takes a snapshot of the device and writes it to disk.  If the EXECUTION_RECORD_HTML Artifact type is active then this screen shot will be added to the HTML report.  In addition to the screenshot the current state of the application is captured in XML form.  This will be written to disk and a link to the file will be dumped out to the report is well.  The output can be used to validate XPATH statements as it is a representation fo the device at that poitn in time. 
+                    </p>
+
+                    <p>Dump the current state of the application</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="checkState" page="LOGIN" type="DUMP_STATE"/&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <h2 id="kw-string">STRING</h2>
+                    <p>
+                        The string keyword allows you to perform simple string operations on a value and store its result.
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>When using a single parameter, the value that is processed is a result of the getValue method on the named element.  The parameter specifies the action to take</p>
+                        <ol>
+                            <li>The action to take on the string
+                            <ul>
+                                <li>trim: Indicates that all leading and trailing empty space is trimmed off of of the value</li>
+                                <li>lower: Indicates that the value be set to all lower case characters</li>
+                                <li>upper: Indicates that the value be set to all upper case characters</li>
+                            </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>When using 2 parameters, the named element is ignored and instead a value is passed in to work oon</p>
+                        <ol>
+                            <li>The value that will have the action performed
+                            <li>The action to take on the string
+                            <ul>
+                                <li>trim: Indicates that all leading and trailing empty space is trimmed off of of the value</li>
+                                <li>lower: Indicates that the value be set to all lower case characters</li>
+                                <li>upper: Indicates that the value be set to all upper case characters</li>
+                            </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <p>This example will extract and trim the resulting string form the MENU element and store its value in the SC_VALUE context variable</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="MENU" type="STRING" page="TEST_PAGE" context="SC_VALUE"&gt;
+  &lt;parameter type="static" value="trim" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will extract and set the characters to lower case from the value stored in SC_VALUE and store it as SC_LOWER</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="MENU" type="STRING" page="TEST_PAGE" context="SC_LOWER"&gt;
+  &lt;parameter type="context" value="SC_VALUE" /&gt;
+  &lt;parameter type="static" value="lower" /&gt;
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
