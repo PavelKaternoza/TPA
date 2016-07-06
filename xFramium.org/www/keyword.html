@@ -105,7 +105,6 @@ body {
                                 <li><a href=#kw-call>CALL</a></li>
                                 <li><a href=#kw-click>CLICK</a></li>
                                 <li><a href=#kw-compare>COMPARE</a></li>
-                                <li><a href=#kw-dump>STATE</a></li>
                                 <li><a href=#kw-else>ELSE</a></li>
                                 <li><a href=#kw-execjs>EXEC_JS</a></li>
                                 <li><a href=#kw-fork>FORK</a></li>
@@ -114,6 +113,8 @@ body {
                                 <li><a href=#kw-math>MATH</a></li>
                                 <li><a href=#kw-mouse>MOUSE</a></li>
                                 <li><a href=#kw-report>REPORT</a></li>
+                                <li><a href=#kw-sql>SQL</a></li>
+                                <li><a href=#kw-state>STATE</a></li>
                                 <li><a href=#kw-string>STRING</a></li>
                                 <li><a href=#kw-checkcolor>VERIFY_COLOR</a></li>
                             </ul></li>
@@ -1437,9 +1438,35 @@ body {
                         </pre>
                     </figure>
                     
+                    <h2 id="kw-sql">SQL</h2>
+                    <p>
+                        Allows data stored in a relational database to read into test case context variables and optionally compared to values already in the test case.
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>You must have at least 1 paramter, which is the SQL query used to access external data.  Each (optional) additional parameter is a value used to compare with the query result in the corresponding position (ex. query column #1 -> parameter #2, query column #2 -> parameter #3 ...).  Query result data is also stored in context variables who's name is constructed from the column alias in the SQL statement.</p>
+                    </div>
                     
+                    <p>This example executes the query passed as the first parameter and stores the results in context variables named 'results_a' and 'results_b'.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SQL_TEST" page="Home" type="SQL" context="results" &gt;
+   &lt;parameter type="STATIC" value="select 'one' a, 'two' b from dual" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
                     
-                    <h2 id="kw-dump">STATE</h2>
+                    <p>This example builds on the previous example by adding two additional parameters to compare the query results to.  If all of this type of parameter matchs the corresponding query result column, the step passes.  If not, the step and the test case fail.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SQL_TEST" page="Home" type="SQL" context="results" &gt;
+   &lt;parameter type="STATIC" value="select 'one' a, 'two' b from dual" /&gt;
+   &lt;parameter type="STATIC" value="one" /&gt;
+   &lt;parameter type="STATIC" value="three" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>                    
+                    
+                    <h2 id="kw-state">STATE</h2>
                     <p>
                         This keyword takes a snapshot of the device and writes it to disk.  If the EXECUTION_RECORD_HTML Artifact type is active then this screen shot will be added to the HTML report.  In addition to the screenshot the current state of the application is captured in XML form.  This will be written to disk and a link to the file will be dumped out to the report is well.  The output can be used to validate XPATH statements as it is a representation fo the device at that poitn in time. 
                     </p>
