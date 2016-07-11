@@ -44,15 +44,13 @@ body {
                             <li><a href="/keyword.html">Writing tests using keywords</a></li>
                             <li><a href="/java.html">Writing tests in Java</a></li>
                             <li><a href="/download.html">Download xFramium</a></li>
-                        </ul>
-                    </li>
+                        </ul></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Architectural Overview </a></li>
                             <li><a href="/apidocs/index.html" target="_blank">API Reference</a></li>
                             <li><a href="/extending.html">Extending the Framework</a></li>
-                        </ul>
-                    </li>
+                        </ul></li>
                     <li><a href="/sponsors.html">Sponsors</a></li>
                 </ul>
             </div>
@@ -82,22 +80,26 @@ body {
                                 <li><a href=#cloud-xml>XML</a></li>
                                 <li><a href=#cloud-excel>Excel</a></li>
                                 <li><a href=#cloud-excel>CSV</a></li>
+                                <li><a href=#cloud-sql>SQL</a></li>
                             </ul></li>
                         <li><a href=#app>Application Management</a>
                             <ul class=nav>
                                 <li><a href=#app-xml>XML</a></li>
                                 <li><a href=#app-excel>Excel</a></li>
                                 <li><a href=#app-excel>CSV</a></li>
+                                <li><a href=#app-sql>SQL</a></li>
                             </ul></li>
                         <li><a href=#data>Data Management</a>
                             <ul class=nav>
                                 <li><a href=#data-xml>XML</a></li>
                                 <li><a href=#data-excel>Excel</a></li>
+                                <li><a href=#data-sql>SQL</a></li>
                             </ul></li>
                         <li><a href=#contentx>Content Management</a>
                             <ul class=nav>
                                 <li><a href=#content-xml>XML</a></li>
                                 <li><a href=#content-excel>Excel</a></li>
+                                <li><a href=#content-sql>SQL</a></li>
                             </ul></li>
                         <li><a href=#artifact>Artifact Management</a>
                     </ul>
@@ -120,38 +122,32 @@ body {
                             <tbody>
                                 <tr>
                                     <td>Perfecto:</td>
-                                    <td>
-                                        Used during script development to specify that your scripts should only run on devices that are reserved to the logged in user or on all available devices in the cloud. Other validators can be registered to allows
-                                        for different devices criteria to be included</td>
+                                    <td>Used during script development to specify that your scripts should only run on devices that are reserved to the logged in user or on all available devices in the cloud. Other validators can be registered to
+                                        allows for different devices criteria to be included</td>
                                 </tr>
                                 <tr>
                                     <td>named</td>
-                                    <td>Allows the
-                                        developer to specify a unique device or list of devices by name to use during test execution. Great for development but should be used sparingly as it requires specific device's2</td>
+                                    <td>Allows the developer to specify a unique device or list of devices by name to use during test execution. Great for development but should be used sparingly as it requires specific device's2</td>
                                 </tr>
                                 <tr>
                                     <td>csv</td>
-                                    <td> Used to feed a list of
-                                        device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the availableDevices
-                                        is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
+                                    <td>Used to feed a list of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel
+                                        runs. If the availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
                                 </tr>
                                 <tr>
                                     <td>xml</td>
-                                    <td>Used to feed a list of
-                                        device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the availableDevices
-                                        is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
+                                    <td>Used to feed a list of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel
+                                        runs. If the availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
                                 </tr>
                                 <tr>
                                     <td>excel</td>
-                                    <td>Used to feed a list
-                                        of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the
-                                        availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
+                                    <td>Used to feed a list of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel
+                                        runs. If the availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
                                 </tr>
                                 <tr>
                                     <td>sql</td>
-                                    <td>Used to feed a list
-                                        of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel runs. If the
-                                        availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
+                                    <td>Used to feed a list of device characteristics to the Device Registry to allow for a device meeting certain criteria to be used. Using the Device registry allows for a higher rate of execution and true parallel
+                                        runs. If the availableDevices is specified and the values is greater than one, then the test cases will be split among all of the devices located increasing the speed of execution</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -184,7 +180,9 @@ body {
                                             <li>browserName: The name of the browser used as criteria</li>
                                             <li>browserVersion: The the versino of the browser used as criteria</li>
                                             <li>id: A specific device identifier</li>
-                                    </ul>
+                                            <li>availableDevices: Specifies the number if devices that match this specification. When available devices is greater than one test cases will bv split across the devices for faster execution. When less
+                                                than zero, the system will attempt to read from the cloud provider to find how many devices match</li>
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr>
@@ -193,7 +191,7 @@ body {
                                         <ul>
                                             <li>name: The name of the capability</li>
                                             <li>class: Specifies the type of value specified in the text content as <span class="pValues">STRING,BOOLEAN,PLATFORM or OBJECT)</li>
-                                    </ul>
+                                        </ul>
                                     </td>
                                 </tr>
                             </tbody>
@@ -217,12 +215,12 @@ body {
                     </figure>
                     <h2 id="device-excel">Excel Configuration</h2>
                     <h2 id="device-csv">CSV Configuration</h2>
-                    <h2 id="device-csv">SQL Configuration</h2>
+                    <h2 id="device-sql">SQL Configuration</h2>
                     <p>The device registry format is defined using a SQL Data Definition file. This file is located at:</p>
                     <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/device/data/sql/tables.sql</p>
                     <p>The default queries used by the provider are:</p>
                     <figure class=highlight>
-                      <textarea cols="120" rows="10" readonly="readonly">
+                        <textarea cols="120" rows="10" readonly="readonly">
 Devices:
                         
 SELECT NAME, ID, MANUFACTURER, MODEL, OS, OS_VERSION, BROWSER_NAME, BROWSER_VERSION, ACTIVE, AVAILABLE 
@@ -249,23 +247,19 @@ FROM PERFECTO_DEVICE_CAPABILITIES
                             <tbody>
                                 <tr>
                                     <td>csv</td>
-                                    <td width="100%"><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/CSVCloudProvider.html">com.perfectoMobile.device.cloud.CSVCloudProvider</a><br /> An
-                                        comma separated list based cloud registry</td>
+                                    <td width="100%"><a hRef="http://xframium.org/apidocs/org/xframium/device/cloud/CSVCloudProvider.html">CSVCloudProvider</a><br /> An comma separated list based cloud registry</td>
                                 </tr>
                                 <tr>
                                     <td>xml</td>
-                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/XMLCloudProvider.html">com.perfectoMobile.device.cloud.XMLVCloudProvider</a><br /> An XML based cloud
-                                        registry</td>
+                                    <td><a hRef="http://xframium.org/apidocs/org/xframium/device/cloud/XMLCloudProvider.html">XMLVCloudProvider</a><br /> An XML based cloud registry</td>
                                 </tr>
                                 <tr>
                                     <td>excel</td>
-                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/ExcelCloudProvider.html">com.perfectoMobile.device.cloud.ExcelCloudProvider</a><br /> An Excel based
-                                        cloud registry</td>
+                                    <td><a hRef="http://xframium.org/apidocs/org/xframium/device/cloud/ExcelCloudProvider.html">ExcelCloudProvider</a><br /> An Excel based cloud registry</td>
                                 </tr>
                                 <tr>
                                     <td>sql</td>
-                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/deviceFramework/com/perfectoMobile/device/cloud/SQLCloudProvider.html">com.perfectoMobile.device.cloud.SQLCloudProvider</a><br /> An Database/SQL based
-                                        cloud registry</td>
+                                    <td><a hRef="http://xframium.org/apidocs/org/xframium/device/cloud/SQLCloudProvider.html">SQLCloudProvider</a><br /> An Database/SQL based cloud registry</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -295,7 +289,10 @@ FROM PERFECTO_DEVICE_CAPABILITIES
                                             <li>grid: A name of another defined cloud instance pointing to a Selenium grid for desktop browsers</li>
                                             <li>proxyHost: An optional proxy host</li>
                                             <li>proxyPort: An optional proxy port</li>
-                                    </ul>
+                                            <li>proxyUser: An optional proxy user for an authenticating proxy</li>
+                                            <li>proxyPassword: An optional proxy password for an authenticating proxy</li>
+                                            <li>providerType: Specifies the type of the cloud you are connecting to.</li>
+                                        </ul>
                                     </td>
                                 </tr>
                             </tbody>
@@ -350,12 +347,12 @@ demo,,,127.0.0.1:4444,,,
                             </code>
                         </pre>
                     </figure>
-                    <h2 id="device-csv">SQL Configuration</h2>
+                    <h2 id="cloud-sql">SQL Configuration</h2>
                     <p>The cloud registry format is defined using a SQL Data Definition file. This file is located at:</p>
                     <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/device/cloud/sql/table.sql</p>
                     <p>The default query used by the provider is:</p>
                     <figure class=highlight>
-                      <textarea cols="120" rows="3" readonly="readonly">
+                        <textarea cols="120" rows="3" readonly="readonly">
 SELECT NAME, USER_NAME, PASSWORD, HOST_NAME, 
        PROXY_HOST, PROXY_PORT, DESCRIPTION, GRID_INSTANCE
 FROM PERFECTO_CLOUDS
@@ -391,8 +388,8 @@ FROM PERFECTO_CLOUDS
                                 </tr>
                                 <tr>
                                     <td>sql</td>
-                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/serviceProviderInterface/com/morelandLabs/application/ExcelApplicationProvider.html">com.morelandLabs.application.SQLApplicationProvider</a><br />
-                                        An Database/SQL based application registry</td>
+                                    <td><a hRef="http://www.morelandlabs.com/javadoc/perfectoMobile/serviceProviderInterface/com/morelandLabs/application/ExcelApplicationProvider.html">com.morelandLabs.application.SQLApplicationProvider</a><br /> An
+                                        Database/SQL based application registry</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -423,7 +420,7 @@ FROM PERFECTO_CLOUDS
                                             <li>url: The URL for web applications (WEB)</li>
                                             <li>iosInstall: The Perfecto Cloud location of the IOS Installation file</li>
                                             <li>androidInstall: The Perfecto Cloud location of the Android Installation file</li>
-                                    </ul>
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr>
@@ -432,7 +429,7 @@ FROM PERFECTO_CLOUDS
                                         <ul>
                                             <li>name: The name of the capability</li>
                                             <li>class: Specifies the type of value specified in the text content as STRING,BOOLEAN,PLATFORM or OBJECT)</li>
-                                    </ul>
+                                        </ul>
                                     </td>
                                 </tr>
                             </tbody>
@@ -485,12 +482,12 @@ default,com.android.settings,com.apple.settings,http://www.google.com,,
                             </code>
                         </pre>
                     </figure>
-                    <h2 id="device-csv">SQL Configuration</h2>
+                    <h2 id="app-sql">SQL Configuration</h2>
                     <p>The application registry format is defined using a SQL Data Definition file. This file is located at:</p>
                     <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/application/sql/tables.sql</p>
                     <p>The default queries used by the provider are:</p>
                     <figure class=highlight>
-                      <textarea cols="120" rows="10" readonly="readonly">
+                        <textarea cols="120" rows="10" readonly="readonly">
 Applications:
                         
 SELECT NAME, APP_PACKAGE, BUNDLE_ID, URL, IOS_INSTALL, ANDROID_INSTALL
@@ -526,7 +523,7 @@ FROM PERFECTO_APP_DEV_CAPABILITIES
                                             <li>name: The name attribute represents the data source name as it will be referenced within the test cases</li>
                                             <li>lockRecords: Lock records is a flag (true/false) indicating if a record can be used in parallel. When true a record will be locked by an individual iteration of a test case and released for reuse upon
                                                 completion otherwise the records can be reused as requested by the test case</li>
-                                    </ul>
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr>
@@ -535,7 +532,7 @@ FROM PERFECTO_APP_DEV_CAPABILITIES
                                         <ul>
                                             <li>name: The name attribute represents the field name as it will be referenced within the test cases</li>
                                             <li>active: Active is a flag (true/false) indicating if this record is active. Setting a record's active flag to false tells the subsystem to ignore it during a run</li>
-                                    </ul>
+                                        </ul>
                                     </td>
                                 </tr>
                             </tbody>
@@ -621,12 +618,12 @@ users,user,|userType:[type='user']|
                             </code>
                         </pre>
                     </figure>
-                    <h2 id="device-csv">SQL Configuration</h2>
+                    <h2 id="data-sql">SQL Configuration</h2>
                     <p>The page data registry format is defined using a SQL Data Definition file. This file is located at:</p>
                     <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/page/data/provider/sql/tables.sql</p>
                     <p>The default query used by the provider is:</p>
                     <figure class=highlight>
-                      <textarea cols="120" rows="6" readonly="readonly">
+                        <textarea cols="120" rows="6" readonly="readonly">
 SELECT DT.NAME, DT.LOCK_RECORDS, 
        PG.NAME, PG.ACTIVE, 
        AT.NAME, AT.VALUE 
@@ -636,7 +633,6 @@ FROM PERFECTO_PAGE_DATA_TYPE DT
                       </textarea>
                     </figure>
                     <p>If a non-default query is used, it must select the page data elements in the order specified in the default query.</p>
-
                     <h1 id="contentx" class=page-header>Content Management</h1>
                     <p>Localization for a multi-lingual application is every automation engineer’s nightmare. Internationalization and localization are means of adapting computer software to different languages however automated tests need to be
                         created to handle the different languages. Content Management is the process of adapting internationalized software for a specific region or language by adding locale-specific components and translating text for use by the automated
@@ -753,19 +749,18 @@ Georgia,GA,ga
                             </code>
                         </pre>
                     </figure>
-                    <h2 id="device-csv">SQL Configuration</h2>
+                    <h2 id="content-sql">SQL Configuration</h2>
                     <p>The content registry format is defined using a SQL Data Definition file. This file is located at:</p>
                     <p>https://github.com/xframium/xframium-java/blob/master/framework/src/org/xframium/content/provider/sql/table.sql</p>
                     <p>The default query used by the provider is:</p>
                     <figure class=highlight>
-                      <textarea cols="120" rows="3" readonly="readonly">
+                        <textarea cols="120" rows="3" readonly="readonly">
 SELECT KEY_NAME, VALUE 
 FROM PERFECTO_CONTENT
 ORDER BY KEY_NAME, OFFSET
                       </textarea>
                     </figure>
                     <p>If a non-default query is used, it must select the content data elements in the order specified in the default query.</p>
-
                     <h1 id="artifact" class=page-header>Artifact Management</h1>
                     <p>
                         There are a few points of interest when dealing with Test Artifacts and integrations for reporting and result delivery. There are a handful of prepared reports that are already integrated that can be turned on for automatic
@@ -842,5 +837,14 @@ ORDER BY KEY_NAME, OFFSET
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src=./js/docs.min.js></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-80178289-1', 'auto');
+    ga('send', 'pageview’);
+	</script>
 </body>
 </html>
