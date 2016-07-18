@@ -107,8 +107,10 @@ body {
                                 <li><a href=#kw-compare>COMPARE</a></li>
                                 <li><a href=#kw-else>ELSE</a></li>
                                 <li><a href=#kw-execjs>EXEC_JS</a></li>
+                                <li><a href=#kw-exists>EXISTS</a></li>
                                 <li><a href=#kw-fork>FORK</a></li>
                                 <li><a href=#kw-gesture>GESTURE</a></li>
+                                <li><a href=#kw-get>GET</a></li>
                                 <li><a href=#kw-loop>LOOP</a></li>
                                 <li><a href=#kw-math>MATH</a></li>
                                 <li><a href=#kw-mouse>MOUSE</a></li>
@@ -117,6 +119,8 @@ body {
                                 <li><a href=#kw-state>STATE</a></li>
                                 <li><a href=#kw-string>STRING</a></li>
                                 <li><a href=#kw-checkcolor>VERIFY_COLOR</a></li>
+                                <li><a href=#kw-wait>WAIT</a></li>
+                                <li><a href=#kw-waitfor>WAIT_FOR</a></li>
                             </ul></li>
                     </ul>
                     <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
@@ -573,7 +577,7 @@ body {
                                     <td>A Link ID is purely for documentation or external integration. The value is not used by any test. This attribute can be used for external integration or information purposes</td>
                                 </tr>
                                 <tr>
-                                    <td>testtags:</td>
+                                    <td>tagNames:</td>
                                     <td>Test Tags are used to allow for test grouping. By providing a comma separated list of test tags the test executor can then specify a test tag and only test who contain that tag will run.</td>
                                 </tr>
                             </tbody>
@@ -1114,6 +1118,28 @@ body {
                         </pre>
                     </figure>
                     
+                    
+                    <h2 id="kw-exists">EXISTS</h2>
+                    <p>
+                        The EXISTS keyword verifies that the element exists.  This does not validate that the element is visible or that it is capable of interaction.  It just validate that it exists in the object tree.  In the case of V_TEXT or V_IMAGE visibility is checked as well.  The context variable will be set by calling the getValue() method on the located element.  If multiple elements are returned then the element count is recorded using the context name with _count appended to it.
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>The EXISTS keyword does not accept any parameters</p>
+                    </div>
+                    <p>This example will validate that the SEARCH element exists on the HOME page.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH" page="HOME" type="EXISTS" /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will validate that the SEARCH element DOES NOT exist on the HOME page.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH" page="HOME" type="EXISTS" inverse="true" /&gt;</code>
+                        </pre>
+                    </figure>
+                    
                     <h2 id="kw-fork">FORK</h2>
                     <p>
                         For is a complicated keyword used to define locate multiple elements in parallel and select the appropriate path depending on the located element.  Each parameter specified represents an element name and there must be a matching step defined.  These steps must be defined in the same order as the elements following the last parameter.  Forking is used mainly when script performance is an issue with multiple checks to determine that direction to go.  The FORK will allow all checks to occur simultaneously and the correct path selected without a lot of conditional logic   
@@ -1256,6 +1282,43 @@ body {
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="SWIPE.PICKER" page="SHOW"&gt;
   &lt;parameter type="STATIC" value="UP" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    <h2 id="kw-get">GET</h2>
+                    <p>
+                        The GET keyword extracts the value of the element using the getValue() method.  The returned value can either be stored in context, compared with another parameter or both
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>The GET keyword takes a single optional parameter. </p>
+                        <ol>
+                            <li>If specified, the value returned by getValue() will be compared to this parameter.  If not equal, this step will fail</li>
+                        </ol>
+                    </div>
+                    
+                    <p>This example will get the value of the SEARCH element on the HOME page and store it in the SC_SEARCH context variable</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH" page="HOME" type="GET" context="SC_SEARCH" /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will get the value of the SEARCH element on the HOME page and compare it to the phrase 'car store'</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH" page="HOME" type="GET" &gt;
+  &lt;parameter type="STATIC" value="car store" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will get the value of the SEARCH element on the HOME page and compare it to the value of SC_SEARCH context variable</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH" page="HOME" type="GET" &gt;
+  &lt;parameter type="CONTEXT" value="SC_SEARCH" /&gt;
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
@@ -1570,6 +1633,90 @@ body {
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
+                    
+                    
+                    
+                    <h2 id="kw-wait">WAIT</h2>
+                    <p>
+                        The WAIT function an explicit wait with no condition.  This thread will pause for the specified amount of time (5 seconds by default) then continue execution.  In this case, the name parameter is not used
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>The WAIT keyword has a single optional parameter </p>
+                        <ol>
+                            <li>Specifies the wait time in seconds.  If this is not specified, the default value of 5 seconds will be used</li>
+                        </ol>
+                    </div>
+                    
+                    <p>This example will wait for 5 seconds</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="WAIT" page="HOME" type="WAIT"  /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will wait for 15 seconds</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="WAIT" page="HOME" type="WAIT" &gt;
+  &lt;parameter type="STATIC" value="15" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    
+                    <h2 id="kw-waitfor">WAIT_FOR</h2>
+                    <p>
+                        The WAIT function an explicit wait with a condition.  By default the condition is presence indicating that the element exists.  The thread will wait for 15 second by default for the existence of the named element.  If the named element contains a period (.) then the right half of the name past the period indicates the wait for condition.  The wait for condition can be one of the following:
+                        <ul>
+                            <li>CLICKABLE</li>
+                            <li>SELECTABLE</li>
+                            <li>INVISIBLE</li>
+                            <li>PRESENT</li>
+                            <li>TEXT_PRESENT</li>
+                            <li>TEXT_VALUE_PRESENT</li>
+                            <li>TITLE_CONTAINS</li>
+                            <li>TITLE_IS</li>
+                            <li>VISIBLE</li>
+                        </ul>               
+                        The left side of the period will indicate the named element.  If not period exists then the name will represent the named element.         
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>The WAIT_FOR keyword has a single optional parameter </p>
+                        <ol>
+                            <li>Specifies the wait time in seconds.  If this is not specified, the default value of 15 seconds will be used</li>
+                        </ol>
+                    </div>
+                    
+                    <p>This example will wait for 15 seconds for the SEARCH element on the HOME page</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH" page="HOME" type="WAIT_FOR"  /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will wait for 15 seconds for the SEARCH element to become visible on the HOME page</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH.VISIBLE" page="HOME" type="WAIT_FOR"  /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will wait for 15 seconds for the SEARCH element to become clickable on the HOME page</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH.CLICKABLE" page="HOME" type="WAIT_FOR"  /&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will wait for 5 seconds</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SEARCH" page="HOME" type="WAIT_FOR" &gt;
+  &lt;parameter type="STATIC" value="5" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
                 </div>
             </div>
         </div>
