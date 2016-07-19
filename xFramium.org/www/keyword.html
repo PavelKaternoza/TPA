@@ -61,7 +61,7 @@ body {
     <div class=bs-docs-header id=content tabindex=-1>
         <div class="container">
             <h1>Keyword-Driver</h1>
-            <p>xFramium XML Keyword-Driver allows for rapid test case development using using a simple and elegant XML alternative to coding.</p>
+            <p>xFramium XML Keyword-Driver allows for rapid test case development using a simple and elegant XML alternative to coding.</p>
         </div>
     </div>
     <div class="container bs-docs-container">
@@ -446,7 +446,7 @@ body {
                             <tbody>
                                 <tr>
                                     <td>artifactProducer.parentFolder:</td>
-                                    <td width="100%">Specifies the parent folder in which all test artifacts are stored. This will will contain a folder for each test run using the run time. Contained will be a folder for ever test case run and then a
+                                    <td width="100%">Specifies the parent folder in which all test artifacts are stored. This will contain a folder for each test run using the run time. Contained will be a folder for every test case run and then a
                                         folder for each device that it was run on</td>
                                 </tr>
                                 <tr>
@@ -459,7 +459,7 @@ body {
                                 </tr>
                                 <tr>
                                     <td>artifactProducer.logLevel:</td>
-                                    <td>Specifies the detail that is written to the Console log when using the CONSOLE_LOG artifact. Validvalues are
+                                    <td>Specifies the detail that is written to the Console log when using the CONSOLE_LOG artifact. Valid values are
                                         <ul>
                                             <li>FATAL: Severe errors that cause premature termination. Expect these to be immediately visible on a status console</li>
                                             <li>ERROR: Other runtime errors or unexpected conditions. Expect these to be immediately visible on a status console</li>
@@ -479,8 +479,8 @@ body {
                                             <li>EXECUTION_REPORT_HTML: Gets a copy of the Perfecto Execution report in HTML format</li>
                                             <li>EXECUTION_REPORT_CSV: Gets a copy of the Perfecto Execution report in CSV format</li>
                                             <li>EXECUTION_REPROT_XML: Gets a copy of the Perfecto Execution report in XML format</li>
-                                            <li>FAILURE_SOURCE: Extracts the state of the device and application. That states is extracted and saved as failureDom.xml to allow for quick debugging of object identification issues</li>
-                                            <li>WCAG_REPORT: If WCAG operations were used (Branding, contrast, etc) then this will contain the extracted images and their operational statistics.</li>
+                                            <li>FAILURE_SOURCE: Extracts the state of the device and application. These states are extracted and saved as failureDom.xml to allow for quick debugging of object identification issues</li>
+                                            <li>WCAG_REPORT: If WCAG operations were used (Branding, contrast, etc.) then this will contain the extracted images and their operational statistics.</li>
                                             <li>DEVICE_LOG: Extracts the previous 1000 lines of the device's log file</li>
                                             <li>CONSOLE_LOG: Writes the console output for the specified test on the specified device. Only information pertaining to that test/device is stored here</li>
                                             <li>EXECUTION_RECORD_HTML: Contains a clean execution report of the test steps that were executed. In addition, a master index file will be created showing the status of all tests executed in this run</li>
@@ -541,7 +541,7 @@ body {
                                 </tr>
                                 <tr>
                                     <td>active:</td>
-                                    <td>A flag (true/false) indicating if this test is active. If the value is unspecified or equal to true then the test will be available for execution. If a test is marked inactive bus is directly called from another
+                                    <td>A flag (true/false) indicating if this test is active. If the value is unspecified or equal to true, then the test will be available for execution. If a test is marked inactive bus is directly called from another
                                         test or function then it will still execute.
                                     <td></td>
                                 </tr>
@@ -555,12 +555,12 @@ body {
                                 </tr>
                                 <tr>
                                     <td>datadriver:</td>
-                                    <td>The Data Driver uses the same underlying logic as the data provider however the test case will iterate and execute over all o the records in the specified data set as apposed to a single record. Only a single
-                                        data driver may be specified here. You may use data providers and a data driver in the same test case but specifying both attributes.</td>
+                                    <td>The Data Driver uses the same underlying logic as the data provider however the test case will iterate and execute over all of the records in the specified data set as opposed to a single record. Only a single
+                                        data driver may be specified here. You may use data providers and a data driver in the same test case but specifying both attributes. </td>
                                 </tr>
                                 <tr>
                                     <td>timed:</td>
-                                    <td>A flag (true/false) indicating if this test case step should be timed.</td>
+                                    <td>A flag (true/false) indicating if this test case step should be timed. </td>
                                 </tr>
                                 <tr>
                                     <td>threshold:</td>
@@ -578,14 +578,14 @@ body {
                                 </tr>
                                 <tr>
                                     <td>tagNames:</td>
-                                    <td>Test Tags are used to allow for test grouping. By providing a comma separated list of test tags the test executor can then specify a test tag and only test who contain that tag will run.</td>
+                                    <td>Test Tags are used to allow for test grouping. By providing a comma separated list of test tags the test executor can then specify a test tag and only test who contain that tag will run. </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <h2 id=tc-step>Steps</h2>
-                    <p>A step defines a single test action. A step can one of many different types ranging from testing element values to color verification. A step can also contains steps as sub elements. Sub steps along with the failureMode attribute
-                        defined below can be combined for conditional logic as the sub steps are only executed if the parent element is successful.</p>
+                    <p>A step defines a single test action. A step can one of many different types ranging from testing element values to color verification. A step can also contain steps as sub elements. Sub steps along with the failureMode attribute
+                        defined below can be combined for conditional logic as the sub steps are only executed if the parent element is successful. </p>
                     <h3 id=step-attr>Attributes</h3>
                     <div class=table-responsive>
                         <table class="table table-bordered table-striped js-options-table">
@@ -603,7 +603,7 @@ body {
                                 </tr>
                                 <tr>
                                     <td>Active:</td>
-                                    <td>A flag (true/false) indicating if this step is active. If the value is unspecified or equal to true then the step will execute otherwise it will be skipped without being logged or throwing an error
+                                    <td>A flag (true/false) indicating if this step is active. If the value is unspecified or equal to true, then the step will execute otherwise it will be skipped without being logged or throwing an error
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -621,11 +621,11 @@ body {
                                 </tr>
                                 <tr>
                                     <td>os:</td>
-                                    <td>An optional value that when specified indicated that this step should only be executed if the OS value of the device matches the OS specified here.</td>
+                                    <td>An optional value that when specified indicated that this step should only be executed if the OS value of the device matches the OS specified here. </td>
                                 </tr>
                                 <tr>
                                     <td>page:</td>
-                                    <td>The name of the page object from the object repository in which the named element is a member of.</td>
+                                    <td>The name of the page object from the object repository in which the named element is a member of. </td>
                                 </tr>
                                 <tr>
                                     <td>poi:</td>
@@ -633,7 +633,7 @@ body {
                                 </tr>
                                 <tr>
                                     <td>timed:</td>
-                                    <td>A flag (true/false) indicating if this test case step should be timed.</td>
+                                    <td>A flag (true/false) indicating if this test case step should be timed. </td>
                                 </tr>
                                 <tr>
                                     <td>threshold:</td>
@@ -646,11 +646,11 @@ body {
                                 </tr>
                                 <tr>
                                     <td>failureMode:</td>
-                                    <td>Failure Mode allows you to specify what action the step should take following a failure caused by criteria or a error in the step. By default, any failure will fail the entire test case and stop the execution
+                                    <td>Failure Mode allows you to specify what action the step should take following a failure caused by criteria or an error in the step. By default, any failure will fail the entire test case and stop the execution
                                         immediately. In addition, you can specify
                                         <ul>
                                             <li>ignore: Ignores the failure and continues on with your test</li>
-                                            <li>logignore: Logs the failure in the log and continues on with your test</li>
+                                            <li>logIgnore: Logs the failure in the log and continues on with your test</li>
                                             <li>error: The default action - this will stop the test and fail</li>
                                         </ul>
                                     </td>
@@ -664,7 +664,7 @@ body {
                                     <td>This optional parameter allows you to specify a validation method to use on the return value of this step. There are multiple types of validation implementations used. That are defined as:
                                         <ul>
                                             <li>REGEX: This will read the value in the validation attribute as a regular expression and attempt to match the value to this regular expression</li>
-                                            <li>EMPTY: This ensumes that the value is empty</li>
+                                            <li>EMPTY: This ensures that the value is empty</li>
                                             <li>NON_EMPTY: The ensures that the value is not empty</li>
                                         </ul>
                                     </td>
@@ -704,7 +704,7 @@ body {
                                 </tr>
                                 <tr>
                                     <td class="pName">context:</td>
-                                    <td>The value specified in this type is the the name of the context variable that was previously set using the context attribute on a previous test. You must match the spelling and case of the context variable name.</td>
+                                    <td>The value specified in this type is the name of the context variable that was previously set using the context attribute on a previous test. You must match the spelling and case of the context variable name.</td>
                                 </tr>
                                 <tr>
                                     <td class="pName">property:</td>
@@ -712,8 +712,8 @@ body {
                                 </tr>
                                 <tr>
                                     <td class="pName">content:</td>
-                                    <td>The value specified in this type refers to a record from the content engine. That value can be formatted in multiple ways. If you just specify the key name from the content management defined key column then the
-                                        first value is returned that matches that name. If multiple lookup columns were specified then you can specify an individual column using one of two methods. First, you can specify the column index by using the
+                                    <td>The value specified in this type refers to a record from the content engine. That value can be formatted in multiple ways. If you just specify the key name from the content management defined key column, then the
+                                        first value is returned that matches that name. If multiple lookup columns were specified, then you can specify an individual column using one of two methods. First, you can specify the column index by using the
                                         following format keyName{#columnNumber}. The will find the lookup value array and return the specified column value represented by the index. Otherwise, you can use the column name as specified by the first row in
                                         the content data using the following format: keyName{columnName}</td>
                                 </tr>
@@ -721,10 +721,10 @@ body {
                         </table>
                     </div>
                     <h3 id=step-token>Tokens</h3>
-                    <p>The token engines allows for on the fly token replacement of values. Any value specified in the Object Repository is subject to token replacement. Token replacement allows for data driven page element identification reducing the
-                        amount of element definition required while enhancing the test case. When defining a page element you would specify a named token specified as {tokenName}. One defined, you would then specify the token in your test case with that
+                    <p>The token engines allow for on the fly token replacement of values. Any value specified in the Object Repository is subject to token replacement. Token replacement allows for data driven page element identification reducing the
+                        amount of element definition required while enhancing the test case. When defining a page element, you would specify a named token specified as {tokenName}. One defined, you would then specify the token in your test case with that
                         value that it will be replacing. The token engine will then use the name attribute in the token element to find the named token then use a combination of the type and value attributes to find the value. You can specify multiple
-                        tokens per element and named tokens that are not found will not be replaced.</p>
+                        tokens per element and named tokens that are not found will not be replaced. </p>
                     <div class=table-responsive>
                         <table class="table table-bordered table-striped js-options-table">
                             <thead>
@@ -746,7 +746,7 @@ body {
                                 </tr>
                                 <tr>
                                     <td class="tName">context:</td>
-                                    <td>The value specified in this type is the the name of the context variable that was previously set using the context attribute on a previous test. You must match the spelling and case of the context variable name.</td>
+                                    <td>The value specified in this type is the name of the context variable that was previously set using the context attribute on a previous test. You must match the spelling and case of the context variable name. </td>
                                 </tr>
                                 <tr>
                                     <td class="tName">property:</td>
@@ -754,8 +754,8 @@ body {
                                 </tr>
                                 <tr>
                                     <td class="tName">content:</td>
-                                    <td>The value specified in this type refers to a record from the content engine. That value can be formatted in multiple ways. If you just specify the key name from the content management defined key column then the
-                                        first value is returned that matches that name. If multiple lookup columns were specified then you can specify an individual column using one of two methods. First, you can specify the column index by using the
+                                    <td>The value specified in this type refers to a record from the content engine. That value can be formatted in multiple ways. If you just specify the key name from the content management defined key column, then the
+                                        first value is returned that matches that name. If multiple lookup columns were specified, then you can specify an individual column using one of two methods. First, you can specify the column index by using the
                                         following format keyName{#columnNumber}. The will find the lookup value array and return the specified column value represented by the index. Otherwise, you can use the column name as specified by the first row in
                                         the content data using the following format: keyName{columnName}</td>
                                 </tr>
@@ -805,7 +805,7 @@ body {
 </step> 
                         </textarea>
                     </figure>
-                    <p>The following test opens 2 devices and validates that a text message was sent from one device to the other using the Verizon Messages+ application.</p>
+                    <p>The following test opens 2 devices and validates that a text message was sent from one device to the other using the Verizon Messages+ application. </p>
                     <figure class=highlight>
                         <textarea cols="120" rows="32" readonly="readonly">
 <test name="SMS" timed="true" active="true" dataProvider="phoneData,messages">
@@ -843,9 +843,9 @@ body {
                     </figure>
                     
                     <h2 id="kw-alert">ALERT</h2>
-                    <p>The ALERT keyword allows for handling of JavaScript pop up messages on web applications.  Test scripts can interact with and dismiss alerts with this keyword.  If the alert dialog is not present then this will return a failure</p>
+                    <p>The ALERT keyword allows for handling of JavaScript pop up messages on web applications.  Test scripts can interact with and dismiss alerts with this keyword.  If the alert dialog is not present, then this will return a failure</p>
                     <div class="bs-callout bs-callout-warning" id=callout-scrollspy-invisible-targets>
-                        <p>Note:  The NAME attribute when used in a ALERT step type specifies the ALERT action to take.  The alert actions are defined below</p>
+                        <p>Note:  The NAME attribute when used in an ALERT step type specifies the ALERT action to take.  The alert actions are defined below</p>
                     </div>
                     
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
@@ -857,7 +857,7 @@ body {
                     </div>
                     
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p><b>SEND_KEYS</b> Sends the specified text to the alert pop up and clicks the OK/Accept button.</p>
+                        <p><b>SEND_KEYS</b> Sends the specified text to the alert pop up and clicks the OK/Accept button. </p>
                         <ol>
                             <li>The text to send to the Alert pop up</li>
                         </ol>
@@ -905,12 +905,12 @@ body {
                     
                     
                     <h2 id="kw-align">ALIGN</h2>
-                    <p>The align keyword allows your to verify horizontal or vertical align of the many element on the screen in relation to the named anchor element. You could validate the individual alignment properties of each specified element. On
+                    <p>The align keyword allows you to verify horizontal or vertical align of the many elements on the screen in relation to the named anchor element. You could validate the individual alignment properties of each specified element. On
                         single anchor element can be used to verify the positions of many other elements and alignment options</p>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p>You can pass any number parameters here. Each parameter will represent the element to compare to and which alignment property to validate</p>
                         <ol>
-                            <li>Each parameter will be formatted as [name]=[alignment property]. When comparing the alignment property you can optionally specify a maximum pixel deviation in parenthesis</li>
+                            <li>Each parameter will be formatted as [name]=[alignment property]. When comparing the alignment property, you can optionally specify a maximum pixel deviation in parenthesis</li>
                         </ol>
                     </div>
                     <p>Extract the USER_NAME object and ensure that the PASSWORD field is aligned exactly the same on the right and left side. Then make sure the BUTTON is close to the LEFT side</p>
@@ -933,14 +933,14 @@ body {
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p>When passing a single parameter</p>
                         <ol>
-                            <li>The name of the style or attribute that you wish to extract.  To extract a style the name must be preceded with STYLE.</li>
+                            <li>The name of the style or attribute that you wish to extract.  To extract a style, the name must be preceded with STYLE. </li>
                         </ol>
                     </div>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p>When passing 2 parameters indicating that you want to compare this value with another</p>
                         <ol>
                             <li>The value to compare to</li>
-                            <li>The name of the style or attribute that you wish to extract.  To extract a style the name must be preceded with STYLE.</li>
+                            <li>The name of the style or attribute that you wish to extract.  To extract a style, the name must be preceded with STYLE. </li>
                         </ol>
                     </div>
                     <p>Extract the WIDTH value from the MY_ELEMENT element on the MENU page and store it as ATTR_WIDTH for later use</p>
@@ -1001,7 +1001,7 @@ body {
                         The Call keyword allows the developer to execute a function or test defined in XML.  The test or function will inherit any dataProvider and dataDriverdata that was provided to the calling test/function.  If a function is called and the function defined a dataProvider that did not exist on the calling test/functionthen it will be added during execution.  It is possible to override the name of a dataProvider/dataDriver using a parameter as defined below.  This allows a function to use a single dataProvider name while other calling function may use dataProvider/dataDrivers with different names. 
                     </p>
                     <div class="bs-callout bs-callout-danger" id=callout-overview-not-both>
-                        Note: The NAME attribute on the step defines the name of the test/fucntion to call.    
+                        Note: The NAME attribute on the step defines the name of the test/function to call.    
                     </div>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p>Each parameter passed to a call keyword is used for data provider name overrides.  You can pass multiple overrides to a single call for multiple data providers</p>
@@ -1121,7 +1121,7 @@ body {
                     
                     <h2 id="kw-exists">EXISTS</h2>
                     <p>
-                        The EXISTS keyword verifies that the element exists.  This does not validate that the element is visible or that it is capable of interaction.  It just validate that it exists in the object tree.  In the case of V_TEXT or V_IMAGE visibility is checked as well.  The context variable will be set by calling the getValue() method on the located element.  If multiple elements are returned then the element count is recorded using the context name with _count appended to it.
+                        The EXISTS keyword verifies that the element exists.  This does not validate that the element is visible or that it is capable of interaction.  It just validates that it exists in the object tree.  In the case of V_TEXT or V_IMAGE visibility is checked as well.  The context variable will be set by calling the getValue() method on the located element.  If multiple elements are returned, then the element count is recorded using the context name with _count appended to it.
                     </p>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p>The EXISTS keyword does not accept any parameters</p>
@@ -1198,7 +1198,7 @@ body {
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p><b>SWIPE</b> Single Parameter</p>
                         <ol>
-                            <li>UP, DOWN, LEFT, or RIGHT - Indicates a swipe of one page length</li>
+                            <li>UP, DOWN, LEFT, or RIGHT - Indicates a swipe of one-page length</li>
                         </ol>
                     </div>
                     
@@ -1326,7 +1326,7 @@ body {
                     
                     <h2 id="kw-loop">LOOP</h2>
                     <p>
-                        The loop keyword allow the script to loop over different types of data sets and execute a function for each iteration.  During a loop function you can call the BREAK step to exit cleanly out of the loop before the specified iteration is completed
+                        The loop keyword allows the script to loop over different types of data sets and execute a function for each iteration.  During a loop function you can call the BREAK step to exit cleanly out of the loop before the specified iteration is completed
                     </p>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p>There are 2 parameters to pass to the LOOP keyword.  The first parameter can be in a few different formats specified below</p>
@@ -1338,7 +1338,7 @@ body {
                                     <li>Element Name: If neither of the conditions above are met, then we assume that this value indicates an element name.  When using an element name, we assume that the element descriptor refers to a collection of elements rather than a single element.  If the name of the element is <b>_CONTEXT.ELEMENT</b> then we assume that this element was previously stored as the result of a nested loop statement.  During the iteration we set to context variables.  <b>_CONTEXT.ELEMENT</b> refers to the current element that is selected and <b>_CONTEXT.ELEMENT.INDEX</b> refers to the index of the current element.  You can reference both of these in the specified function
                                 </ul>
                             </li>
-                            <li>Function Name: The name of the function to call for each loop iteration.</li>
+                            <li>Function Name: The name of the function to call for each loop iteration. </li>
                         </ol>
                     </div>
                     
@@ -1363,7 +1363,7 @@ body {
                         </pre>
                     </figure>
                     
-                    <p>This example will loop over the page data record type named myUsers contained with in the authData record passed into the test and call the login function</p>
+                    <p>This example will loop over the page data record type named myUsers contained within the authData record passed into the test and call the login function</p>
                     <figure class=highlight>
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;step name="LOGIN" type="LOOP" page="TEST_PAGE" &gt;
@@ -1383,7 +1383,7 @@ body {
                         </pre>
                     </figure>
                     
-                    <p>This example will loop over the current contexst element defined by a nested loop statement.  We assume that we are in the loop already and that the context element contains a reference to other elements</p>
+                    <p>This example will loop over the current contexts element defined by a nested loop statement.  We assume that we are in the loop already and that the context element contains a reference to other elements</p>
                     <figure class=highlight>
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;step name="LOGIN" type="LOOP" page="TEST_PAGE" &gt;
@@ -1492,7 +1492,7 @@ body {
                         </pre>
                     </figure>
                     
-                    <p>This example will add the value of the context varialbel SC_TEST to the report</p>
+                    <p>This example will add the value of the context variable SC_TEST to the report</p>
                     <figure class=highlight>
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;step name="MENU" type="REPORT" page="TEST_PAGE"&gt;
@@ -1506,7 +1506,7 @@ body {
                         Allows data stored in a relational database to read into test case context variables and optionally compared to values already in the test case.
                     </p>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p>You must have at least 1 paramter, which is the SQL query used to access external data.  Each (optional) additional parameter is a value used to compare with the query result in the corresponding position (ex. query column #1 -> parameter #2, query column #2 -> parameter #3 ...).  Query result data is also stored in context variables who's name is constructed from the column alias in the SQL statement.</p>
+                        <p>You must have at least 1 parameter, which is the SQL query used to access external data.  Each (optional) additional parameter is a value used to compare with the query result in the corresponding position (ex. query column #1 -> parameter #2, query column #2 -> parameter #3 ...).  Query result data is also stored in context variables whose name is constructed from the column alias in the SQL statement.</p>
                     </div>
                     
                     <p>This example executes the query passed as the first parameter and stores the results in context variables named 'results_a' and 'results_b'.</p>
@@ -1518,7 +1518,7 @@ body {
                         </pre>
                     </figure>
                     
-                    <p>This example builds on the previous example by adding two additional parameters to compare the query results to.  If all of this type of parameter matchs the corresponding query result column, the step passes.  If not, the step and the test case fail.</p>
+                    <p>This example builds on the previous example by adding two additional parameters to compare the query results to.  If all of this type of parameter matches the corresponding query result column, the step passes.  If not, the step and the test case fail. </p>
                     <figure class=highlight>
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;step name="SQL_TEST" page="Home" type="SQL" context="results" &gt;
@@ -1531,7 +1531,7 @@ body {
                     
                     <h2 id="kw-state">STATE</h2>
                     <p>
-                        This keyword takes a snapshot of the device and writes it to disk.  If the EXECUTION_RECORD_HTML Artifact type is active then this screen shot will be added to the HTML report.  In addition to the screenshot the current state of the application is captured in XML form.  This will be written to disk and a link to the file will be dumped out to the report is well.  The output can be used to validate XPATH statements as it is a representation fo the device at that poitn in time. 
+                        This keyword takes a snapshot of the device and writes it to disk.  If the EXECUTION_RECORD_HTML Artifact type is active, then this screen shot will be added to the HTML report.  In addition to the screenshot the current state of the application is captured in XML form.  This will be written to disk and a link to the file will be dumped out to the report is well.  The output can be used to validate XPATH statements as it is a representation of the device at that point in time. 
                     </p>
 
                     <p>Dump the current state of the application</p>
@@ -1550,7 +1550,7 @@ body {
                         <ol>
                             <li>The action to take on the string
                             <ul>
-                                <li>trim: Indicates that all leading and trailing empty space is trimmed off of of the value</li>
+                                <li>trim: Indicates that all leading and trailing empty space is trimmed off of the value</li>
                                 <li>lower: Indicates that the value be set to all lower case characters</li>
                                 <li>upper: Indicates that the value be set to all upper case characters</li>
                             </ul>
@@ -1559,12 +1559,12 @@ body {
                     </div>
                     
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p>When using 2 parameters, the named element is ignored and instead a value is passed in to work oon</p>
+                        <p>When using 2 parameters, the named element is ignored and instead a value is passed in to work on</p>
                         <ol>
                             <li>The value that will have the action performed
                             <li>The action to take on the string
                             <ul>
-                                <li>trim: Indicates that all leading and trailing empty space is trimmed off of of the value</li>
+                                <li>trim: Indicates that all leading and trailing empty space is trimmed off of the value</li>
                                 <li>lower: Indicates that the value be set to all lower case characters</li>
                                 <li>upper: Indicates that the value be set to all upper case characters</li>
                             </ul>
@@ -1593,20 +1593,20 @@ body {
                     
                     <h2 id="kw-checkcolor">VERIFY_COLOR</h2>
                     <p>
-                        The verify color keyword allow you to select a point from a named element, extract the color and compare it to a know color.  If the deviation falls outside of a predefined threshold then the step fails.  The determine the deviation, the color is broken down into 3 bands: red, green and blue.  Each band is compare as a percentage difference against 255.  The 3 differences are then average out and compared to the deviation value specified.  Note that PageManager can be configured to dump these images to disk for analysis purposes. 
+                        The verify color keyword allow you to select a point from a named element, extract the color and compare it to a known color.  If the deviation falls outside of a predefined threshold, then the step fails.  The determine the deviation, the color is broken down into 3 bands: red, green and blue.  Each band is compare as a percentage difference against 255.  The 3 differences are then average out and compared to the deviation value specified.  Note that PageManager can be configured to dump these images to disk for analysis purposes. 
                     </p>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p>The 2 parameter version of this keyword allows the user to extract the color of the a specific point in an element.  This is usually in conjunction with a context set as the 2 parameter version does not validate anything other than object existence</p>
+                        <p>The 2 parameter version of this keyword allows the user to extract the color of a specific point in an element.  This is usually in conjunction with a context set as the 2 parameter version does not validate anything other than object existence</p>
                         <ol>
-                            <li>Resolution: high, med or low.  The specifies the screenshot resolution that will be used.</li>
+                            <li>Resolution: high, med or low.  The specifies the screenshot resolution that will be used. </li>
                             <li>Reference Point: The specifies the point on the extracted element that you want to have the color extracted from.  This point is absolute to the image starting from 1,1</li>
                         </ol>
                     </div>
                     
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p>The 4 parameter version of this keyword allows the user to extract the color of the a specific point in an element then compare it to a specified color with a specified color band deviation.  This is most often used with branding as some colors are trade marked.  This will allow you to see what the color looks like when rendered on the device.</p>
+                        <p>The 4 parameter version of this keyword allows the user to extract the color of a specific point in an element then compare it to a specified color with a specified color band deviation.  This is most often used with branding as some colors are trademarked.  This will allow you to see what the color looks like when rendered on the device. </p>
                         <ol>
-                            <li>Resolution: high, med or low.  The specifies the screenshot resolution that will be used.</li>
+                            <li>Resolution: high, med or low.  The specifies the screenshot resolution that will be used. </li>
                             <li>Reference Point: The specifies the point on the extracted element that you want to have the color extracted from.  This point is absolute to the image starting from 1,1</li>
                             <li>Color: This specifies the color to compare to.  This can be specified as an HTML color (#FFEE44) and integer represented all 3 bands or a comma separated list specifying red, green and blue</li>
                             <li>Percent Deviation: 0 for no deviation and 100 for maximum deviation.  If the calculated deviation is great than this value then the step fails</li>
@@ -1666,7 +1666,7 @@ body {
                     
                     <h2 id="kw-waitfor">WAIT_FOR</h2>
                     <p>
-                        The WAIT function an explicit wait with a condition.  By default the condition is presence indicating that the element exists.  The thread will wait for 15 second by default for the existence of the named element.  If the named element contains a period (.) then the right half of the name past the period indicates the wait for condition.  The wait for condition can be one of the following:
+                        The WAIT function an explicit wait with a condition.  By default, the condition is presence indicating that the element exists.  The thread will wait for 15 second by default for the existence of the named element.  If the named element contains a period (.) then the right half of the name past the period indicates the wait for condition.  The wait for condition can be one of the following:
                         <ul>
                             <li>CLICKABLE</li>
                             <li>SELECTABLE</li>
@@ -1678,7 +1678,7 @@ body {
                             <li>TITLE_IS</li>
                             <li>VISIBLE</li>
                         </ul>               
-                        The left side of the period will indicate the named element.  If not period exists then the name will represent the named element.         
+                        The left side of the period will indicate the named element.  If not period exists, then the name will represent the named element.         
                     </p>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p>The WAIT_FOR keyword has a single optional parameter </p>
@@ -1744,3 +1744,4 @@ body {
     
 </body>
 </html>
+
