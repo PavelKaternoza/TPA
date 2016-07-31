@@ -109,7 +109,7 @@ body {
             </div>
             <div class="col-md-6">
                 <h2>Elegant reporting</h2>
-                <p>xFramium’ s web-based reports provide developers and testers with all the details they need to quickly localize an issue. Reporting includes historical trends, user interface performance, environmental test coverage, failure categories, and more. xFramium automatically leverages Perfecto’s new reporting solution with no changes required to your tests. </p>
+                <p>xFramium’ s web-based reports provide developers and testers with all the details they need to quickly localize an issue. Reporting includes historical trends, step descriptions in natural language, user interface performance, environmental test coverage, failure categories, and more.</p>
                 <p>
                     <a target=_blank class="btn btn-primary" href="./sample/index.html" role="button">View Sample »</a>
                 </p>
@@ -125,11 +125,10 @@ body {
                 </p>
             </div>
             <div class="col-md-6">
-                <h2>Customizable</h2>
-                <p>The entire xFramium initiative has been based on portability and customization. Every element is customizable and replaceable helping to make xFramium adaptable to any new testing technology, configuration file format or integration
-                    point. </p>
+                <h2>Behavior-driver development (BDD)</h2>
+                <p>xFramium scripts can also be written in natural language using Gherkin for behavior-driven development. In most implementations of BDD, Java code must be written to process the clauses. While you can do that with xFramium as well, what makes it different is that you can also use keyword-driven functions and eliminate coding.</p>
                 <p>
-                    <a class="btn btn-primary" href="./configuration.html" role="button">Learn More &raquo;</a>
+                    <a class="btn btn-primary" href="./keyword.html#bdd" role="button">Learn More &raquo;</a>
                 </p>
             </div>
         </div>
@@ -144,11 +143,19 @@ body {
                     <a class="btn btn-primary" href="https://www.xframium.org/jnlp/xframium-launcher.jnlp" role="button">Test Drive &raquo;</a>
                 </p>
             </div>
+            <div class="col-md-6">
+                <h2>Customizable</h2>
+                <p>The entire xFramium initiative has been based on portability and customization. Every element is customizable and replaceable helping to make xFramium adaptable to any new testing technology, configuration file format or integration
+                    point. </p>
+                <p>
+                    <a class="btn btn-primary" href="./configuration.html" role="button">Learn More &raquo;</a>
+                </p>
+            </div>
         </div>
         <h2>Samples</h2>
         <div class="row">
             <div class="col-lg-12">
-                <b>Define pages and elements using Xpath, HTML properties, optical character recognition, image identification, etc.</b>
+                <b>Object repositories in XML, JSON, Excel, or JDBC containing pages and elements identified via Xpath, UI element properties, optical character recognition, or image identification.</b>
                 <pre class="code">&lt;<span class="tag">model</span> <span class="attribute">siteName</span>=<span class="value">"Google"</span>&gt;
   &lt;<span class="tag">page</span> <span class="attribute">name</span>=<span class="value">"Search"</span>&gt;
     &lt;<span class="tag">element</span> <span class="attribute">name</span>=<span class="value">"SEARCH"</span> <span class="attribute">value</span>=<span class="value">"//input[@id='lst-ib']"</span> <span class="attribute">descriptor</span>=<span

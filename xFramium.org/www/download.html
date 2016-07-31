@@ -177,6 +177,35 @@ body {
                             </li>
                         </ul>
                     </div>
+                    
+                    <h2 id="#1.0.3">1.0.3</h2>
+                    <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
+                        <h4>
+                            <i>Hades</i>
+                        </h4>
+                        8/1/2016
+                        <ul>
+                            <li>Added the operator keyword for evaluating multiple parameter based conditions (<i>see <a hRef="http://xframium.org/keyword.html#kw-operator">OPERATOR Keyword</a></i>)</li>
+                            <li>Added the ability to specify the Driver Configuration via XML (<i>see <a hRef="http://xframium.org/xsd/xFramiumDriver.xsd">xFramium Schema</a></i>)</li>
+                            <li>Added more logging and reporting capabilities and formatting changes including historical reports and natural language output (<i>see an example <a hRef="http://xframium.org/sample/index.html">here</a></i>)</li>
+                            <li>Added BDD style definitions of test cases (<i>see <a hRef="http://xframium.org/keyword.html#bdd">BDD</a></i>)</li>
+                            <li>Added ability to define matrix style tests to support Excel and SQL based tests</li>
+                            <li>Added support for Perfectos upcoming cloud based Reporting Services (<i>see <a hRef="http://xframium.org/keyword.html#td-artifact">Artifacts</a></i>)</li>
+                            <li>Added multi cloud support to allow for execution across devices in multiple cloud instances (<i>see <a hRef="http://xframium.org/configuration.html#device">devices</a></i>)</li>
+                            <li>Added categorized failures.  Each failure is placed in one of the following buckets 
+                                <ul>
+                                    <li>Configuration: Indicates a configuration error in the script such as mispelled page name, element name or incorrect page data definitions</li>
+                                    <li>Cloud: Indicates a cloud/device specific issue such as unable to connect</li>
+                                    <li>Script: Indicates a script failure such as cant locate XPATH</li>
+                                    <li>Application:  Indicates a failure in the application</li>
+                                    <li>Fail:  Indicate a general failure</li>
+                                </ul>
+                            </li>
+                            <li>Added multi cloud support to allow for execution across devices in multiple cloud instances (<i>see <a hRef="http://xframium.org/configuration.html#device">devices</a></i>)</li>
+
+                        </ul>
+                    </div>
+                    
                     <h1 id=maven class=page-header>Maven Information</h1>
                     <p>xFramium is available in our Maven repository located at www.xframium.org/repository</p>
                     <figure class=highlight>
@@ -222,13 +251,23 @@ body {
 &lt;/dependency&gt;</code>
                         </pre>
                     </figure>
+                    <h2 id="#m1.0.3">1.0.3</h2>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;dependency&gt;
+  &lt;groupId&gt;org.xframium&lt;/groupId&gt;
+  &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
+  &lt;version&gt;1.0.3&lt;/version&gt;
+&lt;/dependency&gt;</code>
+                        </pre>
+                    </figure>
                     <h2 id="#mdev">Nightly Build</h2>
                     <figure class=highlight>
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;dependency&gt;
   &lt;groupId&gt;org.xframium&lt;/groupId&gt;
   &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
-  &lt;version&gt;1.0.3-SNAPSHOT&lt;/version&gt;
+  &lt;version&gt;1.0.4-SNAPSHOT&lt;/version&gt;
 &lt;/dependency&gt;</code>
                         </pre>
                     </figure>
@@ -267,6 +306,18 @@ body {
                         </p>
                         <p>
                             <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2/xframium-java-1.0.2-javadoc.jar">Documentation</a>
+                        </p>
+                    </div>
+                    <h2 id="#dw1.0.3">1.0.3</h2>
+                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.3.jar">Binaries</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.3-sources.jar">Source</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.3-javadoc.jar">Documentation</a>
                         </p>
                     </div>
                 </div>

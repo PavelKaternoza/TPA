@@ -114,6 +114,7 @@ body {
                                 <li><a href=#kw-loop>LOOP</a></li>
                                 <li><a href=#kw-math>MATH</a></li>
                                 <li><a href=#kw-mouse>MOUSE</a></li>
+                                <li><a href=#kw-operator>OPERATOR</a></li>
                                 <li><a href=#kw-report>REPORT</a></li>
                                 <li><a href=#kw-sql>SQL</a></li>
                                 <li><a href=#kw-state>STATE</a></li>
@@ -122,6 +123,7 @@ body {
                                 <li><a href=#kw-wait>WAIT</a></li>
                                 <li><a href=#kw-waitfor>WAIT_FOR</a></li>
                             </ul></li>
+                            <li><a href=#bdd>Behavior-driven development (BDD)</a></li>
                     </ul>
                     <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
                 </nav>
@@ -486,6 +488,7 @@ body {
                                             <li>EXECUTION_RECORD_HTML: Contains a clean execution report of the test steps that were executed. In addition, a master index file will be created showing the status of all tests executed in this run</li>
                                             <li>EXECUTION_RECORD_CSV: Contains an CSV based reports of all test steps that were executed</li>
                                             <li>EXECUTION_TIMING: Contains a small timing report of elements marked as timed</li>
+                                            <li>REPORTIUM: Sends the reporting data to Perfectos Report server</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -1474,6 +1477,70 @@ body {
                         </pre>
                     </figure>
                     
+                    <h2 id="kw-operator">OPERATOR</h2>
+                    <p>
+                        The operator keyword allows you to use a simple operator to evaluator multiple conditions such as AND, OR and XOR.  Once an operator is specified you can specify multiple sets of parameters for evaluation
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <ol>
+                            <li>The first parameter specified is the operation name
+                            <ul>
+                                <li>AND:  All of the parameter sets must be equal</li>
+                                <li>OR:  At least one of the parameter sets must be equal</li>
+                                <li>XOR:  Only a single parameterset must be equal</li>
+                            </ul>
+                            </li>
+                            <li>Multiple sets of parameters.  Each set of 2 parameters will be evaluated and sent to the operator implementation
+                        </ol>
+                    </div>
+                    
+                    <p>This example will evaluate 2 sets of parameters attempting to find at least one that is successful.  If successful it will write the value out to the report</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="login" page="login" type="OPERATOR" &gt;
+   &lt;parameter type="STATIC" value="OR" /&gt;
+   &lt;parameter type="DATA" value="authData.unit" /&gt;
+   &lt;parameter type="STATIC" value="crdm" /&gt;
+   &lt;parameter type="DATA" value="authData.unit" /&gt;
+   &lt;parameter type="STATIC" value="cbt" /&gt;
+   &lt;step type="REPORT" name="login" page="login"&gt;
+     &lt;parameter type="STATIC" value="OR" /&gt;
+     &lt;parameter type="DATA" value="authData.unit" /&gt;  
+   &lt;/step&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will evaluate 2 sets of parameters attempting verifying that only a single condition is true by evaluating all of them.  If successful it will write the value out to the report</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="login" page="login" type="OPERATOR" &gt;
+   &lt;parameter type="STATIC" value="XOR" /&gt;
+   &lt;parameter type="DATA" value="authData.unit" /&gt;
+   &lt;parameter type="STATIC" value="crdm" /&gt;
+   &lt;parameter type="DATA" value="authData.unit" /&gt;
+   &lt;parameter type="STATIC" value="cbt" /&gt;
+   &lt;step type="REPORT" name="login" page="login"&gt;
+     &lt;parameter type="STATIC" value="OR" /&gt;
+     &lt;parameter type="DATA" value="authData.unit" /&gt;  
+   &lt;/step&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>This example will evaluate 2 sets of parameters attempting verifying that all conditions are true.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="login" page="login" type="OPERATOR" &gt;
+   &lt;parameter type="STATIC" value="AND" /&gt;
+   &lt;parameter type="DATA" value="authData.unit" /&gt;
+   &lt;parameter type="STATIC" value="crdm" /&gt;
+   &lt;parameter type="DATA" value="authData.unit" /&gt;
+   &lt;parameter type="STATIC" value="cbt" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
                     
                     <h2 id="kw-report">REPORT</h2>
                     <p>
@@ -1717,6 +1784,30 @@ body {
                         </pre>
                     </figure>
                     
+                    <h1 id=bdd class=page-header>Behavior-driven development (BDD)</h1>
+                    <p>xFramium scripts can also be written in natural language using Gherkin for behavior-driven development. In most implementations of BDD, Java code must be written to process the clauses. While you can do that with xFramium as well, what makes it different is that you can also use keyword-driven functions and eliminate coding.  Users can mix and match Java, BDD and XML in the same test suite for maximum portability.  By defining the test type as BDD, the BDD feature file can be directly embedded in the XML test case</p>
+                    <p>Mixing BDD with the XML framework can easily be achieved by analyzing your Gherkin based test script and creating the XML functions for the Given/Then/When clauses.  The following example defines a test case in both XML and BDD using the XML based functions to drive the BDD Script without requiring any Java code to be created - this was all created by the business users.
+                    <figure class=highlight>
+                        <pre><code class=language-xml data-lang=xml><b>Feature: Google Search Test
+
+Scenario: Search google and check the results
+  Given I am on the google search page
+  When I enter search criteria
+  Then google results should be displayed
+
+Scenario Outline: Search google for specific values and check the results
+  Given I am on the google search page
+  When I enter specific search criteria
+  Then google results should be displayed
+
+  Examples:
+    | name      |  criteria  |
+    | fidelity  |  fidelity  |
+    | bootstrap |  bootstrap |
+    | xFramium  |  xFramium  |
+    | Perfecto  |  Perfecto  |</b></code>
+                        </pre>
+                    </figure>
                 </div>
             </div>
         </div>

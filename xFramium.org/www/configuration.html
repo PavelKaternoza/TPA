@@ -154,7 +154,7 @@ body {
                     </div>
                     <h2 id="device-xml">XML Configuration</h2>
                     <p>The device registry format is defined using a XML Schema Definition file. This file is located at</p>
-                    <p>http://www.xframium.org/xsd/deviceManagement/deviceRegistry.xsd</p>
+                    <p><a hRef="http://xframium.org/xsd/deviceManagement/deviceRegistry.xsd">http://www.xframium.org/xsd/deviceManagement/deviceRegistry.xsd</a></p>
                     <div class=table-responsive>
                         <table class="table table-bordered table-striped js-options-table">
                             <thead>
@@ -182,6 +182,7 @@ body {
                                             <li>id: A specific device identifier</li>
                                             <li>availableDevices: Specifies the number if devices that match this specification. When available devices are greater than one test cases will be split across the devices for faster execution. When less
                                                 than zero, the system will attempt to read from the cloud provider to find how many devices match</li>
+                                            <li>cloud: Specifies a cloud name to use overriding the system default cloud</li>
                                         </ul>
                                     </td>
                                 </tr>
