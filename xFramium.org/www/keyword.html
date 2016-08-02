@@ -107,6 +107,7 @@ body {
                                 <li><a href=#kw-compare>COMPARE</a></li>
                                 <li><a href=#kw-else>ELSE</a></li>
                                 <li><a href=#kw-execjs>EXEC_JS</a></li>
+                                <li><a href=#kw-execws>EXEC_WS</a></li>
                                 <li><a href=#kw-exists>EXISTS</a></li>
                                 <li><a href=#kw-fork>FORK</a></li>
                                 <li><a href=#kw-gesture>GESTURE</a></li>
@@ -1102,9 +1103,9 @@ body {
                     </figure>
                     
 
-                    <h2 id="kw-execjs">EXEC_JS</h2>
+                    <h2 id="kw-execjs">EXECJS</h2>
                     <p>
-                        The EXEC_JS keyword allows for JavaScript code to be passed and executed given that the communication method supports JavascriptExecutor.  The code will be passed through and executed  
+                        The EXECJS keyword allows for JavaScript code to be passed and executed given that the communication method supports JavascriptExecutor.  The code will be passed through and executed  
                     </p>
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p>The only parameter passed to the function is the actual escaped Javascript code to execute</p>
@@ -1120,7 +1121,56 @@ body {
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
-                    
+
+                    <h2 id="kw-execws">EXECWS</h2>
+                    <p>
+                        The EXECWS keyword allows for making web service calls from your test case  
+                    </p>
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                        <p>EXECWS keyword has a complex set of mandatory and optional paramters</p>
+                    </div>
+                    <p>This example posts an XML document containing input variables for a financial calculation to a web service
+                       that does the calculation and returns an xml document containing results.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="CALL WS" page="Home" type="EXECWS" context="my-context" &gt;
+     &lt;parameter type="STATIC" name="url" value="http://www.webservicex.net/FinanceService.asmx"
+                   usage="input" /&gt;
+     &lt;parameter type="STATIC" name="method" value="POST" usage="input" /&gt;
+     &lt;parameter type="STATIC" name="media-type" value="text/xml" usage="input" /&gt;
+     &lt;parameter type="STATIC" name="type" value="SOAP" usage="input" /&gt;
+     &lt;parameter type="FILE" name="payload" value="c:/Users/Dad/test/call-ws/payload.xml" usage="input"&gt;
+          &lt;token type="STATIC" name="amt" value="100000" /&gt;
+          &lt;token type="STATIC" name="rate" value="5" /&gt;
+          &lt;token type="STATIC" name="term" value="360" /&gt;
+     &lt;/parameter&gt;
+     &lt;parameter type="STATIC" name="type" value="xml" usage="output" /&gt;
+     &lt;parameter type="STATIC" name="var1" value="//LoanMonthlyPaymentResult" usage="output" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    <p>The step parameters fall into two categories: input (usage="input") and output (usage="output").  Input parameters describe the
+                       call and it's data and the output parameters identify the format of the call responce data and list context variables that can be
+                       extracted from it.</p>
+                    <p>Mandatory input parameters include the call URL (name="url"), the HTTP method (name="method", options: GET, POST, PUT, DELETE), the media type of the call input (name="media-type") and the call type (name="type", options: REST, SOAP).  Optional parameters include the input document template (name="payload") and basic authentication credentials (name="username" and name="password").  All other step input parameters are considered parameters to the web service call.  For REST calls, web service parameters are added to the URL.  For SOAP calls, additional parameters are used to construct the payload document.</p>
+                    <p>Referring to the example above, this is the content of payload.xml.  The key thing to note are the variable substitutions included (ex. {amt}).  These should correlate to the tokens included in the payload parameter.  The token values are what get substituted into the payload template.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+  &lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;soap:Body&gt;
+    &lt;LoanMonthlyPayment xmlns="http://www.webserviceX.NET/"&gt;
+      &lt;LoanAmount&gt;{amt}&lt;/LoanAmount&gt;
+      &lt;InterestRate&gt;{rate}&lt;/InterestRate&gt;
+      &lt;Months&gt;{term}&lt;/Months&gt;
+    &lt;/LoanMonthlyPayment&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</code>
+                        </pre>
+                    </figure>
+                    <p>The only manditory output step parameter specifies the format of the call responce (name="type", options "xml", "json"). All other output parameters are assumed to specify context variables whose value is set based on the web service call results.  The name of each parameter (ex. name="var1") cpecifies the name of the context variable to be set.  The value of these parameters (ex. value="//LoanMonthlyPaymentResult") is a document navigation path to the value to set in the context variable.  For XML documents, the path syntax should be XPATH and for JSON documents the path syntax should be JSONPATH (see: http://goessner.net/articles/JsonPath/).</p>
                     
                     <h2 id="kw-exists">EXISTS</h2>
                     <p>
