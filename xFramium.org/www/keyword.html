@@ -1634,7 +1634,7 @@ body {
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
-                    
+
                     <p>This example builds on the previous example by adding two additional parameters to compare the query results to.  If all of this type of parameter matches the corresponding query result column, the step passes.  If not, the step and the test case fail. </p>
                     <figure class=highlight>
                         <pre>
@@ -1645,6 +1645,19 @@ body {
 &lt;/step&gt;</code>
                         </pre>
                     </figure>                    
+                    
+                    <p>The SQL keywordword also supports startements that write to the DB (INSERT, UPDATE, DELETE and MERGE) and the use if bind variables.  The example below illustrates both features.  The two token elements inside the first parameter supply values to bind into the variables embedded in the SQL statement.  The second parameter is optional and if present names the context variable to be populated with the count of modified rows resulting from the statement execution.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SQL_TEST_2" page="Home" type="SQL" context="zoom" &gt;
+   &lt;parameter type="STATIC" value="update test set value = ? where id = ?" &gt;
+        &lt;token type="STATIC" name="1" value="new value" /&gt;
+        &lt;token type="STATIC" name="2" value="1" /&gt;
+   &lt;/parameter&gt;
+   &lt;parameter type="STATIC" value="rows_returned" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
                     
                     <h2 id="kw-state">STATE</h2>
                     <p>
