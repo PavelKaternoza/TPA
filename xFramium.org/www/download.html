@@ -33,37 +33,27 @@ body {
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="./index.html">xFramium</a>
+                <a class="navbar-brand" href="http://xframium.org/index.html">xFramium</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Getting Started <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/installation.html">Installation</a></li>
-                            <li><a href="/configuration.html">Configuration</a></li>
-                            <li><a href="/keyword.html">Writing tests using keywords</a></li>
-                            <li><a href="/java.html">Writing tests in Java</a></li>
-                            <li><a href="/download.html">Download xFramium</a></li>
-                        </ul></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Architectural Overview </a></li>
-                            <li><a href="/apidocs/index.html" target="_blank">API Reference</a></li>
-                            <li><a href="/extending.html">Extending the Framework</a></li>
-                        </ul></li>
-                    <li><a href="/sponsors.html">Sponsors</a></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="http://xframium.org/getstarted.html">Get Started</a></li>
+                    <li><a href="http://xframium.org/documentation.html">Documentation</a></li>
+                    <li><a href="http://xframium.org/sponsors.html">About xFramium</a></li>
                 </ul>
             </div>
             <!--/.navbar-collapse -->
         </div>
     </nav>
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class=bs-docs-header id=content tabindex=-1>
+    <div class="jumbotron">
         <div class="container">
-            <h1>xFramium Release</h1>
-            <p>xFramium monthly release notes and download information. Get started today</p>
+            <img src="images/xframium.png" style="height: 200px; width: 200px; float: left; position: relative; left: -40px; top: -5px; margin-bottom: 20px; margin-left: 0px;" />
+            <p>
+            <h2>xFramium usage options</h2>
+            <h3>Download and use xFramium today any of the methods below</h3>
         </div>
     </div>
+
     <div class="container bs-docs-container">
         <div class="row">
             <div class="col-md-3" role="complementary">
@@ -72,25 +62,25 @@ body {
                         <li><a href="#source">Source</a></li>
                         <li><a href=#rn>Release Notes</a>
                             <ul class=nav>
-                                <li><a href="#1.0.0">1.0.0</a>
-                                <li><a href="#1.0.1">1.0.1</a>
-                                <li><a href="#1.0.2">1.0.2</a>
                                 <li><a href="#1.0.3">1.0.3</a>
+                                <li><a href="#1.0.2">1.0.2</a>
+                                <li><a href="#1.0.1">1.0.1</a>
+                                
                             </ul></li>
                         <li><a href=#maven>Maven</a>
                             <ul class=nav>
-                                <li><a href="#m1.0.0">1.0.0</a></li>
-                                <li><a href="#m1.0.1">1.0.1</a></li>
+                                <li><a href="#m1.0.3">1.0.3</a></li>
                                 <li><a href="#m1.0.2">1.0.2</a></li>
-                                <li><a href="#m1.0.2">1.0.3</a></li>
+                                <li><a href="#m1.0.1">1.0.1</a></li>
+                                
+                                
                                 <li><a href="#mdev">Nightly Build</a></li>
                             </ul></li>
                         <li><a href=#download>Downloads</a>
                             <ul class=nav>
-                                <li><a href="#dw1.0.0">1.0.0</a></li>
-                                <li><a href="#dw1.0.1">1.0.1</a></li>
-                                <li><a href="#dw1.0.2">1.0.2</a></li>
                                 <li><a href="#dw1.0.3">1.0.3</a></li>
+                                <li><a href="#dw1.0.2">1.0.2</a></li>
+                                <li><a href="#dw1.0.1">1.0.1</a></li>
                             </ul>
                             </li>
                     </ul>
@@ -109,21 +99,60 @@ body {
                         xFramium is built the first weekend of each month. The current stable build of xFramium is <a hRef="#1.0.2">1.0.2</a>. If you are feeling brave you can always refer to the development snapshot as well. The current development
                         snapshot is <a href="#mdev">1.0.3-SNAPSHOT</a>.
                     </p>
-                    <h2 id="#1.0.0">1.0.0</h2>
+                    <h2 id="#1.0.3">1.0.3</h2>
                     <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
                         <h4>
-                            <i>Aries</i>
+                            <i>Hades</i>
                         </h4>
-                        5/1/2016
+                        8/1/2016
                         <ul>
-                            <li>The initial public release of xFramium. While it was in use for 18 months before hand this was the first public release of the framework</li>
-                            <li>Added multi-device support. A single script can now control multiple devices for chained actions</li>
-                            <li>Added gesturing support for Perfecto and Appium</li>
-                            <li>Added tiered data structures to allow for data trees per record</li>
-                            <li>Added the tagNames filter for test steps to allow steps to be skipped</li>
-                            <li>Added Perfecto REST API support</li>
+                            <li>Added the operator keyword for evaluating multiple parameter based conditions (<i>see <a hRef="http://xframium.org/keyword.html#kw-operator">OPERATOR Keyword</a></i>)</li>
+                            <li>Added the ability to specify the Driver Configuration via XML (<i>see <a hRef="http://xframium.org/xsd/xFramiumDriver.xsd">xFramium Schema</a></i>)</li>
+                            <li>Added more logging and reporting capabilities and formatting changes including historical reports and natural language output (<i>see an example <a hRef="http://xframium.org/sample/index.html">here</a></i>)</li>
+                            <li>Added BDD style definitions of test cases (<i>see <a hRef="http://xframium.org/keyword.html#bdd">BDD</a></i>)</li>
+                            <li>Added ability to define matrix style tests to support Excel and SQL based tests</li>
+                            <li>Added support for Perfectos upcoming cloud based Reporting Services (<i>see <a hRef="http://xframium.org/keyword.html#td-artifact">Artifacts</a></i>)</li>
+                            <li>Added support for SOAP and RESTful Web Service calls (<i>see <a hRef="http://xframium.org/keyword.html#kw-execws">EXECWS</a></i>)</li>
+                            <li>Added multi cloud support to allow for execution across devices in multiple cloud instances (<i>see <a hRef="http://xframium.org/configuration.html#device">devices</a></i>)</li>
+                            <li>Added categorized failures.  Each failure is placed in one of the following buckets 
+                                <ul>
+                                    <li>Configuration: Indicates a configuration error in the script such as mispelled page name, element name or incorrect page data definitions</li>
+                                    <li>Cloud: Indicates a cloud/device specific issue such as unable to connect</li>
+                                    <li>Script: Indicates a script failure such as cant locate XPATH</li>
+                                    <li>Application:  Indicates a failure in the application</li>
+                                    <li>Fail:  Indicate a general failure</li>
+                                </ul>
+                            </li>
+                            <li>Added multi cloud support to allow for execution across devices in multiple cloud instances (<i>see <a hRef="http://xframium.org/configuration.html#device">devices</a></i>)</li>
+
                         </ul>
                     </div>
+                    <h2 id="#1.0.2">1.0.2</h2>
+                    <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
+                        <h4>
+                            <i>Dionysus</i>
+                        </h4>
+                        7/1/2016
+                        <ul>
+                            <li>Updated xFramium Launcher</li>
+                            <li>Added ability to dump application state during a run (<i>see <a hRef="http://xframium.org/keyword.html#kw-state">STATE Keyword</a></i>)
+                            </li>
+                            <li>Updated to latest TestNG version of resolved POM issues</li>
+                            <li>Added ability to interact with Alerts (<i>see <a hRef="http://xframium.org/keyword.html#kw-alert">ALERT Keyword</a></i>)
+                            </li>
+                            <li>New mobile responsive reporting engine</li>
+                            <li>Added ability to generate historical reports for a run</li>
+                            <li>Added source code formatting for state reports</li>
+                            <li>Added SQL item lookup keyword for database checks. Allows for context storage and/or verification (<i>see <a hRef="http://xframium.org/keyword.html#kw-sql">SQL Keyword</a></i>)
+                            </li>
+                            <li>Added cloud provider type specification (<i>see <a hRef="http://xframium.org/configuration.html#cloud"> Cloud Configuration</a>)
+                            </i></li>
+                            <li>Added test description field and links to it on the report</li>
+                            <li>Available devices can now be set to -1 indicating that the value should be populated from the cloud (see<i> <a hRef="http://xframium.org/configuration.html#device">Device Configuration</a></i>)
+                            </li>
+                        </ul>
+                    </div>
+                    
                     <h2 id="#1.0.1">1.0.1</h2>
                     <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
                         <h4>
@@ -156,60 +185,25 @@ body {
                             <li>Added the ability to embed the selenium grid and auto launch it on a test. This can be accomplished when defining the cloud by specifying the word EMBEDDED for the grid attribute.</li>
                         </ul>
                     </div>
-                    <h2 id="#1.0.2">1.0.2</h2>
+                    
+                    <h2 id="#1.0.0">1.0.0</h2>
                     <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
                         <h4>
-                            <i>Dionysus</i>
+                            <i>Aries</i>
                         </h4>
-                        7/1/2016
+                        5/1/2016
                         <ul>
-                            <li>Updated xFramium Launcher</li>
-                            <li>Added ability to dump application state during a run (<i>see <a hRef="http://xframium.org/keyword.html#kw-state">STATE Keyword</a></i>)
-                            </li>
-                            <li>Updated to latest TestNG version of resolved POM issues</li>
-                            <li>Added ability to interact with Alerts (<i>see <a hRef="http://xframium.org/keyword.html#kw-alert">ALERT Keyword</a></i>)
-                            </li>
-                            <li>New mobile responsive reporting engine</li>
-                            <li>Added ability to generate historical reports for a run</li>
-                            <li>Added source code formatting for state reports</li>
-                            <li>Added SQL item lookup keyword for database checks. Allows for context storage and/or verification (<i>see <a hRef="http://xframium.org/keyword.html#kw-sql">SQL Keyword</a></i>)
-                            </li>
-                            <li>Added cloud provider type specification (<i>see <a hRef="http://xframium.org/configuration.html#cloud"> Cloud Configuration</a>)
-                            </i></li>
-                            <li>Added test description field and links to it on the report</li>
-                            <li>Available devices can now be set to -1 indicating that the value should be populated from the cloud (see<i> <a hRef="http://xframium.org/configuration.html#device">Device Configuration</a></i>)
-                            </li>
+                            <li>The initial public release of xFramium. While it was in use for 18 months before hand this was the first public release of the framework</li>
+                            <li>Added multi-device support. A single script can now control multiple devices for chained actions</li>
+                            <li>Added gesturing support for Perfecto and Appium</li>
+                            <li>Added tiered data structures to allow for data trees per record</li>
+                            <li>Added the tagNames filter for test steps to allow steps to be skipped</li>
+                            <li>Added Perfecto REST API support</li>
                         </ul>
                     </div>
                     
-                    <h2 id="#1.0.3">1.0.3</h2>
-                    <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
-                        <h4>
-                            <i>Hades</i>
-                        </h4>
-                        8/1/2016
-                        <ul>
-                            <li>Added the operator keyword for evaluating multiple parameter based conditions (<i>see <a hRef="http://xframium.org/keyword.html#kw-operator">OPERATOR Keyword</a></i>)</li>
-                            <li>Added the ability to specify the Driver Configuration via XML (<i>see <a hRef="http://xframium.org/xsd/xFramiumDriver.xsd">xFramium Schema</a></i>)</li>
-                            <li>Added more logging and reporting capabilities and formatting changes including historical reports and natural language output (<i>see an example <a hRef="http://xframium.org/sample/index.html">here</a></i>)</li>
-                            <li>Added BDD style definitions of test cases (<i>see <a hRef="http://xframium.org/keyword.html#bdd">BDD</a></i>)</li>
-                            <li>Added ability to define matrix style tests to support Excel and SQL based tests</li>
-                            <li>Added support for Perfectos upcoming cloud based Reporting Services (<i>see <a hRef="http://xframium.org/keyword.html#td-artifact">Artifacts</a></i>)</li>
-                            <li>Added support for SOAP and RESTful Web Service calls (<i>see <a hRef="http://xframium.org/keyword.html#kw-execws">EXECWS</a></i>)</li>
-                            <li>Added multi cloud support to allow for execution across devices in multiple cloud instances (<i>see <a hRef="http://xframium.org/configuration.html#device">devices</a></i>)</li>
-                            <li>Added categorized failures.  Each failure is placed in one of the following buckets 
-                                <ul>
-                                    <li>Configuration: Indicates a configuration error in the script such as mispelled page name, element name or incorrect page data definitions</li>
-                                    <li>Cloud: Indicates a cloud/device specific issue such as unable to connect</li>
-                                    <li>Script: Indicates a script failure such as cant locate XPATH</li>
-                                    <li>Application:  Indicates a failure in the application</li>
-                                    <li>Fail:  Indicate a general failure</li>
-                                </ul>
-                            </li>
-                            <li>Added multi cloud support to allow for execution across devices in multiple cloud instances (<i>see <a hRef="http://xframium.org/configuration.html#device">devices</a></i>)</li>
-
-                        </ul>
-                    </div>
+                    
+                    
                     
                     <h1 id=maven class=page-header>Maven Information</h1>
                     <p>xFramium is available in our Maven repository located at www.xframium.org/repository</p>
@@ -226,23 +220,13 @@ body {
 &lt;/repository&gt;</code>
                         </pre>
                     </figure>
-                    <h2 id="#m1.0.0">1.0.0</h2>
+                    <h2 id="#m1.0.3">1.0.3</h2>
                     <figure class=highlight>
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;dependency&gt;
   &lt;groupId&gt;org.xframium&lt;/groupId&gt;
   &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0&lt;/version&gt;
-&lt;/dependency&gt;</code>
-                        </pre>
-                    </figure>
-                    <h2 id="#m1.0.1">1.0.1</h2>
-                    <figure class=highlight>
-                        <pre>
-                            <code class=language-xml data-lang=xml>&lt;dependency&gt;
-  &lt;groupId&gt;org.xframium&lt;/groupId&gt;
-  &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
-  &lt;version&gt;1.0.1&lt;/version&gt;
+  &lt;version&gt;1.0.3&lt;/version&gt;
 &lt;/dependency&gt;</code>
                         </pre>
                     </figure>
@@ -256,67 +240,26 @@ body {
 &lt;/dependency&gt;</code>
                         </pre>
                     </figure>
-                    <h2 id="#m1.0.3">1.0.3</h2>
+                    <h2 id="#m1.0.1">1.0.1</h2>
                     <figure class=highlight>
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;dependency&gt;
   &lt;groupId&gt;org.xframium&lt;/groupId&gt;
   &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
-  &lt;version&gt;1.0.3&lt;/version&gt;
+  &lt;version&gt;1.0.1&lt;/version&gt;
 &lt;/dependency&gt;</code>
                         </pre>
                     </figure>
-                    <h2 id="#mdev">Nightly Build</h2>
-                    <figure class=highlight>
-                        <pre>
-                            <code class=language-xml data-lang=xml>&lt;dependency&gt;
-  &lt;groupId&gt;org.xframium&lt;/groupId&gt;
-  &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
-  &lt;version&gt;1.0.4-SNAPSHOT&lt;/version&gt;
-&lt;/dependency&gt;</code>
-                        </pre>
-                    </figure>
+                    
+                    
                     <h1 id=download class=page-header>Downloads</h1>
-                    <h2 id="#dw1.0.0">1.0.0</h2>
-                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.0/xframium-java-1.0.0.jar">Binaries</a>
-                        </p>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.0/xframium-java-1.0.0-sources.jar">Source</a>
-                        </p>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.0/xframium-java-1.0.0-javadoc.jar">Documentation</a>
-                        </p>
-                    </div>
-                    <h2 id="#dw1.0.1">1.0.1</h2>
-                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1.jar">Binaries</a>
-                        </p>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1-sources.jar">Source</a>
-                        </p>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1-javadoc.jar">Documentation</a>
-                        </p>
-                    </div>
-                    <h2 id="#dw1.0.2">1.0.2</h2>
-                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2/xframium-java-1.0.2.jar">Binaries</a>
-                        </p>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2/xframium-java-1.0.2-sources.jar">Source</a>
-                        </p>
-                        <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2/xframium-java-1.0.2-javadoc.jar">Documentation</a>
-                        </p>
-                    </div>
                     <h2 id="#dw1.0.3">1.0.3</h2>
                     <div class="bs-callout bs-callout" id=callout-modal-accessibility>
                         <p>
-                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.3.jar">Binaries</a>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.3.jar">Framework Binaries</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-driver-1.0.3.zip">Driver Project</a>
                         </p>
                         <p>
                             <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.3-sources.jar">Source</a>
@@ -325,6 +268,39 @@ body {
                             <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.3-javadoc.jar">Documentation</a>
                         </p>
                     </div>
+                    
+                    <h2 id="#dw1.0.2">1.0.2</h2>
+                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2/xframium-java-1.0.2.jar">Framework Binaries</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-driver-1.0.2.zip">Driver Project</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2/xframium-java-1.0.2-sources.jar">Source</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.2/xframium-java-1.0.2-javadoc.jar">Documentation</a>
+                        </p>
+                    </div>
+                    
+                    <h2 id="#dw1.0.1">1.0.1</h2>
+                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1.jar">Framework Binaries</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-driver-1.0.1.zip">Driver Project</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1-sources.jar">Source</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-java-1.0.1-javadoc.jar">Documentation</a>
+                        </p>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -337,8 +313,8 @@ body {
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/docs.min.js"></script>
+    <script src="http://xframium.org/js/bootstrap.min.js"></script>
+    <script src="http://xframium.org/js/docs.min.js"></script>
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
