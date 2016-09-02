@@ -81,12 +81,15 @@ body {
                     <div class="panel-body">
                         <div class="row">
                             <div class=col-md-6>
-                                <label>Connection Type</label>
+                                <label>Where is my application?</label>
                                 <div class="input-group">
                                     <select id="cloudProviderType" class="selectpicker" onchange="cloudSelected(this)">
-                                        <option value="EMBEDDED">xFramium Embedded Server</option>
-                                        <option value="PERFECTO">Perfecto</option>
-                                        <option value="SAUCELABS">SauceLabs</option>
+                                        <option value="EMBEDDED">Local web browser</option>
+                                        <option value="SELENIUM">Locally-connected device</option>
+                                        <option value="SELENIUM">Local windows application</option>
+                                        <option value="PERFECTO">Perfecto-hosted device or browser</option>
+                                        <option value="SAUCELABS">SauceLabs-hosted device or browser</option>
+                                        <option value="SELENIUM">Amazon-hosted device or browser</option>
                                         <option value="SELENIUM">Generic Selenium/Appium server</option>
                                     </select>
                                 </div>
@@ -325,7 +328,9 @@ body {
                     
                 </div>
                 <div style="text-align: center" id="buttons">
-                    <a type="button" class="btn btn-success" onclick="downloadFile(); downloadAnchor.click()">Generate my Configuration</a>
+                    <p>Now, let's generate a configuration file and download it to your computer based on the settings above</p>
+                    <a type="button" class="btn btn-success" onclick="downloadFile(); downloadAnchor.click()" style="margin-bottom: 25px">Generate my Configuration</a>
+                    <p>Next, launch the xFramium Test Execution tool and open the file that you just downloaded.  Your downlaoded configuration contains a basic test as an example.  Add some elements and steps using your favorite IDE or editor</p>
                     <a type="button" class="btn btn-success" hRef="https://www.xframium.org/jnlp/xframium-launcher.jnlp">Launch xFramium Online</a>
                     
                 </div>
