@@ -62,6 +62,7 @@ body {
                         <li><a href="#source">Source</a></li>
                         <li><a href=#rn>Release Notes</a>
                             <ul class=nav>
+                                <li><a href="#1.0.4">1.0.4</a>
                                 <li><a href="#1.0.3">1.0.3</a>
                                 <li><a href="#1.0.2">1.0.2</a>
                                 <li><a href="#1.0.1">1.0.1</a>
@@ -69,22 +70,21 @@ body {
                             </ul></li>
                         <li><a href=#maven>Maven</a>
                             <ul class=nav>
+                                <li><a href="#m1.0.4">1.0.4</a></li>
                                 <li><a href="#m1.0.3">1.0.3</a></li>
                                 <li><a href="#m1.0.2">1.0.2</a></li>
                                 <li><a href="#m1.0.1">1.0.1</a></li>
-                                
-                                
-                                <li><a href="#mdev">Nightly Build</a></li>
                             </ul></li>
                         <li><a href=#download>Downloads</a>
                             <ul class=nav>
+                                <li><a href="#dw1.0.4">1.0.4</a></li>
                                 <li><a href="#dw1.0.3">1.0.3</a></li>
                                 <li><a href="#dw1.0.2">1.0.2</a></li>
                                 <li><a href="#dw1.0.1">1.0.1</a></li>
                             </ul>
                             </li>
                     </ul>
-                    <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
+                    <a class=back-to-top href=#top> Back to top </a>
                 </nav>
             </div>
             <div class=col-md-9 role=main>
@@ -96,9 +96,28 @@ body {
                     </p>
                     <h1 id=rn class=page-header>Releases</h1>
                     <p>
-                        xFramium is built the first weekend of each month. The current stable build of xFramium is <a hRef="#1.0.2">1.0.2</a>. If you are feeling brave you can always refer to the development snapshot as well. The current development
-                        snapshot is <a href="#mdev">1.0.3-SNAPSHOT</a>.
+                        xFramium is built the first weekend of each month. The current stable build of xFramium is <a hRef="#1.0.4">1.0.4</a>. If you are feeling brave you can always refer to the development snapshot as well. The current development
+                        snapshot is <a href="#mdev">1.0.5-SNAPSHOT</a>.
                     </p>
+                    <h2 id="#1.0.4">1.0.4</h2>
+                    <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
+                        <h4>
+                            <i>Janus</i>
+                        </h4>
+                        9/2/2016
+                        <ul>
+                            <li>Added the ability to select multiple values (<i>see <a hRef="http://xframium.org/keyword.html#kw-set">SET Keyword</a></i>)</li>
+                            <li>Added the ability to specify Chrome and Firefox Options as device capabilities</li>
+                            <li><b>Added the advanced online debugger</b>(<i>see <a hRef="http://xframium.org/keyword.html#td-artifact">Artifacts</a></i>)</li>
+                            <li>Added integration into Perfecto IDE plugins using the PERFECTO_PLUGIN provider(<i>see <a hRef="http://xframium.org/configuration.html#device">devices</a></i>)</li>
+                            <li>Added multi cloud support for parallel testing across multiple cloud instances and local devices in parallel (<i>see <a hRef="http://xframium.org/configuration.html#device">devices</a></i>)</li>
+                            <li>Added the startAt attribute to allow a script to start a specific step ignoring the previous steps (<i>see <a hRef="http://xframium.org/keyword.html#td-step">Steps</a></i>)</li>
+                            <li>Added the ability to perform decimal formatting (<i>see <a hRef="http://xframium.org/keyword.html#kw-string">String Keyword</a></i>)</li>
+                            <li>Added the ability to specify your test steps in Excel and SQL</li>
+                            <li>Added support for varying cloud providers</li>
+                            <li>Added the ability to cycle over multiple languages during a test run</li>
+                        </ul>
+                    </div>
                     <h2 id="#1.0.3">1.0.3</h2>
                     <div class="bs-callout bs-callout-warning" id=callout-modal-accessibility>
                         <h4>
@@ -220,6 +239,16 @@ body {
 &lt;/repository&gt;</code>
                         </pre>
                     </figure>
+                    <h2 id="#m1.0.4">1.0.4</h2>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;dependency&gt;
+  &lt;groupId&gt;org.xframium&lt;/groupId&gt;
+  &lt;artifactId&gt;xframium-java&lt;/artifactId&gt;
+  &lt;version&gt;1.0.4&lt;/version&gt;
+&lt;/dependency&gt;</code>
+                        </pre>
+                    </figure>
                     <h2 id="#m1.0.3">1.0.3</h2>
                     <figure class=highlight>
                         <pre>
@@ -251,6 +280,22 @@ body {
                         </pre>
                     </figure>
                     
+                    <h1 id=download class=page-header>Downloads</h1>
+                    <h2 id="#dw1.0.4">1.0.4</h2>
+                    <div class="bs-callout bs-callout" id=callout-modal-accessibility>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.4.jar">Framework Binaries</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.1/xframium-driver-1.0.4.zip">Driver Project</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.4-sources.jar">Source</a>
+                        </p>
+                        <p>
+                            <a hRef="http://www.xframium.org/repository/org/xframium/xframium-java/1.0.3/xframium-java-1.0.4-javadoc.jar">Documentation</a>
+                        </p>
+                    </div>
                     
                     <h1 id=download class=page-header>Downloads</h1>
                     <h2 id="#dw1.0.3">1.0.3</h2>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<style>
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+</style>
+<link rel="icon" href="../favicon.ico">
+<title>xFramium - Rapid Test Case Development</title>
+<!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="data:text/css;charset=utf-8," data-href="./css/bootstrap-theme.min.css" rel=stylesheet id=bs-theme-stylesheet>
+<link href="./css/docs.min.css" rel="stylesheet">
+<link href="./css/bootstrap-select.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://xframium.org/index.html">xFramium</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="http://xframium.org/getstarted.html">Get Started</a></li>
+                    <li><a href="http://xframium.org/documentation.html">Documentation</a></li>
+                    <li><a href="http://xframium.org/sponsors.html">About xFramium</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <div class=bs-docs-header id=content>
+        <div class="container">
+            <h1>Quick Start Generator</h1>
+        </div>
+    </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-3" role="complementary">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                    <ul class="nav bs-docs-sidenav">
+                        <li><a href="#where">Where?</a></li>
+                        <li><a href="#what">What?</a></li>
+                        <li><a href="#how">How?</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class=col-md-9>
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object" style="height: 64px; width: 64px" src="http://xframium.org/images/hammer.svg" alt="Create a test case">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Lets get started!</h4>
+                        The xFramium quick start generator allows you to choose the <b>What</b>, <b>Where</b> and <b>How</b> for your test suite. This will generate a basic configuration allowing you to start testing immediately. The generated
+                        configuration fill will be more than enough to get you going however you may want to refer to the <a hRef="http://xframium.org/configuration.html">xFramium configuration guide</a> to get more details on a higher level of control of
+                        your test suite.
+                    </div>
+                </div>
+                <div class="panel panel-primary" style="margin-top: 15px" id="where">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Where am I testing?</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class=col-md-6>
+                                <label>Connection Type</label>
+                                <div class="input-group">
+                                    <select id="cloudProviderType" class="selectpicker" onchange="cloudSelected(this)">
+                                        <option value="EMBEDDED">xFramium Embedded Server</option>
+                                        <option value="PERFECTO">Perfecto</option>
+                                        <option value="SAUCELABS">SauceLabs</option>
+                                        <option value="SELENIUM">Generic Selenium/Appium server</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class=col-md-3>
+                                <label>User Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span><input type="text" class="form-control" placeholder="User Name" id="userName">
+                                </div>
+                            </div>
+                            <div class=col-md-3>
+                                <label>Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span><input type="text" class="form-control" placeholder="Password" id="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=col-md-12>
+                                <label>Host Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span> <input type="text" class="form-control" placeholder="Host name" aria-describedby="sizing-addon3" id="hostName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 25px">
+                            <div class=col-md-12>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="proxy" onchange="proxySelected()">
+                                    </span> <input type="text" class="form-control" placeholder="Do you have a proxy server in place ( Hint: your network team will know )" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <div class=col-md-6>
+                                <label>Proxy Host</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span> <input type="text" class="form-control" placeholder="Proxy server host name" id="proxyHost">
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <label>Proxy Port</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span> <input type="text" class="form-control" placeholder="Proxy server port number" id="proxyPort">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary" id="what">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">What am I testing?</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class=col-md-6>
+                                <label>Type</label>
+                                <div class="input-group">
+                                    <select id="appType" class="selectpicker" onchange="appSelected()">
+                                        <option value="WEB">Web based application or web site</option>
+                                        <option value="APPIUM">Apple IOS or Android native application</option>
+                                        <option value="WINDOWS">Native Windows application</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <label>Test Suite Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span> <input type="text" class="form-control" placeholder="Name your test suite" aria-describedby="sizing-addon3" id="suiteName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=col-md-12>
+                                <label style="margin-top: 10px">Web URL</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span> <input type="text" class="form-control" placeholder="URL for a web application or web site" aria-describedby="sizing-addon3" id="webSiteUrl">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class=col-md-6>
+                                <label style="margin-top: 10px">IOS Bundle ID</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span> <input type="text" class="form-control" placeholder="Bundle ID from your development team" aria-describedby="sizing-addon3" id="bundle">
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <label style="margin-top: 10px">Android Package Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon3"></span> <input type="text" class="form-control" placeholder="Package name from your development team" aria-describedby="sizing-addon3" id="package">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">What platforms are being tested?</h3>
+                    </div>
+                    <div class="panel-body">
+                        <label>Mobile Devices</label>
+                        <div class="row">
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="s5">
+                                    </span> <input type="text" class="form-control" placeholder="Samsung S5" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="s6">
+                                    </span> <input type="text" class="form-control" placeholder="Samsung S6" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="ip6">
+                                    </span> <input type="text" class="form-control" placeholder="iPhone-6" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px">
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="ip6s">
+                                    </span> <input type="text" class="form-control" placeholder="iPhone-6S" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="ip6p">
+                                    </span> <input type="text" class="form-control" placeholder="iPhone-6 Plus" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="ip6ps">
+                                    </span> <input type="text" class="form-control" placeholder="iPhone-6S Plus" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        <label style="margin-top: 10px;">Desktop Browsers</label>
+                        <div class="row" style="margin-bottom: 10px">
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="ff">
+                                    </span> <input type="text" class="form-control" placeholder="Firefox" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="ch">
+                                    </span> <input type="text" class="form-control" placeholder="Chrome" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-4>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="ie">
+                                    </span> <input type="text" class="form-control" placeholder="Internet Explorer" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-muted text-small"><i>*Note: This represents a small list of platforms available for testing. Not all platform configuration types are available in all places</i></span>
+                    </div>
+                </div>
+                <div class="panel panel-primary" id="how">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">How do you want to see the test results?</h3>
+                    </div>
+                    <div class="panel-body">
+                        <label>xFramium Reports</label>
+                        <div class="row">
+                            <div class=col-md-6>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="EXECUTION_RECORD_HTML">
+                                    </span> <input type="text" class="form-control" placeholder="xFramium HTML Report" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="EXECUTION_RECORD_CSV">
+                                    </span> <input type="text" class="form-control" placeholder="xFramium CSV Report" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px">
+                            <div class=col-md-6>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="FAILURE_SOURCE">
+                                    </span> <input type="text" class="form-control" placeholder="Extract device state on failure" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="DEVICE_LOG">
+                                    </span> <input type="text" class="form-control" placeholder="Extract platform logs for debugging" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px">
+                            <div class=col-md-6>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="DEBUGGER">
+                                    </span> <input type="text" class="form-control" placeholder="Launch the integrated web based debug service" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        <label style="margin-top: 10px">External Integrations</label>
+                        <div class="row">
+                            <div class=col-md-6>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="EXECUTION_REPORT_HTML">
+                                    </span> <input type="text" class="form-control" placeholder="Perfecto HTML execution report" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="EXECUTION_REPORT_PDF">
+                                    </span> <input type="text" class="form-control" placeholder="Perfecto PDF execution report" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;">
+                            <div class=col-md-6>
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <input type="checkbox" id="REPORTIUM">
+                                    </span> <input type="text" class="form-control" placeholder="Perfecto reporting services integration" aria-describedby="sizing-addon3" readonly style="background-color: white; color: black;">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div style="text-align: center" id="buttons">
+                    <a type="button" class="btn btn-success" onclick="downloadFile(); downloadAnchor.click()">Generate my Configuration</a>
+                    <a type="button" class="btn btn-success" hRef="https://www.xframium.org/jnlp/xframium-launcher.jnlp">Launch xFramium Online</a>
+                    
+                </div>
+                <br/>
+                <footer>
+                    <p>xFramium - Rapid Test Case Development</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/docs.min.js"></script>
+    <script src="./js/bootstrap-select.min.js"></script>
+    <script>
+
+    
+    function cloudSelected()
+    {
+		var connectionType = getValue( "cloudProviderType");
+    	console.log( connectionType );
+    	if ( connectionType == 'EMBEDDED' )
+    	{
+    		disableElement( "hostName" );
+    		disableElement( "userName" );
+    		disableElement( "password" );
+    		disableElement( "EXECUTION_REPORT_HTML" );
+    		disableElement( "EXECUTION_REPORT_PDF" );
+    		disableElement( "REPORTIUM" );
+    	}
+    	else if ( connectionType == 'PERFECTO' )
+    	{
+    		enableElement( "hostName" );
+    		enableElement( "userName" );
+    		enableElement( "password" );
+    		enableElement( "EXECUTION_REPORT_HTML" );
+    		enableElement( "EXECUTION_REPORT_PDF" );
+    		enableElement( "REPORTIUM" );
+    	}
+    	else
+    	{
+    		enableElement( "hostName" );
+    		enableElement( "userName" );
+    		enableElement( "password" ); 	
+    		disableElement( "EXECUTION_REPORT_HTML" );
+    		disableElement( "EXECUTION_REPORT_PDF" );
+    		disableElement( "REPORTIUM" );
+    	}
+    }
+    
+    function proxySelected()
+    {
+		var connectionType = getValue( "proxy");
+    	console.log( connectionType );
+    	if ( connectionType == false )
+    	{
+    		disableElement( "proxyHost" );
+    		disableElement( "proxyPort" );
+    	}
+    	else 
+    	{
+    		enableElement( "proxyHost" );
+    		enableElement( "proxyPort" ); 		
+    	}
+    }
+    
+    function appSelected()
+    {
+		var appType = getValue( "appType" );
+    	
+    	if ( appType == 'APPIUM' )
+    	{
+    		enableElement( "bundle" );
+    		enableElement( "package" );
+    		disableElement( "webSiteUrl" );
+    	}
+    	else if ( appType == 'WEB' )
+    	{
+    		disableElement( "bundle" );
+    		disableElement( "package" );
+    		enableElement( "webSiteUrl" );
+    	}
+    	else if ( appType == 'WINDOWS' )
+    	{
+    		enableElement( "bundle" );
+    		enableElement( "package" );
+    		disableElement( "webSiteUrl" );
+    	}
+    }
+    
+    
+    
+    var downloadAnchor;
+    
+    /**
+     * 
+     */
+     const MIME_TYPE = 'text/xml';
+     //var output = container.querySelector('output');
+     var downloadFile = function() 
+     {
+    	  window.URL = window.webkitURL || window.URL;
+    	  var bb = new Blob([generateXML()], {type: MIME_TYPE});
+
+    	  var a = document.createElement('a');
+    	  a.download = getValue( "suiteName" ) + ".xml";
+    	  a.href = window.URL.createObjectURL(bb);
+
+    	  a.dataset.downloadurl = [MIME_TYPE, a.download, a.href].join(':');
+    	  a.classList.add('dragout');
+    	  document.getElementById( 'buttons' ).appendChild(a);
+    	  
+    	  downloadAnchor = a;
+    	};
+     
+    function generateXML()
+    {
+    	var appData = '<?xml version="1.0" encoding="UTF-8"?>';
+    	appData = appData + '\r\n <xFramium xmlns="http://www.xframium.org/xFramiumDriver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xframium.org/xFramiumDriver http://www.xframium.org/xsd/xFramiumDriver.xsd">';
+    	
+    	appData = appData + generateCloud();
+    	appData = appData + generateApplication();
+    	appData = appData + generateDevice();
+    	appData = appData + generateDriver();
+    	appData = appData + generateModel();
+    	appData = appData + generateScript();
+    	appData = appData + "\r\n</xFramium>";
+    	
+    	return appData;
+    	
+    }
+
+    function enableElement( elementId )
+    {
+    	document.getElementById( elementId ).disabled = false;
+    }
+    
+    function disableElement( elementId )
+    {
+    	document.getElementById( elementId ).disabled = true;
+    }
+    
+    function getValue( elementId )
+    {
+    	if ( document.getElementById( elementId ).type == 'checkbox' )
+    		return document.getElementById( elementId ).checked;
+    	else
+    		return document.getElementById( elementId ).value;
+    }
+    
+
+    
+    function generateCloud()
+    {
+    	var cloudData = "";
+    	var connectionType = getValue( "cloudProviderType" );
+    	
+    	if ( connectionType == 'EMBEDDED' )
+    	{
+    		cloudData = '<cloud provider="LOCAL" providerType="SELENIUM" name="xFramium" userName="" password="" hostName="" proxyHost="" grid="EMBEDDED" />';
+    	}
+    	else if ( connectionType == 'PERFECTO' )
+    	{
+    		cloudData = '<cloud provider="LOCAL" providerType="PERFECTO" name="perfecto" userName="' + getValue( "userName" ) + '" password="' + getValue( "password" ) + '" hostName="' + getValue( "hostName" ) + '"' + generateProxy() + ' />';   		
+    	}
+    	else if ( connectionType == 'SELENIUM' || connectionType == 'SAUCELABS' )
+    	{
+    		cloudData = '<cloud provider="LOCAL" providerType="SELENIUM" name="perfecto" userName="" password="" hostName="' + getValue( "hostName" ) + '"' + generateProxy() + ' />';   		
+    	}
+    	
+    	return cloudData;
+    	
+    }
+    
+    function generateProxy()
+    {
+    	if ( getValue( "proxyHost" ) )
+    		return ' proxyHost="' + getValue( "proxyHost" ) + '" proxyPort="' + getValue( "proxyPort" ) + '"';
+    	else
+    		return ' proxyHost=""';
+    }
+    
+
+    function generateApplication()
+    {
+    	var appData = "";
+    	var appType = getValue( "appType" );
+    	
+    	if ( appType == 'APPIUM' )
+    	{
+    		appData = '<application  provider="LOCAL" name="' + getValue( "suiteName") + '" appPackage="' + getValue( "package") + '" bundleId="' + getValue( "bundle") + '" url="" iosInstall="" androidInstall="" />';
+    	}
+    	else if ( appType == 'WEB' )
+    	{
+    		appData = '<application  provider="LOCAL" name="' + getValue( "suiteName") + '" appPackage="" bundleId="" url="' + getValue( "webSiteUrl") + '" iosInstall="" androidInstall="" />';
+    	}
+    	else if ( appType == 'WINDOWS' )
+    	{
+    		appData = '<application  provider="LOCAL" name="' + getValue( "suiteName") + '" appPackage="' + getValue( "package") + '" bundleId="' + getValue( "bundle") + '" url="" iosInstall="" androidInstall="" />';
+    	}
+    	
+    	return appData;
+    }
+
+    function generateDevice()
+    {
+    	var appData = '<devices provider="LOCAL">';
+    	var cType = getValue( "cloudProviderType" );
+    	
+    	if ( getValue( 's5' ) )
+    		appData = appData + '\r\n<device name="Samsung S5" manufacturer="Samsung" model="Galaxy S5" os="Android" active="true" availableDevices="1" />';
+    		
+		if ( getValue( 's6' ) )
+    		appData = appData + '\r\n\t<device name="Samsung S6" manufacturer="Samsung" model="Galaxy S6" os="Android" active="true" availableDevices="1" />';
+    	
+		if ( getValue( 'ip6' ) )
+    		appData = appData + '\r\n\t<device name="iPhone 6" manufacturer="Apple" os="iOS" model="iPhone-6" active="true" availableDevices="1" />';
+    	
+		if ( getValue( 'ip6s' ) )
+    		appData = appData + '\r\n\t<device name="iPhone 6S" manufacturer="Apple" os="iOS" model="iPhone-6S" active="true" availableDevices="1" />';
+    		
+		if ( getValue( 'ip6p' ) )
+    		appData = appData + '\r\n\t<device name="iPhone 6 Plus" manufacturer="Apple" os="iOS" model="iPhone-6 Plus" active="true" availableDevices="1" />';
+    		
+		if ( getValue( 'ip6ps' ) )
+    		appData = appData + '\r\n\t<device name="iPhone 6S Plus" manufacturer="Apple" os="iOS" model="iPhone-6S Plus" active="true" availableDevices="1" />';
+    		
+		if ( getValue( 'ie' ) )
+		{
+        	appData = appData + '\r\n\t<device name="IE Local" manufacturer="Microsoft" model="IE" active="true" availableDevices="1" os="Windows" browserName="internet explorer" osVersion="8.1"';
+        	if ( cType == 'EMBEDDED' )
+        		appData = appData + ' cloud="EMBEDDED" />';
+        	else
+        		appData = appData + ' />';	
+		}
+		
+		if ( getValue( 'ff' ) )
+		{
+    		appData = appData + '\r\n\t<device name="Firefox Local" manufacturer="Mozilla" model="Firefox" active="true" availableDevices="1" os="Windows" browserName="firefox" osVersion="8.1" browserVersion="46"';
+    		if ( cType == 'EMBEDDED' )
+        		appData = appData + ' cloud="EMBEDDED" />';
+        	else
+        		appData = appData + ' />';	
+		}
+		
+		if ( getValue( 'ch' ) )
+		{
+    		appData = appData + '\r\n\t<device name="Chrome Local" manufacturer="Google" model="Chrome" active="true" availableDevices="1" os="Windows" browserName="chrome" osVersion="8.1"';
+    		if ( cType == 'EMBEDDED' )
+        		appData = appData + ' cloud="EMBEDDED" />';
+        	else
+        		appData = appData + ' />';	
+		}	
+    	appData = appData + '\r\n</devices>';
+    	return appData;
+    }
+
+    function generateDriver()
+    {
+    	var appData = '<driver type="' + getValue( "appType" ) + '" outputFolder="test-output" displayResults="true" tagNames="demo">';
+    	
+    	var artifactArray = [ "EXECUTION_RECORD_HTML", "EXECUTION_RECORD_CSV", "FAILURE_SOURCE", "DEVICE_LOG", "DEBUGGER", "REPORTIUM", "EXECUTION_REPORT_HTML", "EXECUTION_REPORT_PDF" ];
+    	
+    	for ( var i=0; i<artifactArray.length; i++ )
+    	{
+    		if ( getValue( artifactArray[ i ] ) )
+        		appData = appData + '\r\n\t<artifact type="' + artifactArray[ i ] + '" />';
+    	}
+    	
+    	appData = appData + '\r\n</driver>';
+    	return appData;
+
+    }
+    
+    function generateModel()
+    {
+    	var appData = '\r\n<model provider="LOCAL" siteName="' + getValue( "suiteName" ) + '">';
+    	
+    	
+        appData = appData + '\r\n\t<page name="Search">';
+        appData = appData + '\r\n\t\t<element name="SEARCH" value="//input[@id=\'lst-ib\']" descriptor="XPATH" />';
+        appData = appData + '\r\n\t\t<element name="SEARCH_BUTTON" value="//button[@id=\'tsbb\']/div|//div[@id=\'sblsbb\']/button" descriptor="XPATH" />';
+        appData = appData + '\r\n\t\t<element name="RESULTS" value="//*[@id=\'rso\']/div/div" descriptor="XPATH" />';
+        appData = appData + '\r\n\t\t<element name="RESULT" value="//*[@id=\'rso\']/div/div[{resultIndex}]//a[contains( text(), \'{urlToken}\')]" descriptor="XPATH" />';
+        appData = appData + '\r\n\t\t<element name="LUCKY" value="I\'m feeling Lucky" descriptor="V_TEXT" />';
+        appData = appData + '\r\n\t</page>';
+        appData = appData + '\r\n</model>';
+
+        return appData;
+    }
+    
+    function generateScript()
+    {
+    	var appData = '\r\n<suite provider="LOCAL">';
+        appData = appData + '\r\n<test name="TC-001 Search" active="true" tagNames="demo">';
+        appData = appData + '\r\n <step name="SEARCH" type="EXISTS" page="Search" />';
+        appData = appData + '\r\n <step name="SEARCH" type="SET" page="Search">';
+        appData = appData + '\r\n  <parameter type="STATIC" value="xFramium" />';
+        appData = appData + '\r\n </step>';
+        appData = appData + '\r\n <step name="checkPoint" type="STATE" page="Search" />';
+        appData = appData + '\r\n <step name="SEARCH_BUTTON" type="CLICK" page="Search" />';
+        appData = appData + '\r\n <step name="RESULTS" type="WAIT_FOR" page="Search" />';
+        appData = appData + '\r\n <step name="RESULTS" type="EXISTS" page="Search" context="resultCount" />';
+        appData = appData + '\r\n <!-- LOOP OVER THE RESULTS -->';
+        appData = appData + '\r\n <step name="checkPoint" type="STATE" page="Search" />';
+        appData = appData + '\r\n  <step name="LOOP_OVER_RESULTS" type="LOOP" page="Search">';
+        appData = appData + '\r\n   <parameter type="CONTEXT" value="resultCount_count" />';
+        appData = appData + '\r\n   <parameter type="STATIC" value="checkResult" />';
+        appData = appData + '\r\n  </step>';
+        appData = appData + '\r\n</test>';
+    
+        appData = appData + '\r\n<test name="TC-002 Link Check" active="true" tagNames="demo">';
+        appData = appData + '\r\n  <step name="SEARCH" type="EXISTS" page="Search" />';
+        appData = appData + '\r\n  <step name="SEARCH" type="SET" page="Search">';
+        appData = appData + '\r\n    <parameter type="STATIC" value="xFramium" />';
+        appData = appData + '\r\n  </step>';
+        appData = appData + '\r\n  <step name="checkPoint" type="STATE" page="Search" />';
+        appData = appData + '\r\n  <step name="SEARCH_BUTTON" type="CLICK" page="Search" />';
+        appData = appData + '\r\n  <step name="RESULTS" type="WAIT_FOR" page="Search" />';
+        appData = appData + '\r\n  <step name="checkPoint" type="STATE" page="Search" />';
+        appData = appData + '\r\n</test>';
+        appData = appData + '\r\n';
+        appData = appData + '\r\n<function name="checkResult">';
+        appData = appData + '\r\n  <!-- CONDITIONAL LOGIC - ADD TO REPORT IF WE HAVE THE WRITE LINK AND CLICK ON IT -->';
+        appData = appData + '\r\n  <step name="RESULT" type="EXISTS" page="Search" failureMode="IGNORE" context="textValue">';
+        appData = appData + '\r\n    <token name="resultIndex" type="CONTEXT" value="_LOOP.INDEX" />';
+        appData = appData + '\r\n   <token name="urlToken" type="STATIC" value="xFramium" />';
+    
+        appData = appData + '\r\n    <step name="ADD_TO_REPORT" type="REPORT" page="Search">';
+        appData = appData + '\r\n      <parameter type="STATIC" value="URL Link Name" />';
+        appData = appData + '\r\n      <parameter type="CONTEXT" value="textValue" />';
+        appData = appData + '\r\n      <parameter type="STATIC" value="Result Index" />';
+        appData = appData + '\r\n      <parameter type="CONTEXT" value="_LOOP.INDEX" />';
+        appData = appData + '\r\n    </step>';
+        appData = appData + '\r\n    <step name="URL" type="DEVICE" page="Search">';
+        appData = appData + '\r\n      <parameter type="STATIC" value="http://www.xFramium.org" />';
+        appData = appData + '\r\n    </step>';
+        appData = appData + '\r\n    <step name="BREAK" type="BREAK" page="Search" />';
+        appData = appData + '\r\n    <step name="elseCondition" type="ELSE" page="Search">';
+        appData = appData + '\r\n      <step name="ADD_TO_REPORT" type="REPORT" page="Search">';
+        appData = appData + '\r\n        <parameter type="STATIC" value="Result Index" />';
+        appData = appData + '\r\n        <parameter type="CONTEXT" value="_LOOP.INDEX" />';
+        appData = appData + '\r\n      </step>';
+        appData = appData + '\r\n    </step>';
+        appData = appData + '\r\n  </step>';
+        appData = appData + '\r\n</function>';
+        appData = appData + '\r\n</suite>';
+        	
+    	return appData;
+    	
+    }
+    
+    function addClass( classname, elementName ) 
+    {
+    	var element = document.getElementById( elementName );
+        var cn = element.className;
+        //test for existance
+        if( cn.indexOf( classname ) != -1 ) {
+        	return;
+        }
+        //add a space if the element already has class
+        if( cn != '' ) {
+        	classname = ' '+classname;
+        }
+        console.log( element.className );
+        element.className = cn+classname;
+        console.log( element.className );
+    }
+
+    function removeClass( classname, elementName ) 
+    {
+    	var element = document.getElementById( elementName );
+        var cn = element.className;
+        var rxp = new RegExp( "\\s?\\b"+classname+"\\b", "g" );
+        cn = cn.replace( rxp, '' );
+        element.className = cn;
+    }
+    
+    cloudSelected();
+    proxySelected();
+    appSelected();
+    
+    </script>
+</body>
+</html>

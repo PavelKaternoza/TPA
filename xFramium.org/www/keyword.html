@@ -279,6 +279,7 @@ body {
                                             <li>CSV: A provider based off of a comma separated list of values</li>
                                             <li>EXCEL: A provider using Excel</li>
                                             <li>SQL: A provider reading data from a database table</li>
+                                            <li>PERFECTO_PLUGIN: A Perfecto specific provider adding integrations into the IDE plugins</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -478,6 +479,7 @@ body {
                                             <li>EXECUTION_RECORD_CSV: Contains an CSV based reports of all test steps that were executed</li>
                                             <li>EXECUTION_TIMING: Contains a small timing report of elements marked as timed</li>
                                             <li>REPORTIUM: Sends the reporting data to Perfectos Report server</li>
+                                            <li>DEBUGGER: Integration into the xFramium advanced online debugger</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -668,6 +670,10 @@ body {
                                 <tr>
                                     <td>device:</td>
                                     <td>When working with multiple devices in the same test case this parameter is used to specify the device that you want the step to run against. This device is named using the ADD_DEVICE keyword in a previous step</td>
+                                </tr>
+                                <tr>
+                                    <td>startAt:</td>
+                                    <td>Allows a script to start a specific point.  When true, the previous will be skipped during an execution</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1677,7 +1683,7 @@ body {
                     </div>
                     
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p>When using 2 parameters, the named element is ignored and instead a value is passed in to work on</p>
+                        <p>When using 2 or 3 parameters, the named element is ignored and instead a value is passed in to work on</p>
                         <ol>
                             <li>The value that will have the action performed
                             <li>The action to take on the string
@@ -1685,8 +1691,10 @@ body {
                                 <li>trim: Indicates that all leading and trailing empty space is trimmed off of the value</li>
                                 <li>lower: Indicates that the value be set to all lower case characters</li>
                                 <li>upper: Indicates that the value be set to all upper case characters</li>
+                                <li>decimal: Formats the value using the Java number format method</li>
                             </ul>
                             </li>
+                            <li>Optional parameter for the decimal type.  Represents the format to apply
                         </ol>
                     </div>
                     
