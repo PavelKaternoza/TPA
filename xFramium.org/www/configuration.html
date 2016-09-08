@@ -674,6 +674,17 @@ STATE{#1}
                             </code>
                         </pre>
                     </figure>
+                    <p>Alternatively, content keys can be configured in list form in the definition of a test case.  When specified this way, the test will be repeated once per content key in the list.  Here's an example: </p>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+&lttest name="MyTest" timed="true" active="true"
+        dataDriver="searchData" contentKeys="english|french|german"&gt
+    ...
+&lt/test&gt
+                            </code>
+                        </pre>
+                    </figure>
                     <h2 id="content-xml">XML Configuration</h2>
                     <p>When defining content using XML you must provide a name attribute and lookup attributes. The lookup attributes can be named anything but must be consistent throughout the records</p>
                     <div class=table-responsive>

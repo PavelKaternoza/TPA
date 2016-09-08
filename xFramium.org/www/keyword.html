@@ -574,6 +574,10 @@ body {
                                     <td>tagNames:</td>
                                     <td>Test Tags are used to allow for test grouping. By providing a comma separated list of test tags the test executor can then specify a test tag and only test who contain that tag will run. </td>
                                 </tr>
+                                <tr>
+                                    <td>contentKeys:</td>
+                                    <td>Content keys are used to repeat a test with several sets of content values in use.  By providing a vertical bar (|) separated list of content keys the test executor will run a test thus configured once per key in the list.  During each test execution with a content key in force, it's value is used in parameters and tokens of type "CONTENT" in conjunction with the content record name to access specific content values.
+                                </tr>
                             </tbody>
                         </table>
                     </div>
