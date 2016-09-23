@@ -33,25 +33,13 @@ body {
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="./index.html">xFramium</a>
+                <a class="navbar-brand" href="http://xframium.org/index.html">xFramium</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Getting Started <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/installation.html">Installation</a></li>
-                            <li><a href="/configuration.html">Configuration</a></li>
-                            <li><a href="/keyword.html">Writing tests using keywords</a></li>
-                            <li><a href="/java.html">Writing tests in Java</a></li>
-                            <li><a href="/download.html">Download xFramium</a></li>
-                        </ul></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Architectural Overview </a></li>
-                            <li><a href="/apidocs/index.html" target="_blank">API Reference</a></li>
-                            <li><a href="/extending.html">Extending the Framework</a></li>
-                        </ul></li>
-                    <li><a href="/sponsors.html">Sponsors</a></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://xframium.org/getstarted.html">Get Started</a></li>
+                    <li class="active"><a href="http://xframium.org/documentation.html">Documentation</a></li>
+                    <li><a href="http://xframium.org/sponsors.html">About xFramium</a></li>
                 </ul>
             </div>
             <!--/.navbar-collapse -->
@@ -60,7 +48,7 @@ body {
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class=bs-docs-header id=content tabindex=-1>
         <div class="container">
-            <h1>Keyword-Driver</h1>
+            <h1>Keyword-Driven</h1>
             <p>xFramium XML Keyword-Driver allows for rapid test case development using a simple and elegant XML alternative to coding.</p>
         </div>
     </div>
@@ -126,7 +114,7 @@ body {
                             </ul></li>
                             <li><a href=#bdd>Behavior-driven development (BDD)</a></li>
                     </ul>
-                    <a class=back-to-top href=#top> Back to top </a> <a href=# class=bs-docs-theme-toggle role=button> Preview theme </a>
+                    <a class=back-to-top href=#top> Back to top </a>
                 </nav>
             </div>
             <div class=col-md-9 role=main>
@@ -291,6 +279,7 @@ body {
                                             <li>CSV: A provider based off of a comma separated list of values</li>
                                             <li>EXCEL: A provider using Excel</li>
                                             <li>SQL: A provider reading data from a database table</li>
+                                            <li>PERFECTO_PLUGIN: A Perfecto specific provider adding integrations into the IDE plugins</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -490,6 +479,7 @@ body {
                                             <li>EXECUTION_RECORD_CSV: Contains an CSV based reports of all test steps that were executed</li>
                                             <li>EXECUTION_TIMING: Contains a small timing report of elements marked as timed</li>
                                             <li>REPORTIUM: Sends the reporting data to Perfectos Report server</li>
+                                            <li>DEBUGGER: Integration into the xFramium advanced online debugger</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -583,6 +573,10 @@ body {
                                 <tr>
                                     <td>tagNames:</td>
                                     <td>Test Tags are used to allow for test grouping. By providing a comma separated list of test tags the test executor can then specify a test tag and only test who contain that tag will run. </td>
+                                </tr>
+                                <tr>
+                                    <td>contentKeys:</td>
+                                    <td>Content keys are used to repeat a test with several sets of content values in use.  By providing a vertical bar (|) separated list of content keys the test executor will run a test thus configured once per key in the list.  During each test execution with a content key in force, it's value is used in parameters and tokens of type "CONTENT" in conjunction with the content record name to access specific content values.
                                 </tr>
                             </tbody>
                         </table>
@@ -680,6 +674,10 @@ body {
                                 <tr>
                                     <td>device:</td>
                                     <td>When working with multiple devices in the same test case this parameter is used to specify the device that you want the step to run against. This device is named using the ADD_DEVICE keyword in a previous step</td>
+                                </tr>
+                                <tr>
+                                    <td>startAt:</td>
+                                    <td>Allows a script to start a specific point.  When true, the previous will be skipped during an execution</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1689,7 +1687,7 @@ body {
                     </div>
                     
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p>When using 2 parameters, the named element is ignored and instead a value is passed in to work on</p>
+                        <p>When using 2 or 3 parameters, the named element is ignored and instead a value is passed in to work on</p>
                         <ol>
                             <li>The value that will have the action performed
                             <li>The action to take on the string
@@ -1697,8 +1695,10 @@ body {
                                 <li>trim: Indicates that all leading and trailing empty space is trimmed off of the value</li>
                                 <li>lower: Indicates that the value be set to all lower case characters</li>
                                 <li>upper: Indicates that the value be set to all upper case characters</li>
+                                <li>decimal: Formats the value using the Java number format method</li>
                             </ul>
                             </li>
+                            <li>Optional parameter for the decimal type.  Represents the format to apply
                         </ol>
                     </div>
                     
