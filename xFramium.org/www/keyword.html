@@ -68,6 +68,7 @@ body {
                                 <li><a href=#td-pagedata>Page Data</a></li>
                                 <li><a href=#td-content>Content Management</a></li>
                                 <li><a href=#td-artifact>Artifacts and Reporting</a></li>
+                                <li><a href=#td-proxy>Proxy Settings</a></li>
                             </ul></li>
                         <li><a href=#tc>Creating a Test Case</a>
                             <ul class=nav>
@@ -483,6 +484,31 @@ body {
                                             <li>DEBUGGER: Integration into the xFramium advanced online debugger</li>
                                         </ul>
                                     </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="td-proxy">Proxy Settings</h2>
+                    <div class=table-responsive>
+                        <table class="table table-bordered table-striped js-options-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>proxy.host:</td>
+                                    <td width="100%">Specifies the proxy host name</td>
+                                </tr>
+                                <tr>
+                                    <td>proxy.port:</td>
+                                    <td>Specifies the proxy port number</td>
+                                </tr>
+                                <tr>
+                                    <td>proxy.ignoreHost:</td>
+                                    <td>Specifies the ignore proxy host settings, if more than one proxy separate by Pipe delimiter ”127.0.0.1|host.example.com”</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1290,7 +1316,12 @@ body {
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
                         <p><b>KEYPRESS</b> A special case the presses a key</p>
                         <ol>
-                            <li>The Integer value representing the keycode to press</li>
+                            <li>For Android & iOS pass Integer value representing the keycode to press and for Selenium Pass String value(s) to do KeyBoard Keypress</li>
+                            <ul>
+                            	<li>
+                            		For Selnium KeyBoard press, pass one of the ENUM values from <a href="https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/Keys.html">Keys</a> API
+                            	</li>
+                            </ul>
                         </ol>
                     </div>
                     
@@ -1309,6 +1340,24 @@ body {
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="PRESS" page="SHOW"&gt;
   &lt;parameter type="STATIC" value="2,99" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>Executes a KEYPRESS on SHIFT key on KEYBOARD</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="KEYPRESS" page="SHOW"&gt;
+  &lt;parameter type="STATIC" value="SHIFT" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+                    
+                    <p>Executes KEYPRESS on SHIFT and HOME keys on KEYBOARD, use separator '+' for multiple keys </p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step type="GESTURE" name="KEYPRESS" page="SHOW"&gt;
+  &lt;parameter type="STATIC" value="SHIFT+HOME" /&gt;
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
