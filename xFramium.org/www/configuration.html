@@ -685,6 +685,7 @@ STATE{#1}
                             </code>
                         </pre>
                     </figure>
+                    
                     <h2 id="content-xml">XML Configuration</h2>
                     <p>When defining content using XML you must provide a name attribute and lookup attributes. The lookup attributes can be named anything but must be consistent throughout the records</p>
                     <div class=table-responsive>
@@ -716,6 +717,19 @@ STATE{#1}
 	<record name="Georgia" uppercase="GA" lowercase="ga" />
 </content>
                         </textarea>
+                    </figure>
+                    
+                    <p>A particularly important use of the content key configuration is in setting the locale in use on newly initialized devices.  If the device manager is configured to use the APPIUM driver and the content manager configuration contains a record named "locale" (below), the record value corresponding to the content key in force for the test run is used to set the device locale on initialization.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code>
+&ltcontent&gt
+        &ltmodel&gtenglish,french,german&lt/model&gt
+        &ltrecord name="locale" english="en_US" french="fr_FR" german="de_DE" /&gt
+    ...
+&lt/content&gt
+                            </code>
+                        </pre>
                     </figure>
                     <h2 id="content-excel">Excel Configuration</h2>
                     <p>When defining content using Excel you must provide a key column and lookup columns. They can exist in any position and will be defined.</p>
