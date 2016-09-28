@@ -105,6 +105,7 @@ body {
                                 <li><a href=#kw-mouse>MOUSE</a></li>
                                 <li><a href=#kw-operator>OPERATOR</a></li>
                                 <li><a href=#kw-report>REPORT</a></li>
+                                <li><a href=#kw-set-content-key>SET_CONTENT_KEY</a></li>
                                 <li><a href=#kw-sql>SQL</a></li>
                                 <li><a href=#kw-state>STATE</a></li>
                                 <li><a href=#kw-string>STRING</a></li>
@@ -1142,6 +1143,9 @@ body {
           &lt;token type="STATIC" name="rate" value="5" /&gt;
           &lt;token type="STATIC" name="term" value="360" /&gt;
      &lt;/parameter&gt;
+     &lt;parameter type="STATIC" name="headers" value="any" usage="input" &gt;
+          &lt;token type="STATIC" name="userid" value="1" /&gt;
+     &lt;/parameter&gt;                 
      &lt;parameter type="STATIC" name="type" value="xml" usage="output" /&gt;
      &lt;parameter type="STATIC" name="var1" value="//LoanMonthlyPaymentResult" usage="output" /&gt;
 &lt;/step&gt;</code>
@@ -1150,7 +1154,7 @@ body {
                     <p>The step parameters fall into two categories: input (usage="input") and output (usage="output").  Input parameters describe the
                        call and it's data and the output parameters identify the format of the call responce data and list context variables that can be
                        extracted from it.</p>
-                    <p>Mandatory input parameters include the call URL (name="url"), the HTTP method (name="method", options: GET, POST, PUT, DELETE), the media type of the call input (name="media-type") and the call type (name="type", options: REST, SOAP).  Optional parameters include the input document template (name="payload") and basic authentication credentials (name="username" and name="password").  All other step input parameters are considered parameters to the web service call.  For REST calls, web service parameters are added to the URL.  For SOAP calls, additional parameters are used to construct the payload document.</p>
+                    <p>Mandatory input parameters include the call URL (name="url"), the HTTP method (name="method", options: GET, POST, PUT, DELETE), the media type of the call input (name="media-type") and the call type (name="type", options: REST, SOAP).  Optional parameters include the input document template (name="payload"), basic authentication credentials (name="username" and name="password") and support for adding request headers (name="headers").  All other step input parameters are considered parameters to the web service call.  For REST calls, web service parameters are added to the URL.  For SOAP calls, additional parameters are used to construct the payload document.</p>
                     <p>Referring to the example above, this is the content of payload.xml.  The key thing to note are the variable substitutions included (ex. {amt}).  These should correlate to the tokens included in the payload parameter.  The token values are what get substituted into the payload template.</p>
                     <figure class=highlight>
                         <pre>
@@ -1612,6 +1616,25 @@ body {
                         <pre>
                             <code class=language-xml data-lang=xml>&lt;step name="MENU" type="REPORT" page="TEST_PAGE"&gt;
   &lt;parameter type="context" value="SC_TEST" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+
+                    <h2 id="kw-set-content-key">SET_CONTENT_KEY</h2>
+                    <p>
+                        Allows the value of the content key in force for the current test case run to be changed during the test run.
+                    </p>
+
+                    <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
+                      <p>You must have at least 1 parameter, which is the value the context key should be set to.
+                      </p>
+                    </div>
+
+                    <p>This example sets the value of the content key in force to "english" from this point on in the current test run.</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SWITCH_KEY" page="Home" type="SET_CONTENT_KEY" &gt;
+   &lt;parameter type="STATIC" value="english" /&gt;
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
