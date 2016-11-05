@@ -94,7 +94,6 @@ body {
                                 <li><a href=#kw-call>CALL</a></li>
                                 <li><a href=#kw-click>CLICK</a></li>
                                 <li><a href=#kw-compare>COMPARE</a></li>
-                                <li><a href=#kw-concat>CONCAT</a></li>
                                 <li><a href=#kw-else>ELSE</a></li>
                                 <li><a href=#kw-execjs>EXEC_JS</a></li>
                                 <li><a href=#kw-execws>EXEC_WS</a></li>
@@ -111,7 +110,6 @@ body {
                                 <li><a href=#kw-sql>SQL</a></li>
                                 <li><a href=#kw-state>STATE</a></li>
                                 <li><a href=#kw-string>STRING</a></li>
-                                <li><a href=#kw-substr>SUBSTR</a></li>
                                 <li><a href=#kw-checkcolor>VERIFY_COLOR</a></li>
                                 <li><a href=#kw-wait>WAIT</a></li>
                                 <li><a href=#kw-waitfor>WAIT_FOR</a></li>
@@ -1102,21 +1100,6 @@ body {
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
-
-                    <h2 id="kw-concat">CONCAT</h2>
-                    <p>
-                        The concat keyword concatenates two or more string parameters and assigns the result to a context variable. 
-                    </p>
-                    <p>This example will concatenate the three parameter to the step and assign the result to the context variable 'var'</p>
-                    <figure class=highlight>
-                        <pre>
-                          <code class=language-xml data-lang=xml>&lt;step name="CONCAT_TEST" page="Home" type="CONCAT" context="var" &gt;
-    &lt;parameter type="STATIC" value="start" /&gt;
-    &lt;parameter type="STATIC" value="-" /&gt;
-    &lt;parameter type="STATIC" value="end" /&gt;
-&lt;/step&gt;</code>
-                        </pre>
-                    </figure>
                     
                     <h2 id="kw-else">ELSE</h2>
                     <p>
@@ -1774,24 +1757,9 @@ body {
                             </li>
                         </ol>
                     </div>
-
-                    <h2 id="kw-substr">SUBSTR</h2>
-                    <p>
-                        The substring step allow a script to access part of a string value.  The step takes three parameters: the string value to be decomposed; the start character offset to return and the end character offset
-                    </p>
-                    <p>This example below pulls characters 1 through 7 from the input string and assigns the result to the context variable 'var'</p>
-                    <figure class=highlight>
-                        <pre>
-                          <code class=language-xml data-lang=xml>&lt;step name="SUBSTR_TEST" page="Home" type="SUBSTR" context="var" &gt;
-   &lt;parameter type="STATIC" value="asdfghjklqwertyuiopzxcvbnm" /&gt;
-   &lt;parameter type="STATIC" value="1" /&gt;
-   &lt;parameter type="STATIC" value="7" /&gt;
-&lt;/step&gt;</code>
-                        </pre>
-                    </figure>
                     
                     <div class="bs-callout bs-callout-info" id=callout-scrollspy-invisible-targets>
-                        <p>When using 2 or 3 parameters, the named element is ignored and instead a value is passed in to work on</p>
+                        <p>When using 2 or more parameters, the named element is ignored and instead a value is passed in to work on</p>
                         <ol>
                             <li>The value that will have the action performed
                             <li>The action to take on the string
@@ -1800,9 +1768,13 @@ body {
                                 <li>lower: Indicates that the value be set to all lower case characters</li>
                                 <li>upper: Indicates that the value be set to all upper case characters</li>
                                 <li>decimal: Formats the value using the Java number format method</li>
+                                <li>concat: Concatenates all parameter values</li>
+                                <li>substr: Accesses part of the value</li>
                             </ul>
                             </li>
-                            <li>Optional parameter for the decimal type.  Represents the format to apply
+                            <li>Optional parameter for the decimal type, represents the format to apply.  Optional parameter for concat type.  Required parameter for substr, represents the begin index of the substring.</li>
+                            <li>Optional parameter for concat type.  Required parameter for substr type, represents the end index of the substring.</li>
+                            <li>Optional parameter for concat type. Optional parameter for substr type, if present equality between it and the substring determines the step's success or failure
                         </ol>
                     </div>
                     
@@ -1821,6 +1793,31 @@ body {
                             <code class=language-xml data-lang=xml>&lt;step name="MENU" type="STRING" page="TEST_PAGE" context="SC_LOWER"&gt;
   &lt;parameter type="context" value="SC_VALUE" /&gt;
   &lt;parameter type="static" value="lower" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+
+                    <p>This example will concatenate the first, third and fourth parameters to create the string "start-end"</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="CONCAT_TEST" page="Home" type="STRING" context="zoom" &gt;
+   &lt;parameter type="STATIC" value="start" /&gt;
+   &lt;parameter type="STATIC" value="concat" /&gt;
+   &lt;parameter type="STATIC" value="-" /&gt;
+   &lt;parameter type="STATIC" value="end" /&gt;
+&lt;/step&gt;</code>
+                        </pre>
+                    </figure>
+
+                    <p>This example will extract charaacter 1 through 7 of the source string "" and sets the step success status based on equality to the value of the fifth parameter</p>
+                    <figure class=highlight>
+                        <pre>
+                            <code class=language-xml data-lang=xml>&lt;step name="SUBSTR_TEST_2" page="Home" type="STRING" context="zoom" &gt;
+   &lt;parameter type="STATIC" value="asdfghjklqwertyuiopzxcvbnm" /&gt;
+   &lt;parameter type="STATIC" value="substr" /&gt;
+   &lt;parameter type="STATIC" value="1" /&gt;
+   &lt;parameter type="STATIC" value="7" /&gt;
+   &lt;parameter type="STATIC" value="sdfghj" /&gt;
 &lt;/step&gt;</code>
                         </pre>
                     </figure>
